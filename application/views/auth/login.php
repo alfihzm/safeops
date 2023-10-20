@@ -15,20 +15,19 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4"> SafeOps Login </h1>
                                     </div>
+
+                                    <?= $this->session->flashdata('message'); ?>
+
                                     <form class="user" method="post" action="<?= base_url('auth'); ?>">
                                         <div class="form-group">
                                             <p> Username / Email </p>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"
-                                                        style="width: 50px; display: flex; justify-content: center; align-items: center;">
-                                                        <i class="fas fa-solid fa-user-secret"
-                                                            style="font-size: 18px;"></i>
+                                                    <span class="input-group-text" style="width: 50px; display: flex; justify-content: center; align-items: center;">
+                                                        <i class="fas fa-solid fa-user-secret" style="font-size: 18px;"></i>
                                                     </span>
                                                 </div>
-                                                <input style="border-radius: 5px;" type="text"
-                                                    class="form-control form-control-user" id="username" name="username"
-                                                    placeholder="Masukkan Username">
+                                                <input style="border-radius: 5px;" type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan Username" value="<?= set_value('username') ?>">
                                             </div>
                                             <?= form_error('username', '<small class="text-danger">', '</small'); ?>
                                         </div>
@@ -37,14 +36,11 @@
                                             <p> Password </p>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"
-                                                        style="width: 50px; display: flex; justify-content: center; align-items: center;">
+                                                    <span class="input-group-text" style="width: 50px; display: flex; justify-content: center; align-items: center;">
                                                         <i class="fas fa-solid fa-lock" style="font-size: 18px;"></i>
                                                     </span>
                                                 </div>
-                                                <input style="border-radius: 5px;" type="password"
-                                                    class="form-control form-control-user" id="password" name="password"
-                                                    placeholder="Masukkan Password">
+                                                <input style="border-radius: 5px;" type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password">
                                             </div>
                                             <?= form_error('password', '<small class="text-danger">', '</small'); ?>
                                         </div>

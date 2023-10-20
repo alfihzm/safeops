@@ -1,14 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Registrasi Security Guard </title>
-</head>
+    <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        </div>
+                        <form class="user" method="post" action="<?= base_url('auth/registration'); ?>">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" name="nopeg" id="nopeg" placeholder="No Pegawai">
+                                <?= form_error('nopeg', '<small class="text-danger">', '</small'); ?>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" name="nama" id="nama" placeholder="Fullname...">
+                                <?= form_error('nama', '<small class="text-danger">', '</small'); ?>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" name="email" id="email" placeholder="Email anda...">
+                                <?= form_error('email', '<small class="text-danger">', '</small'); ?>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Username">
+                                <?= form_error('username', '<small class="text-danger">', '</small'); ?>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" name="no_telp" id="no_telp" placeholder="No. Telepon">
+                                <?= form_error('password', '<small class="text-danger">', '</small'); ?>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control form-control-user" name="password1" id="password1" placeholder="Password">
+                                    <?= form_error('password1', '<small class="text-danger">', '</small'); ?>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control form-control-user" name="password2" id="password2" placeholder="Repeat Password">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                Register Account
+                            </button>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="forgot-password.html">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="<?= base_url('auth') ?>">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<body style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: montserrat; font-size: 1vw; background: #202124; color: #FFF">
-    <h1> Hubungi HRD jika berminat menjadi bagian dari kami </h1>
-</body>
-
-</html>
+</div>
