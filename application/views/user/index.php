@@ -12,13 +12,18 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <div style="flex: 1;">
-                        <h5 class="card-title"> <?= $user['nama']; ?></h5>
+                        <b><h5 class="card-title"> <?= $user['nama']; ?></h5></b>
                         <p class="card-text"> No. Pegawai: <?= $user['nopeg'] ?></p>
-                    </div>
-                    <div style="flex: 1;">
+                        <p class="card-text"> Security ke- <?= $user['id']?></p>
                         <p class="card-text"> Username: <?= $user['username'] ?></p>
                         <p class="card-text"> Bekerja Sejak:
-                            <?= date('d F Y', $user['date_created']); ?>
+                            <?= date('d F Y', $user['date_created']); 
+                            $dateCreated = $user['date_created'];
+                            $currentTime = time();
+                            $timeDifference = $currentTime - $dateCreated;
+                            $daysDifference = floor($timeDifference/(60*60*24));?>
+                            <br>
+                            Sejak <?= $daysDifference ?> hari lalu
                         </p>
                     </div>
                 </div>

@@ -4,9 +4,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user') ?>">
         <div class="sidebar-brand-icon">
-            <i class="fas fa-solid fa-person-military-rifle"></i>
+            <i class="fa-solid fa-building-shield"></i>
         </div>
-        <div class="sidebar-brand-text mx-3"> SafeOps </div>
+        <div class="sidebar-brand-text mx-3">SafeOps</div>
     </a>
 
     <!-- Divider -->

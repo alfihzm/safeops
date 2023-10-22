@@ -4529,7 +4529,7 @@ input[type="button"].btn-block {
 }
 
 .card-title {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0;
 }
 
 .card-subtitle {
@@ -10476,7 +10476,7 @@ a:focus {
   text-align: center;
   padding: 0 1rem;
   font-weight: 800;
-  font-size: 0.65rem;
+  font-size: 1.65rem;
 }
 
 .sidebar .sidebar-card {
