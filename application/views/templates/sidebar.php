@@ -3,11 +3,12 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user') ?>">
-        <div class="sidebar-brand-icon">
+        <div class="sidebar-brand-icon" style="margin-right: 7px;">
             <i class="fa-solid fa-building-shield"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SafeOps</div>
+        <div class="sidebar-brand-text">SafeOps</div>
     </a>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">
