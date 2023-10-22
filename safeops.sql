@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Okt 2023 pada 06.44
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.2.0
+-- Waktu pembuatan: 22 Okt 2023 pada 14.43
+-- Versi server: 10.4.28-MariaDB
+-- Versi PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,9 +46,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nopeg`, `nama`, `email`, `username`, `password`, `role_id`, `photo_profile`, `no_telp`, `date_created`, `is_active`) VALUES
-(4, '123654', 'Deddy Lukito', 'deddyluke@gmail.com', 'dorayaki', '$2y$10$uYo3kjpVrTl0gEE0f6635.UGj1ih3.RhSM/RN2IEjftax0ZpDAtD6', 2, 'default.jpg', '087884634101', 1697787525, 1),
-(7, '987654', 'Dennis Jason', 'dennis@gmail.com', 'dennis', '$2y$10$WLSYsvJfMRaiN455bCAnJe90O7JxwwVbkANafXM9jUsysjAZYj4AK', 2, 'default.jpg', '087865432122', 1697788833, 1),
-(8, '12345', 'Mohammad Alfi Hamzami', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$eEp9nzOanElSjSZpMpJ.G.dUQDQmCMwsFIv3bDUEB5G/Tq0X5V3z2', 1, 'default.jpg', '082161872392', 1697790857, 1);
+(9, '123456', 'admin', 'admin@gmail.com', 'admin', '$2y$10$2yQG/dlREUZ21t/eYghiWuHpNXNBRcsfiwT0vRVtajToFh8Zx7fPa', 1, 'default.jpg', '08123456789', 1697978285, 1);
 
 -- --------------------------------------------------------
 
@@ -180,7 +178,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
