@@ -4,11 +4,9 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"> <?= $judul; ?></h1>
 
-    <?= validation_errors(); ?>
-
     <div class="row">
         <div class="col-lg-6">
-            <?= form_error('menu', '<div class="alert alert-danger" role="alert"></div>') ?>
+            <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Tambah Menu Baru</a>
 
             <table class="table table-hover">
@@ -51,7 +49,7 @@
                 <h4 class="modal-title fs-5" id="newMenuModalLabel">Tambah Menu Baru </h4>
                 <button type="button" class="fa-solid fa-xmark" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('menu/addmenu'); ?>" method="post">
+            <form action="<?= base_url('menu'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" name="menu" id="menu" placeholder="Nama menu baru">
