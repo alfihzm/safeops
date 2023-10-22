@@ -7,6 +7,9 @@
     <div class="row">
         <div class="col-lg-6">
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
+
+            <?= $this->session->flashdata('message'); ?>
+
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Tambah Menu Baru</a>
 
             <table class="table table-hover">
@@ -24,8 +27,8 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $m['menu']; ?></td>
                             <td>
-                                <a href="" class="btn btn-success">edit</a>
-                                <a href="" class="btn btn-danger">delete</a>
+                                <a href="" class="btn btn-success"> Edit </a>
+                                <a href="" class="btn btn-danger"> Hapus </a>
                             </td>
                         </tr>
                         <?php $i++; ?>
@@ -42,12 +45,14 @@
 <!-- End of Main Content -->
 
 <!-- Modal -->
-<div class="modal fade" id="newMenuModal" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
+<div class=" modal fade" id="newMenuModal" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title fs-5" id="newMenuModalLabel">Tambah Menu Baru </h4>
-                <button type="button" class="fa-solid fa-xmark" data-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <form action="<?= base_url('menu'); ?>" method="post">
                 <div class="modal-body">
