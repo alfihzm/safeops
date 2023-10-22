@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Okt 2023 pada 18.16
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.2.4
+-- Waktu pembuatan: 22 Okt 2023 pada 19.20
+-- Versi server: 10.4.27-MariaDB
+-- Versi PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -89,7 +89,7 @@ CREATE TABLE `user_menu` (
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Admin'),
 (2, 'Kontrol Pengguna'),
-(3, 'menu');
+(3, 'Menu');
 
 -- --------------------------------------------------------
 
@@ -132,8 +132,10 @@ CREATE TABLE `user_sub_menu` (
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `judul_menu`, `url`, `icon`, `is_active`) VALUES
 (1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-solid fa-gauge', 1),
 (2, 2, 'Profil Saya', 'user', 'fas fa-fw fa-solid fa-user', 1),
-(3, 2, 'Logout', 'auth/logout', 'fas fa-fw fa-solid fa-door-open', 1),
-(4, 3, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1);
+(3, 2, 'Ubah Profil', 'user/edit_profile', 'fas fa-fw fa-solid fa-user-pen', 1),
+(4, 2, 'Ganti Password', 'user/ubah_password', 'fas fa-fw fa-solid fa-key', 1),
+(7, 1, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
+(8, 2, 'Keluar', 'auth/logout', 'fas fa-fw fa-solid fa-door-open', 1);
 
 --
 -- Indexes for dumped tables
@@ -201,7 +203,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

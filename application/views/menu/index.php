@@ -4,10 +4,12 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"> <?= $judul; ?></h1>
 
+    <?= validation_errors(); ?>
+
     <div class="row">
         <div class="col-lg-6">
-
-            <a href="" class="btn btn-primary mb-3">Tambah Menu Baru</a>
+            <?= form_error('menu', '<div class="alert alert-danger" role="alert"></div>') ?>
+            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Tambah Menu Baru</a>
 
             <table class="table table-hover">
                 <thead>
@@ -40,3 +42,26 @@
 
 </div>
 <!-- End of Main Content -->
+
+<!-- Modal -->
+<div class="modal fade" id="newMenuModal" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title fs-5" id="newMenuModalLabel">Tambah Menu Baru </h4>
+                <button type="button" class="fa-solid fa-xmark" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?= base_url('menu/addmenu'); ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="menu" id="menu" placeholder="Nama menu baru">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
