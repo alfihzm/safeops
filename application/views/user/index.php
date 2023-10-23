@@ -3,7 +3,11 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"> <?= $judul; ?></h1>
-
+    <div class="row">
+        <div class="col-lg-6">
+            <?= $this->session->flashdata('message') ?>
+        </div>
+    </div>
     <div class="card mb-3" style="max-width: 530px;">
         <div class="row g-0">
             <div class="col-md-4" style="display: flex; align-items: center; text-align: center;">
