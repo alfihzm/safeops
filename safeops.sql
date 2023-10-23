@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Okt 2023 pada 06.44
+-- Waktu pembuatan: 22 Okt 2023 pada 19.20
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -46,9 +46,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nopeg`, `nama`, `email`, `username`, `password`, `role_id`, `photo_profile`, `no_telp`, `date_created`, `is_active`) VALUES
-(4, '123654', 'Deddy Lukito', 'deddyluke@gmail.com', 'dorayaki', '$2y$10$uYo3kjpVrTl0gEE0f6635.UGj1ih3.RhSM/RN2IEjftax0ZpDAtD6', 2, 'default.jpg', '087884634101', 1697787525, 1),
-(7, '987654', 'Dennis Jason', 'dennis@gmail.com', 'dennis', '$2y$10$WLSYsvJfMRaiN455bCAnJe90O7JxwwVbkANafXM9jUsysjAZYj4AK', 2, 'default.jpg', '087865432122', 1697788833, 1),
-(8, '12345', 'Mohammad Alfi Hamzami', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$eEp9nzOanElSjSZpMpJ.G.dUQDQmCMwsFIv3bDUEB5G/Tq0X5V3z2', 1, 'default.jpg', '082161872392', 1697790857, 1);
+(9, '123456', 'admin', 'admin@gmail.com', 'admin', '$2y$10$2yQG/dlREUZ21t/eYghiWuHpNXNBRcsfiwT0vRVtajToFh8Zx7fPa', 1, 'default.jpg', '08123456789', 1697978285, 1),
+(10, '123', 'user', 'user@gmail.com', 'user', '$2y$10$DwPLYVvpYmMwLWDR.qkAZ./KK.9jdgiHwSFXyiDHDKO..QZwXOiqS', 2, 'default.jpg', '081234567892', 1697984675, 1);
 
 -- --------------------------------------------------------
 
@@ -69,9 +68,8 @@ CREATE TABLE `user_access_menu` (
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(3, 2, 2),
-(4, 2, 3),
-(5, 1, 4);
+(4, 2, 2),
+(5, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -91,8 +89,7 @@ CREATE TABLE `user_menu` (
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Admin'),
 (2, 'Kontrol Pengguna'),
-(3, 'Laporan'),
-(4, 'Manajemen Laporan');
+(3, 'Menu');
 
 -- --------------------------------------------------------
 
@@ -135,8 +132,10 @@ CREATE TABLE `user_sub_menu` (
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `judul_menu`, `url`, `icon`, `is_active`) VALUES
 (1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-solid fa-gauge', 1),
 (2, 2, 'Profil Saya', 'user', 'fas fa-fw fa-solid fa-user', 1),
-(3, 2, 'Ubah Password', 'user/ubah_password', 'fas fa-fw fa-solid fa-key', 1),
-(4, 2, 'Logout', 'auth/logout', 'fas fa-fw fa-solid fa-door-open', 1);
+(3, 2, 'Ubah Profil', 'user/edit_profile', 'fas fa-fw fa-solid fa-user-pen', 1),
+(4, 2, 'Ganti Password', 'user/ubah_password', 'fas fa-fw fa-solid fa-key', 1),
+(7, 1, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
+(8, 2, 'Keluar', 'auth/logout', 'fas fa-fw fa-solid fa-door-open', 1);
 
 --
 -- Indexes for dumped tables
@@ -180,19 +179,19 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
@@ -204,7 +203,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
