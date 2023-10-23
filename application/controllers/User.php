@@ -38,7 +38,7 @@ class User extends CI_Controller
             $this->db->update('user');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah tersimpan!</div>');
-            redirect('');
+            redirect('user/index');
         }
     }
 }
