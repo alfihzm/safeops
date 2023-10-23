@@ -9,6 +9,7 @@
         <div class="sidebar-brand-text">SafeOps</div>
     </a>
 
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
