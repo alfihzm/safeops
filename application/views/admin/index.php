@@ -6,11 +6,11 @@
 
     <!-- Announcements -->
     <div class="card mb-4">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #2B1C2F; color: white;">
             Pengumuman Hari Ini
         </div>
         <div class="card-body">
-            Adry x Alfie
+            Adry love Alfie
         </div>
     </div>
 
@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color: #2B1C2F; color: white;">
                     Link Cepat
                 </div>
                 <div class="card-body">
@@ -34,8 +34,41 @@
         <!-- Activity Log -->
         <div class="col-lg-6">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color: #2B1C2F; color: white;">
                     Catatan Aktivitas
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Pengguna baru ditambahkan.</li>
+                        <li>Laporan terbaru telah diterima.</li>
+                        <li>Update sistem tersedia.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header" style="background-color: #2B1C2F; color: white;">
+                    Terserah
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li><a href="#">Laporan Harian</a></li>
+                        <li><a href="#">Statistik</a></li>
+                        <li><a href="#">Pengaturan</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Log -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header" style="background-color: #2B1C2F; color: white;">
+                    Terserah
                 </div>
                 <div class="card-body">
                     <ul>
