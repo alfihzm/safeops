@@ -15,7 +15,7 @@
             <div class="form-group row">
                 <label for="name" class="col-sm-3 col-form-label">Nama lengkap</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="name" name="name" value="<?= $user['nama']; ?>">
+                    <input type="text" class="form-control" id="nama" name="nama" value="<?= $user['nama']; ?>">
                 </div>
             </div>
             <div class="form-group row">
@@ -37,6 +37,7 @@
                 <button type="submit" class="btn btn-primary">Edit</button>
                </div> 
             </div>
+            <?= form_close(); ?>
         </div>
     </div>
     <!-- /.container-fluid -->

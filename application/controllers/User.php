@@ -22,7 +22,6 @@ class User extends CI_Controller
     {
         $data['judul'] = 'Ubah Profil';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -31,10 +30,10 @@ class User extends CI_Controller
             $this->load->view('user/edit', $data);
             $this->load->view('templates/footer');
         } else {
-            $name = $this->input->post('nama');
+            $nama = $this->input->post('nama');
             $email = $this->input->post('email');
             
-            $this->db->set('name', $name);
+            $this->db->set('nama', $nama);
             $this->db->where('email', $email);
             $this->db->update('user');
 
