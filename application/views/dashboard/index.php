@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Selamat Datang di SafeOps Dashboard</h1>
+    <h1 class="h3 mb-4 text-gray-800"> <span id="pesanSelamat"></span> <?= $user['nama']; ?></h1>
 
     <!-- Announcements -->
     <div class="card mb-4">
@@ -10,7 +10,7 @@
             Pengumuman Hari Ini
         </div>
         <div class="card-body">
-            Adry love Alfie
+            SafeOps | Indonesia
         </div>
     </div>
 
@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-top: 25px;">
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header" style="background-color: #2B1C2F; color: white;">
