@@ -20,7 +20,6 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/') ?>css/sb-admin-2.min.css" rel="stylesheet">
 
-</head>1
+</head>
 
-<body class="bg-gradient-primary"
-    style="background: url('<?= base_url('assets/img/background/security-guard-bg1.jpg') ?>'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; ">
+<body class="bg-gradient-primary" style="background: #1B222C">
