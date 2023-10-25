@@ -44,7 +44,7 @@
 </div>
 <!-- End of Main Content -->
 
-<!-- Modal -->
+<!-- Modal Tambah Event -->
 <div class="modal fade" id="newEventModal" tabindex="-1" aria-labelledby="newEventModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
