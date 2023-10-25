@@ -18,12 +18,42 @@ class Event extends CI_Controller
             $this->load->view('event/index', $data);
             $this->load->view('templates/footer');
         } else {
+            // Simpan data ke database
             $this->db->insert('event', [
                 'nama_event' => $this->input->post('nama_event'),
                 'deskripsi' => $this->input->post('deskripsi')
             ]);
+
+            // Simpan data event dalam sesi
+            $event_data = [
+                'nama_event' => $this->input->post('nama_event'),
+                'deskripsi' => $this->input->post('deskripsi')
+            ];
+
+            $this->session->set_userdata('event_data', $event_data);
+
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Event Telah ditambahkan!</div>');
             redirect('event');
         }
+    }
+
+    public function delete($event_id)
+    {
+        // Periksa apakah $event_id ada dalam database
+        $event = $this->db->get_where('event', ['id' => $event_id])->row_array();
+
+        if ($event) {
+            // Event ditemukan, lakukan operasi penghapusan di sini
+            $this->db->delete('event', ['id' => $event_id]);
+
+            // Set pesan sukses
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Event telah dihapus!</div>');
+        } else {
+            // Event tidak ditemukan, set pesan kesalahan
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Event tidak ditemukan!</div>');
+        }
+
+        // Redirect kembali ke halaman event
+        redirect('event');
     }
 }

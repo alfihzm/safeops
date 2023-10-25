@@ -14,6 +14,35 @@
         </div>
     </div>
 
+    <!-- Event Hari Ini -->
+    <div class="card mb-4">
+        <div class="card-header" style="background-color: #2B1C2F; color: white;">
+            Event Hari Ini
+        </div>
+        <div class="card-body">
+            <?php if ($event_data) : ?>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Event</th>
+                            <th scope="col">Deskripsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><?= $event_data['nama_event']; ?></td>
+                            <td><?= $event_data['deskripsi']; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <?php else : ?>
+                <p>Tidak ada event hari ini.</p>
+            <?php endif; ?>
+        </div>
+    </div>
+
     <!-- Quick Links -->
     <div class="row">
         <div class="col-lg-6">
