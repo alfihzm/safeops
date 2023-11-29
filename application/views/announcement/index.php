@@ -12,15 +12,16 @@
 
             <?= $this->session->flashdata('message') ?>
 
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newAnnouncementModal"> Tambah Pengumuman</a>
+            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newAnnouncementModal"> Tambah
+                Pengumuman</a>
 
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Judul</th>
-                        <th scope="col">Isi pengumuman</th>
                         <th scope="col">Tanggal dibuat</th>
+                        <th scope="col">Isi pengumuman</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -30,8 +31,8 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $m['judul']; ?></td>
+                            <td><?= $m['tanggal']; ?></td>
                             <td><?= $m['deskripsi']; ?></td>
-                            <td><?= $m['date_created'];?></td>
                             <td>
                                 <a href="" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
                                 <a href="<?= base_url('announcement/delete/' . $m['id']); ?>" class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
@@ -51,7 +52,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="newAnnouncementModalLabel">Tambah Event</h1>
+                <h3 class="modal-title fs-5" id="newAnnouncementModalLabel">Tambah Event</h3>
                 <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
                     &times;
                 </button>
@@ -61,6 +62,10 @@
                     <div class="form-group">
                         <label for="formGroupExampleInput">Judul</label>
                         <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukan Judul Ringkas">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Tanggal</label>
+                        <input type="date" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukan Isi Pengumuman">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Deskripsi</label>

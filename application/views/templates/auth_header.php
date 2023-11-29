@@ -20,4 +20,4 @@
 
 </head>
 
-<body style="background-image: url('<?= base_url('assets/img/background/securityGuard-bg3.jpg'); ?>'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+<body style="background-image: url('<?= base_url('assets/img/background/auth_background.png'); ?>'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">

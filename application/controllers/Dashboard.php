@@ -7,10 +7,6 @@ class Dashboard extends CI_Controller
         parent::__construct();
     }
 
-    // private function getGreeting()
-    // {
-    // }
-
     public function index()
     {
         $data['judul'] = "SafeOps";

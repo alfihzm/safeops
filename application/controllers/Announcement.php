@@ -2,6 +2,11 @@
 
 class Announcement extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        is_logged_in();
+    }
     public function index()
     {
         $data['judul'] = "Announcement";
@@ -10,7 +15,7 @@ class Announcement extends CI_Controller
 
         $this->form_validation->set_rules('judul', 'announcement', 'required');
         $this->form_validation->set_rules('deskripsi', 'announcement', 'required');
-        
+
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -30,6 +35,7 @@ class Announcement extends CI_Controller
             $announ_data = [
                 'judul' => $this->input->post('judul'),
                 'deskripsi' => $this->input->post('deskripsi'),
+                'tanggal' => time(),
                 'date_created' => time()
             ];
 
@@ -40,23 +46,23 @@ class Announcement extends CI_Controller
         }
     }
 
-    // public function delete($event_id)
-    // {
-    //     // Periksa apakah $event_id ada dalam database
-    //     $event = $this->db->get_where('event', ['id' => $event_id])->row_array();
+    public function delete($ann_id)
+    {
+        // Periksa apakah $event_id ada dalam database
+        $event = $this->db->get_where('announcement', ['id' => $ann_id])->row_array();
 
-    //     if ($event) {
-    //         // Event ditemukan, lakukan operasi penghapusan di sini
-    //         $this->db->delete('event', ['id' => $event_id]);
+        if ($event) {
+            // Event ditemukan, lakukan operasi penghapusan di sini
+            $this->db->delete('announcement', ['id' => $ann_id]);
 
-    //         // Set pesan sukses
-    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Event telah dihapus!</div>');
-    //     } else {
-    //         // Event tidak ditemukan, set pesan kesalahan
-    //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Event tidak ditemukan!</div>');
-    //     }
+            // Set pesan sukses
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman telah dihapus!</div>');
+        } else {
+            // Event tidak ditemukan, set pesan kesalahan
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Event tidak ditemukan!</div>');
+        }
 
-    //     // Redirect kembali ke halaman event
-    //     redirect('event');
-    // }
+        // Redirect kembali ke halaman event
+        redirect('announcement');
+    }
 }

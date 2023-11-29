@@ -65,11 +65,11 @@ window.onload = function() {
     // Update pesan selamat sesuai dengan waktu
     let pesanSelamat = '';
 
-    if (jam >= 5 && jam < 12) {
+    if (jam >= 5 && jam < 10.59) {
         pesanSelamat = 'Selamat Pagi,';
-    } else if (jam >= 12 && jam < 17) {
+    } else if (jam >= 11 && jam < 14.59) {
         pesanSelamat = 'Selamat Siang,';
-    } else if (jam >= 17 && jam < 20) {
+    } else if (jam >= 14.59 && jam < 18) {
         pesanSelamat = 'Selamat Sore,';
     } else {
         pesanSelamat = 'Selamat Malam,';
