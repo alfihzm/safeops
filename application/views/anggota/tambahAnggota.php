@@ -5,6 +5,8 @@
     <h1 class="h3 mb-4 text-gray-800"> <?= $judul; ?></h1>
     <div class="row">
         <div class="col-lg-8">
+            <?= $this->session->flashdata('message') ?>
+
             <form action="<?= base_url('anggota/tambahAnggota') ?>" method="POST">
                 <div class="form-group row">
                     <label for="nopeg" class="col-sm-3 col-form-label">Nopeg</label>
@@ -21,7 +23,7 @@
                 <div class="form-group row">
                     <label for="email" class="col-sm-3 col-form-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan Email">
                     </div>
                 </div>
                 <div class="form-group row">

@@ -33,7 +33,6 @@ class Anggota extends CI_Controller
             'required' => 'Masukkan Email dengan Benar!',
             'valid_email' => 'Masukkan Email yang Sesuai!'
         ]);
-        // Set aturan validasi lainnya
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Tambah Anggota';
