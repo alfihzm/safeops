@@ -25,8 +25,9 @@
                                 <img src="<?= base_url('assets/img/report/wajib/') . $m['image']; ?>" alt="Gambar" class="img-thumbnail" width="100" height="100">
                             </td>
                             <td>
-                                Belom work!
                                 <a href="" class="btn btn-warning">Edit</a>
+                                <a href="" class="btn btn-info">Periksa</a>
+
                             </td>
                         </tr>
                         <?php $i++; ?>
