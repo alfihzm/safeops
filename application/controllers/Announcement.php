@@ -31,7 +31,7 @@ class Announcement extends CI_Controller
                 'date_created' => time()
             ]);
 
-            // Simpan data event dalam sesi
+            // Simpand data event dalam sesi
             $announ_data = [
                 'judul' => $this->input->post('judul'),
                 'deskripsi' => $this->input->post('deskripsi'),

@@ -13,7 +13,7 @@
 
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newEventModal"> Tambah Event</a>
 
-            <table class="table table-hover">
+            <table class="table table-hover table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -25,16 +25,16 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($menu as $m) : ?>
-                    <tr>
-                        <th scope="row"><?= $i; ?></th>
-                        <td><?= $m['nama_event']; ?></td>
-                        <td><?= $m['deskripsi']; ?></td>
-                        <td>
-                            <a href="" class="btn btn-success">Edit</a>
-                            <a href="<?= base_url('event/delete/' . $m['id']); ?>" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                    <?php $i++; ?>
+                        <tr>
+                            <th scope="row"><?= $i; ?></th>
+                            <td><?= $m['nama_event']; ?></td>
+                            <td><?= $m['deskripsi']; ?></td>
+                            <td>
+                                <a href="" class="btn btn-success">Edit</a>
+                                <a href="<?= base_url('event/delete/' . $m['id']); ?>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -58,13 +58,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nama Event</label>
-                        <input type="text" class="form-control" id="nama_event" name="nama_event"
-                            placeholder="Masukan Nama Event">
+                        <input type="text" class="form-control" id="nama_event" name="nama_event" placeholder="Masukan Nama Event">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Deskripsi</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi"
-                            placeholder="Masukan Deskripsi">
+                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukan Deskripsi">
                     </div>
                 </div>
                 <div class="modal-footer">
