@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="<?= base_url('assets/css/auth/login.css') ?>">
+</head>
+
 <div class="container">
 
     <!-- Outer Row -->
@@ -5,29 +9,32 @@
 
         <div class="col-lg-7">
 
-            <div class="container" style="margin-top: 11vh;">
-                <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="container" style="margin-top: 7vh; width: 80%; opacity: 94%;">
+                <div class="card o-hidden shadow-lg my-4 border-0">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg">
-                                <div class="p-5">
+                                <div class="p-5" style="background: #1D243C;">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4"> SafeOps Login </h1>
+                                        <h1 style="color: #FFF;" class="h4 mb-4"> SafeOps Login </h1>
+                                        <i class="fas fa-fw fa-solid fa-user-secret fa-2x"></i>
                                     </div>
 
-                                    <?= $this->session->flashdata('message'); ?>
+                                    <div class="flash_data">
+                                        <?= $this->session->flashdata('message'); ?>
+                                    </div>
 
-                                    <form class="user" method="post" action="<?= base_url('auth'); ?>">
+                                    <form class="user" method="post" action="<?= base_url('auth'); ?>" autocomplete="off">
                                         <div class="form-group">
-                                            <p> Username / Email </p>
+                                            <p> Username </p>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" style="width: 50px; display: flex; justify-content: center; align-items: center;">
-                                                        <i class="fas fa-solid fa-user-secret" style="font-size: 18px;"></i>
+                                                        <i class="fas fa-solid fa-id-card" style="font-size: 18px;"></i>
                                                     </span>
                                                 </div>
-                                                <input style="border-radius: 5px;" type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan Username" value="<?= set_value('username') ?>">
+                                                <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan Username" value="<?= set_value('username') ?>">
                                             </div>
                                             <?= form_error('username', '<small class="text-danger">', '</small'); ?>
                                         </div>
@@ -40,22 +47,18 @@
                                                         <i class="fas fa-solid fa-lock" style="font-size: 18px;"></i>
                                                     </span>
                                                 </div>
-                                                <input style="border-radius: 5px;" type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password">
+                                                <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password">
                                             </div>
                                             <?= form_error('password', '<small class="text-danger">', '</small'); ?>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-success btn-user mt-5 btn-block">
                                             Masuk
                                         </button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html"> Lupa Password? </a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="<?= base_url('auth/registration') ?>"> Ingin Bergabung?
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -66,3 +69,11 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    window.setTimeout(function() {
+        $(".flash_data").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 2000);
+</script>

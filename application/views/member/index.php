@@ -28,26 +28,29 @@
 
                 <tbody>
                     <?php foreach ($anggota as $a) : ?>
-                        <tr>
-                            <td><?= $a['nopeg']; ?></td>
-                            <td><?= $a['nama']; ?></td>
-                            <td><?= $a['username']; ?></td>
-                            <td><?= $a['email']; ?></td>
-                            <td>
-                                <?php
+                    <tr>
+                        <td><?= $a['nopeg']; ?></td>
+                        <td><?= $a['nama']; ?></td>
+                        <td><?= $a['username']; ?></td>
+                        <td><?= $a['email']; ?></td>
+                        <td>
+                            <?php
                                 if ($a['role_id'] == 2) {
                                     echo 'Satpam';
                                 } else {
                                     echo $a['role_id']; // Jika bukan Satpam, tampilkan role_id
                                 }
                                 ?>
-                            </td>
-                            <td>
-                                <a href="<?= base_url('member/viewAnggota/' . $a['id']); ?>" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i></a>
-                                <a href="<?= base_url('member/editAnggota/' . $a['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pencil"></i></a>
-                                <a href="<?= base_url('anggota/hapusAnggota/' . $a['id']); ?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
+                        </td>
+                        <td>
+                            <a href="<?= base_url('member/viewAnggota/' . $a['id']); ?>" class="btn btn-primary"><i
+                                    class="fa-solid fa-circle-info"></i></a>
+                            <a href="<?= base_url('member/editAnggota/' . $a['id']); ?>" class="btn btn-success"><i
+                                    class="fa-solid fa-pencil"></i></a>
+                            <a href="<?= base_url('anggota/hapusAnggota/' . $a['id']); ?>" class="btn btn-danger"><i
+                                    class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>

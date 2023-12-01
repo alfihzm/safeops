@@ -1,5 +1,5 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" style="height: 85vh">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $judul; ?></h1>
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group row justify-content-end">
                 <div class="col-sm-9">
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-primary">Apply</button>
                 </div>
             </div>
             <?= form_close(); ?>
