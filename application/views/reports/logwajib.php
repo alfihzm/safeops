@@ -25,14 +25,14 @@
                                 <img src="<?= base_url('assets/img/report/wajib/') . $m['image']; ?>" alt="Gambar" class="img-thumbnail" width="100" height="100">
                             </td>
                             <td>
-                                <a href="" class="btn btn-warning">Edit</a>
-                                <a href="" class="btn btn-info">Periksa</a>
-
+                                <a href="<?= base_url('reports/editwajib?id=' . $m['id']); ?>" class="btn btn-warning">Edit</a>
+                                <a href="<?= base_url('reports/periksawajib?id=' . $m['id']); ?>" class="btn btn-info">Periksa</a>
                             </td>
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
+
             </table>
         </div>
     </div>

@@ -100,4 +100,67 @@ class Reports extends CI_Controller
         $this->load->view('reports/logwajib', $data);
         $this->load->view('templates/footer');
     }
+
+    public function periksawajib()
+    {
+        // Ambil nilai parameter id dari URL
+        $laporan_id = $this->input->get('id');
+
+        // Lakukan query hanya untuk laporan dengan id tertentu atau ambil semua jika id tidak ada
+        $data['judul'] = "Daftar Laporan Harian";
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        if ($laporan_id) {
+            $data['laporan'] = $this->db->get_where('laporanwajib', ['id' => $laporan_id])->row_array();
+        } else {
+            $data['laporan'] = $this->db->get('laporanwajib')->result_array();
+        }
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('reports/periksawajib', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function editwajib()
+    {
+        // Ambil nilai parameter id dari URL
+        $laporan_id = $this->input->get('id');
+
+        // Lakukan query hanya untuk laporan dengan id tertentu atau ambil semua jika id tidak ada
+        $data['judul'] = "Daftar Laporan Harian";
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        if ($laporan_id) {
+            $data['laporan'] = $this->db->get_where('laporanwajib', ['id' => $laporan_id])->row_array();
+        } else {
+            $data['laporan'] = $this->db->get('laporanwajib')->result_array();
+        }
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('reports/editwajib', $data);
+            $this->load->view('templates/footer');
+        } else {
+            // Pastikan ID laporn tidak null sebelum memproses pembaruan
+            if ($laporan_id) {
+                $this->db->where('id', $laporan_id);
+                $this->db->update('laporanwajib', [
+                    'judul' => $this->input->post('judul'),
+                    'deskripsi' => htmlspecialchars($this->input->post('deskripsi')),
+                    'tanggal' => $this->input->post('tanggal'),
+                    'komentar' => $this->input->post('komentar'),
+                ]);
+
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Laporan harian berhasil dikirim!</div>');
+                redirect('reports/periksawajib');
+            } else {
+                // Handle jika ID tidak valid
+                // ...
+            }
+        }
+    }
 }
