@@ -43,8 +43,8 @@
                                 ?>
                             </td>
                             <td>
-                                <a href="" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i></a>
-                                <a href="" class="btn btn-success"><i class="fa-solid fa-pencil"></i></a>
+                                <a href="<?= base_url('member/viewAnggota/' . $a['id']); ?>" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i></a>
+                                <a href="<?= base_url('member/editAnggota/' . $a['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pencil"></i></a>
                                 <a href="<?= base_url('anggota/hapusAnggota/' . $a['id']); ?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>

@@ -30,6 +30,24 @@ class AnggotaModel extends CI_Model
         }
     }
 
+    public function getAnggotaById($id)
+    {
+        $query = $this->db->get_where('user', ['id' => $id]);
+        return $query->row_array();
+    }
+
+    public function editAnggota($id, $data)
+    {
+        $this->db->where('id', $id);
+        if ($this->db->update('user', $data)) {
+            return true;
+        } else {
+            $error = $this->db->error();
+            echo 'Database Error (' . $error['code'] . '): ' . $error['message'];
+            return false;
+        }
+    }
+
     public function hapusAnggota($id)
     {
     }

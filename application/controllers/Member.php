@@ -65,6 +65,53 @@ class Member extends CI_Controller
         }
     }
 
+    public function editAnggota($id)
+    {
+        $data['anggota'] = $this->AnggotaModel->getAnggotaById($id);
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required', [
+            'required' => 'Masukkan Nama dengan Benar!'
+        ]);
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'required' => 'Masukkan Email dengan Benar!',
+            'valid_email' => 'Masukkan Email yang Sesuai!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data['judul'] = 'Edit Anggota';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('member/editAnggota', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $updated_data = [
+                'nama'  => htmlspecialchars($this->input->post('nama')),
+                'email' => htmlspecialchars($this->input->post('email'))
+            ];
+
+            $this->AnggotaModel->editAnggota($id, $updated_data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anggota Telah diupdate!</div>');
+            redirect('member');
+        }
+    }
+
+    public function viewAnggota($id)
+    {
+        $data['judul'] = 'Detail Anggota';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['anggota'] = $this->AnggotaModel->getAnggotaById($id);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar');
+        $this->load->view('member/viewAnggota', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function hapusAnggota($id)
     {
         $anggota = $this->db->get_where('user', ['id' => $id])->row_array();

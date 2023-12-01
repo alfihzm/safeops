@@ -105,7 +105,7 @@
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li><a href="#">Laporan Harian</a></li>
+                        <li><a href="<?= base_url('reports/index') ?>">Laporan Rutin</a></li>
                         <li><a href="#">Statistik</a></li>
                         <li><a href="#">Pengaturan</a></li>
                     </ul>
