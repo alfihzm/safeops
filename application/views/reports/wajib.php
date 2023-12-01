@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col">
             <?= $this->session->flashdata('message') ?>
-            <form action="<?= base_url('report/wajib') ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?= base_url('reports/wajib') ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group row">
                     <label for="nopeg" class="col-sm-3 col-form-label">Nomor Pegawai</label>
                     <div class="col-sm-12">

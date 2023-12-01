@@ -1,6 +1,6 @@
 <?php
 
-class Report extends CI_Controller
+class Reports extends CI_Controller
 {
     public function __construct()
     {
@@ -11,34 +11,11 @@ class Report extends CI_Controller
     {
         $data['judul'] = "Laporan Harian";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['menu'] = $this->db->get('event')->result_array();
-
-        $this->form_validation->set_rules('nama_event', 'Event', 'required');
-        $this->form_validation->set_rules('deskripsi', 'Event', 'required');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('report/index', $data);
-            $this->load->view('templates/footer');
-        } else {
-            // Simpan data ke database
-            $this->db->insert('event', [
-                'nama_event' => $this->input->post('nama_event'),
-                'deskripsi' => $this->input->post('deskripsi')
-            ]);
-
-            // Simpan data event dalam sesi
-            $event_data = [
-                'nama_event' => $this->input->post('nama_event'),
-                'deskripsi' => $this->input->post('deskripsi')
-            ];
-
-            $this->session->set_userdata('event_data', $event_data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Event Telah ditambahkan!</div>');
-            redirect('event');
-        }
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('reports/index', $data);
+        $this->load->view('templates/footer');
     }
 
     public function wajib()
@@ -67,7 +44,7 @@ class Report extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('report/wajib', $data);
+            $this->load->view('reports/wajib', $data);
             $this->load->view('templates/footer');
         } else {
             // Konfigurasi upload gambar
@@ -104,13 +81,24 @@ class Report extends CI_Controller
                     'date_created' => time()
                 ]);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Laporan harian berhasil dikirim!</div>');
-                redirect('report');
+                redirect('reports');
             } else {
                 // Jika upload gagal, tangani kesalahan upload
                 $error_message = $this->upload->display_errors();
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $error_message . '</div>');
-                redirect('report/wajib'); // Redirect kembali ke halaman formulir dengan pesan kesalahan
+                redirect('reports/wajib'); // Redirect kembali ke halaman formulir dengan pesan kesalahan
             }
         }
+    }
+    public function logwajib()
+    {
+        $data['judul'] = "Daftar Laporan Harian";
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->db->get('laporanwajib')->result_array();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('reports/logwajib', $data);
+        $this->load->view('templates/footer');
     }
 }
