@@ -48,7 +48,7 @@ class Reports extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             // Konfigurasi upload gambar
-            $config['upload_path']   = 'assets/img/report/wajib/';
+            $config['upload_path']   = 'assets/img/report/wajib';
             $config['allowed_types'] = 'jpg|png';
             $config['max_size']      = 5024; // in kilobytes
 
@@ -60,7 +60,6 @@ class Reports extends CI_Controller
                 // Jika upload berhasil, simpan data ke database
                 $upload_data = $this->upload->data();
                 $original_name = $upload_data['file_name'];
-
                 // Format nomor urutan ke dalam format '001'
                 $file_count++;
                 $sequence_number = sprintf("%03d", $file_count);

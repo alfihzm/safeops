@@ -6,26 +6,27 @@
         <div class="col">
             <table class="table table-hover table-striped">
                 <thead>
-                    <tr>
+                    <tr style="background: #2B1C2F; color: #FFF;">
                         <th scope="col">#</th>
                         <th scope="col">Petugas</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Gambar</th>
-                        <th scope="col">Edit</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($menu as $m) : ?>
                         <tr>
-                            <th scope="row"><?= $i; ?></th>
+                            <th scope="row" style="background: #2B1C2F; color: #FFF;"><?= $i; ?></th>
                             <td><?= $m['nama']; ?></td>
                             <td><?= $m['tanggal']; ?></td>
-                            <td><?= $m['image']; ?></td>
+                            <td>
+                                <img src="<?= base_url('assets/img/report/wajib/') . $m['image']; ?>" alt="Gambar" class="img-thumbnail" width="100" height="100">
+                            </td>
                             <td>
                                 Belom work!
-                                <a href="" class="btn btn-success">Edit</a>
-                                <a href="<?= base_url('event/delete/' . $m['id']); ?>" class="btn btn-danger">Delete</a>
+                                <a href="" class="btn btn-warning">Edit</a>
                             </td>
                         </tr>
                         <?php $i++; ?>
