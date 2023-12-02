@@ -5,7 +5,6 @@ class Reports extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        is_logged_in();
     }
     public function index()
     {
@@ -91,6 +90,8 @@ class Reports extends CI_Controller
     }
     public function logwajib()
     {
+        is_logged_in();
+
         $data['judul'] = "Daftar Laporan Harian";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['menu'] = $this->db->get('laporanwajib')->result_array();

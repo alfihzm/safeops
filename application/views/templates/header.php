@@ -35,18 +35,15 @@
       } else {
         passwordField.type = "password";
       }
-    } 
+    }
   </script>
-  <script
-    type="text/javascript"
-    src='https://cdn.tiny.cloud/1/mlvvrqzvo7nqpxb7wsk8zjvq1stubfl8y3ti5dm6sgj29zvg/tinymce/6/tinymce.min.js'
-    referrerpolicy="origin">
+  <script type="text/javascript" src='https://cdn.tiny.cloud/1/mlvvrqzvo7nqpxb7wsk8zjvq1stubfl8y3ti5dm6sgj29zvg/tinymce/6/tinymce.min.js' referrerpolicy="origin">
   </script>
-    <script>
-        tinymce.init({
-            selector: '#myTextarea'
-        });
-    </script>
+  <script>
+    tinymce.init({
+      selector: '#myTextarea'
+    });
+  </script>
 </head>
 
 <body id="page-top">

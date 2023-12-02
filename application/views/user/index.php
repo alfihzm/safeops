@@ -8,8 +8,8 @@
     </div>
 
     <div class="row">
-        <div class="col-md-5">
-            <div class="card mb-3 border border-info" style="display: flex; justify-content: center; align-items: center; background: #FFF; width: 100%; height: 100%;">
+        <div class="col-md-5 mb-3">
+            <div class="card mb-3 border border-info" style="display: flex; justify-content: center; align-items: center; background: #FFF; width: 100%; height: 100%; box-shadow: -5px 5px 5px 0px rgba(143,143,143,0.73);">
                 <img class="mt-5 border border-info" style="border-radius: 5%; width: 50%;" src="<?= base_url('assets/img/profile/') . $user['photo_profile'] ?>" class="img-fluid" alt="<?= $user['nama'] ?>">
                 <div class="card-body" style="display: flex; align-items: center; flex-direction: column;">
                     <h5 style="text-align: center;" class="card-title mt-4">
@@ -31,8 +31,8 @@
             </div>
         </div>
 
-        <div class="col-md-7">
-            <div class="card border border-info" style="display: flex; background: #FFF; width: 100%; height: 100%;">
+        <div class="col-md-7 mb-3">
+            <div class="card border border-info" style="display: flex; background: #FFF; width: 100%; height: 100%; box-shadow: -5px 5px 5px 0px rgba(143,143,143,0.73);">
                 <div class="card-body">
                     <h5 style="text-align: center;" class="card-title mt-1">Informasi Anggota</h5>
                     <hr>
@@ -63,13 +63,9 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
 
-</div>
-<!-- End of Main Content -->
 <script type="text/javascript">
     window.setTimeout(function() {
         $(".col-lg-12").fadeTo(500, 0).slideUp(500, function() {

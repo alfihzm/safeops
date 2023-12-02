@@ -3,20 +3,18 @@ class AnggotaModel extends CI_Model
 {
     public function getAnggota()
     {
-        // Mengambil data dari tabel anggota
         $query = $this->db->get('user');
 
-        // Mengembalikan hasil dalam bentuk array
-        return $query->result_array();
+        return $query->num_rows();
     }
 
-    public function getAnggotaByRole($role_id)
+    public function getAnggotaByRole($role_id, $limit, $offset)
     {
-        $query = $this->db->where('role_id', $role_id);
-        $query = $this->db->get('user');
+        $query = $this->db->get_where('user', ['role_id' => $role_id], $limit, $offset);
 
         return $query->result_array();
     }
+
 
     public function tambahAnggota($data)
     {

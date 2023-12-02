@@ -6,7 +6,7 @@
     <p style="margin-top: -25px;">Pengumuman akan ditampilkan kepada para petugas.</p>
 
     <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-12">
             <?= form_error('judul', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('deskripsi', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 

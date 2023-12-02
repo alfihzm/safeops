@@ -12,18 +12,35 @@ class Member extends CI_Controller
     {
         $data['judul'] = 'Security Officer List';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['anggota'] = $this->AnggotaModel->getAnggotaByRole(2);
+
+        // Konfigurasi Pagination
+        $config['base_url'] = base_url() . 'member/index';
+        $config['total_rows'] = $this->AnggotaModel->getAnggota(); // Jumlah Data Pada Tabel
+        $config['per_page'] = 5;
+
+        $this->pagination->initialize($config);
+
+        $offset = $this->uri->segment(3) ? $this->uri->segment(3) : 0;
+        $data['anggota'] = $this->AnggotaModel->getAnggotaByRole(2, $config['per_page'], $offset);
+
+        // Tambahkan data pagination ke dalam array $data
+        $data['total_rows'] = $config['total_rows'];
+        $data['per_page'] = $config['per_page'];
+        $data['offset'] = $offset;
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/topbar', $data);
         $this->load->view('member/index', $data);
     }
 
+
+
     public function tambahAnggota()
     {
-        $this->form_validation->set_rules('nopeg', 'Nopeg', 'required|trim', [
-            'required' => 'Masukkan No. Pegawai dengan Benar!'
+        $this->form_validation->set_rules('nopeg', 'Nopeg', 'required|trim|max_length[4]', [
+            'required' => 'Masukkan No. Pegawai dengan Benar!',
+            'max_length' => 'Maksimal 4 Karakter Tambahan'
         ]);
         $this->form_validation->set_rules('nama', 'Nama', 'required', [
             'required' => 'Masukkan Nama dengan Benar!'
@@ -44,14 +61,14 @@ class Member extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $data = [
-                'nopeg'         => htmlspecialchars($this->input->post('nopeg')),
+                'nopeg'         => 1024 . htmlspecialchars($this->input->post('nopeg')),
                 'nama'          => htmlspecialchars($this->input->post('nama')),
                 'email'         => htmlspecialchars($this->input->post('email')),
                 'username'      => htmlspecialchars($this->input->post('username')),
                 'password'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'role_id'       => 2,
                 'photo_profile' => 'default2.jpg',
-                'no_telp'       => htmlspecialchars($this->input->post('no-telp')),
+                'no_telp'       => htmlspecialchars($this->input->post('no_telp')),
                 'date_created'  => time(),
                 'is_active'     => 1,
             ];
@@ -60,7 +77,7 @@ class Member extends CI_Controller
             $this->AnggotaModel->tambahAnggota($data);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anggota Telah ditambahkan!</div>');
-            redirect('anggota');
+            redirect('member');
         }
     }
 
@@ -93,7 +110,7 @@ class Member extends CI_Controller
 
             $this->AnggotaModel->editAnggota($id, $updated_data);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anggota Telah diupdate!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profil Anggota Telah Diubah! </div>');
             redirect('member');
         }
     }
@@ -119,7 +136,7 @@ class Member extends CI_Controller
             $this->db->delete('user', ['id' => $id]);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anggota telah dihapus!</div>');
-            redirect('anggota');
+            redirect('member');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anggota gagal dihapus!</div>');
         }
