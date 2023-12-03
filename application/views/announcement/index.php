@@ -10,9 +10,11 @@
             <?= form_error('judul', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('deskripsi', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
-            <?= $this->session->flashdata('message') ?>
+            <div class="flash_message">
+                <?= $this->session->flashdata('message') ?>
+            </div>
 
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newAnnouncementModal"> Tambah
+            <a href="" data-toggle="modal" data-target="#newAnnouncementModal" class="btn btn-primary mb-3"> Tambah
                 Pengumuman</a>
 
             <table class="table table-hover table-striped">
@@ -28,17 +30,19 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($menu as $m) : ?>
-                        <tr>
-                            <th scope="row"><?= $i; ?></th>
-                            <td><?= $m['judul']; ?></td>
-                            <td><?= $m['tanggal']; ?></td>
-                            <td><?= $m['deskripsi']; ?></td>
-                            <td>
-                                <a href="" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
-                                <a href="<?= base_url('announcement/delete/' . $m['id']); ?>" class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
-                            </td>
-                        </tr>
-                        <?php $i++; ?>
+                    <tr>
+                        <th scope="row"><?= $i; ?></th>
+                        <td><?= $m['judul']; ?></td>
+                        <td><?= $m['tanggal']; ?></td>
+                        <td><?= $m['deskripsi']; ?></td>
+                        <td>
+                            <a href="" class="btn btn-success"><i class="fa-solid fa-pen-to-square"
+                                    style="color: #ffffff;"></i></a>
+                            <a href="<?= base_url('announcement/delete/' . $m['id']); ?>" class="btn btn-danger"><i
+                                    class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
+                        </td>
+                    </tr>
+                    <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -48,28 +52,32 @@
 <!-- End of Main Content -->
 
 <!-- Modal Tambah Announcement -->
-<div class="modal fade" id="newAnnouncementModal" tabindex="-1" aria-labelledby="newAnnouncementModalLabel" aria-hidden="true">
+<div class="modal fade" id="newAnnouncementModal" tabindex="-1" aria-labelledby="newAnnouncementModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title fs-5" id="newAnnouncementModalLabel">Tambah Event</h3>
-                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
-                    &times;
-                </button>
+                <h4 class="modal-title fs-5" id="newAnnouncementModalLabel">Tambah Event</h2>
+                    <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
+                        &times;
+                    </button>
             </div>
             <form action="<?= base_url('announcement') ?>" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukan Judul Ringkas">
+                        <input type="text" class="form-control" id="judul" name="judul"
+                            placeholder="Masukan Judul Ringkas">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Tanggal</label>
-                        <input type="date" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukan Isi Pengumuman">
+                        <input type="date" class="form-control" id="deskripsi" name="deskripsi"
+                            placeholder="Masukan Isi Pengumuman">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Deskripsi</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukan Isi Pengumuman">
+                        <input type="text" class="form-control" id="deskripsi" name="deskripsi"
+                            placeholder="Masukan Isi Pengumuman">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -80,3 +88,11 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+window.setTimeout(function() {
+    $(".flash_message").fadeTo(500, 0).slideUp(500, function() {
+        $(this).remove();
+    });
+}, 2000);
+</script>
