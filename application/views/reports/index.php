@@ -5,9 +5,12 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $judul; ?></h1>
     <div class="alert alert-secondary" role="alert" style="margin-top: -15px;">
         <li>Mohon segera isi laporan wajib sebelum menyelesaikan sisa shift kerja!</li>
-        <li>Jika terjadi kendala atau kejadian tertentu isi laporan kejadian beserta detail kejadiannya.</li> 
+        <li>Jika terjadi kendala atau kejadian tertentu isi laporan kejadian beserta detail kejadiannya.</li>
     </div>
     <div class="row">
+        <div class="col-lg-12">
+            <?= $this->session->flashdata('message') ?>
+        </div>
         <div class="col-lg-12">
             <?= form_error('nama_event', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('deskripsi', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
@@ -25,7 +28,7 @@
                     </td>
                     <td></td>
                     <td>
-                        <a href="<?= base_url('reports/logwajib')?>" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>
+                        <a href="<?= base_url('reports/logwajib') ?>" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>
                     </td>
                     <td>
                         <a href="" class="btn btn-success"><i class="fa-solid fa-file-arrow-down fa-lg"></i></i></a>

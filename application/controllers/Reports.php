@@ -126,42 +126,68 @@ class Reports extends CI_Controller
 
     public function editwajib()
     {
-        // Ambil nilai parameter id dari URL
-        $laporan_id = $this->input->get('id');
-
-        // Lakukan query hanya untuk laporan dengan id tertentu atau ambil semua jika id tidak ada
-        $data['judul'] = "Daftar Laporan Harian";
+        $data['judul'] = 'Edit Laporan Rutin';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $laporan_id = $this->input->get('id') ?? $this->input->post('id');
 
-        if ($laporan_id) {
-            $data['laporan'] = $this->db->get_where('laporanwajib', ['id' => $laporan_id])->row_array();
-        } else {
-            $data['laporan'] = $this->db->get('laporanwajib')->result_array();
+        // Pastikan laporan_id memiliki nilai yang valid
+        if (!$laporan_id) {
+            // Tampilkan pesan error atau redirect ke halaman lain jika diperlukan
         }
 
+        // Ambil data laporan sesuai dengan ID
+        $data['laporan'] = $this->db->get_where('laporanwajib', ['id' => $laporan_id])->row_array();
+
+        // Pastikan data laporan ditemukan
+        if (!$data['laporan']) {
+            // Tampilkan pesan error atau redirect ke halaman lain jika diperlukan
+        }
+
+        // Lakukan validasi form
+        $this->form_validation->set_rules('judul', 'Judul', 'required');
+
         if ($this->form_validation->run() == false) {
+            // Tampilkan view form edit jika validasi gagal
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('reports/editwajib', $data);
             $this->load->view('templates/footer');
+            // ...
         } else {
-            // Pastikan ID laporn tidak null sebelum memproses pembaruan
-            if ($laporan_id) {
-                $this->db->where('id', $laporan_id);
-                $this->db->update('laporanwajib', [
-                    'judul' => $this->input->post('judul'),
-                    'deskripsi' => htmlspecialchars($this->input->post('deskripsi')),
-                    'tanggal' => $this->input->post('tanggal'),
-                    'komentar' => $this->input->post('komentar'),
-                ]);
+            // Ambil data dari form
+            $judul = $this->input->post('judul');
+            $tanggal = $this->input->post('tanggal');
+            $deskripsi = $this->input->post('deskripsi');
+            $image = $this->input->post('image');
+            $komentar = $this->input->post('komentar');
 
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Laporan harian berhasil dikirim!</div>');
-                redirect('reports/periksawajib');
-            } else {
-                // Handle jika ID tidak valid
-                // ...
-            }
+            // // Sanitize input
+            // $judul = $this->db->escape($judul);
+            // $tanggal = $this->db->escape($tanggal);
+            // $deskripsi = $this->db->escape($deskripsi);
+            // $image = $this->db->escape($image);
+            // $komentar = $this->db->escape($komentar);
+
+            // Lakukan update data hanya jika ada perubahan
+            $update_data = [
+                'judul' => $judul,
+                'tanggal' => $tanggal,
+                'deskripsi' => $deskripsi,
+                'image' => $image,
+                'komentar' => $komentar,
+            ];
+            $this->db->set($update_data);
+            $this->db->where('id', $laporan_id);
+            $this->db->update('laporanwajib');
+
+            // Debugging
+            echo "Judul: $judul, Tanggal: $tanggal, Keterangan: $deskripsi, Gambar: $image, Komentar: $komentar";
+            // Debugging
+            echo $this->db->last_query();
+            // Tampilkan pesan sukses
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah tersimpan!</div>');
+            redirect('reports/logwajib');
         }
     }
 }

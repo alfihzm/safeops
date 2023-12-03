@@ -58,6 +58,14 @@
                         <label for="name" class="col-sm-10 col-form-label">Aktif Sejak</label>
                         <div class="col-sm-12">
                             <input readonly type="text" class="form-control" id="nama" name="nama" value="<?= date('d F Y', $user['date_created']); ?>">
+                            <?php
+                            $dateCreated = $user['date_created'];
+                            $currentTime = time();
+                            $timeDifference = $currentTime - $dateCreated;
+                            $daysDifference = floor($timeDifference / (60 * 60 * 24));
+                            ?>
+                            <hr>
+                            <h1 class="style=col-sm-10">Bekerja sejak <?= $daysDifference ?> hari lalu</h1>
                         </div>
                     </div>
                 </div>

@@ -25,7 +25,6 @@ class User extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
 
         if ($this->form_validation->run() == false) {
-            // Tampilkan form edit
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
