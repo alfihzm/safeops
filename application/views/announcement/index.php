@@ -80,6 +80,9 @@
     </div>
 </div>
 
+<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+
 <script type="text/javascript">
     window.setTimeout(function() {
         $(".flash_message").fadeTo(500, 0).slideUp(500, function() {

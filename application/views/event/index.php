@@ -28,17 +28,16 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($menu as $m) : ?>
-                    <tr>
-                        <th scope="row"><?= $i; ?></th>
-                        <td><?= $m['nama_event']; ?></td>
-                        <td><?= $m['deskripsi']; ?></td>
-                        <td>
-                            <a href="" class="btn btn-success"><i class="fa-solid fa-pen-to-square"
-                                    style="color: #ffffff;"></i></a>
-                            <a href="<?= base_url('event/delete/' . $m['id']); ?>" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                    <?php $i++; ?>
+                        <tr>
+                            <th scope="row"><?= $i; ?></th>
+                            <td><?= $m['nama_event']; ?></td>
+                            <td><?= $m['deskripsi']; ?></td>
+                            <td>
+                                <a href="" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
+                                <a href="<?= base_url('event/delete/' . $m['id']); ?>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -62,13 +61,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nama Event</label>
-                        <input type="text" class="form-control" id="nama_event" name="nama_event"
-                            placeholder="Masukan Nama Event">
+                        <input type="text" class="form-control" id="nama_event" name="nama_event" placeholder="Masukan Nama Event">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Deskripsi</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi"
-                            placeholder="Masukan Deskripsi">
+                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukan Deskripsi">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -80,10 +77,13 @@
     </div>
 </div>
 
+<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+
 <script type="text/javascript">
-window.setTimeout(function() {
-    $(".flash_message").fadeTo(500, 0).slideUp(500, function() {
-        $(this).remove();
-    });
-}, 2000);
+    window.setTimeout(function() {
+        $(".flash_message").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 2000);
 </script>

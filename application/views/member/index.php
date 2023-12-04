@@ -1,81 +1,81 @@
 <style>
-.pagination-container {
-    margin-top: 20px;
-}
+    .pagination-container {
+        margin-top: 20px;
+    }
 
-.pagination {
-    margin: 0;
-}
+    .pagination {
+        margin: 0;
+    }
 
-.pagination li {
-    display: inline-block;
-    margin-right: 5px;
-}
+    .pagination li {
+        display: inline-block;
+        margin-right: 5px;
+    }
 
-.pagination a {
-    color: #16537e;
-    background-color: #fff;
-    border: 1px solid #7E7E7E;
-    padding: 6px 12px;
-}
+    .pagination a {
+        color: #16537e;
+        background-color: #fff;
+        border: 1px solid #7E7E7E;
+        padding: 6px 12px;
+    }
 
-.pagination .active a {
-    color: #fff;
-    background-color: #007bff;
-    border: 1px solid #007bff;
-}
+    .pagination .active a {
+        color: #fff;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+    }
 
-.pagination .disabled a {
-    color: #6c757d;
-    pointer-events: none;
-    cursor: not-allowed;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-}
+    .pagination .disabled a {
+        color: #6c757d;
+        pointer-events: none;
+        cursor: not-allowed;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+    }
 
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-}
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+    }
 
-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    cursor: pointer;
-}
+    button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
 
-#confirmButton {
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-}
+    #confirmButton {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+    }
 
-#cancelButton {
-    background-color: #f44336;
-    color: #fff;
-    border: none;
-}
+    #cancelButton {
+        background-color: #f44336;
+        color: #fff;
+        border: none;
+    }
 
-#confirmButton:hover,
-#cancelButton:hover {
-    opacity: 0.8;
-}
+    #confirmButton:hover,
+    #cancelButton:hover {
+        opacity: 0.8;
+    }
 </style>
 
 <div class="container-fluid" style="height: 95vh;">
@@ -108,37 +108,33 @@ button {
 
                 <tbody>
                     <?php foreach ($anggota as $a) : ?>
-                    <tr>
-                        <td><?= $a['nopeg']; ?></td>
-                        <td><?= $a['nama']; ?></td>
-                        <td><?= $a['username']; ?></td>
-                        <td><?= $a['email']; ?></td>
-                        <td>
-                            <?php
+                        <tr>
+                            <td><?= $a['nopeg']; ?></td>
+                            <td><?= $a['nama']; ?></td>
+                            <td><?= $a['username']; ?></td>
+                            <td><?= $a['email']; ?></td>
+                            <td>
+                                <?php
                                 if ($a['role_id'] == 2) {
                                     echo 'Satpam';
                                 } else {
                                     echo $a['role_id']; // Jika bukan Satpam, tampilkan role_id
                                 }
                                 ?>
-                        </td>
-                        <td>
-                            <a href="<?= base_url('member/viewAnggota/' . $a['id']); ?>" class="btn btn-primary"><i
-                                    class="fa-solid fa-circle-info"></i></a>
-                            <a href="<?= base_url('member/editAnggota/' . $a['id']); ?>" class="btn btn-success"><i
-                                    class="fa-solid fa-pencil"></i></a>
-                            <a href="#" class="btn btn-danger"
-                                onclick="konfirmasiAndDelete('<?= base_url('member/hapusAnggota/' . $a['id']); ?>')"><i
-                                    class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
+                            </td>
+                            <td>
+                                <a href="<?= base_url('member/viewAnggota/' . $a['id']); ?>" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i></a>
+                                <a href="<?= base_url('member/editAnggota/' . $a['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pencil"></i></a>
+                                <a href="#" class="btn btn-danger" onclick="konfirmasiAndDelete('<?= base_url('member/hapusAnggota/' . $a['id']); ?>')"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
             <?php if ($total_rows > $per_page) : ?>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <?php
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <?php
                         $total_pages = ceil($total_rows / $per_page);
                         $current_page = floor($offset / $per_page) + 1; // Hitung halaman saat ini
 
@@ -156,8 +152,8 @@ button {
                         $next_url = ($current_page < $total_pages) ? base_url() . 'member/index/' . ($current_page * $per_page) : '';
                         echo '<li class="page-item ' . ($current_page == $total_pages ? 'disabled' : '') . '"><a class="page-link" href="' . $next_url . '"><i class="fas fa-solid fa-arrow-right"></i></a></li>';
                         ?>
-                </ul>
-            </nav>
+                    </ul>
+                </nav>
             <?php endif; ?>
         </div>
     </div>
@@ -171,28 +167,31 @@ button {
     </div>
 </div>
 
+<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+
 <script type="text/javascript">
-window.setTimeout(function() {
-    $(".flash_message").fadeTo(500, 0).slideUp(500, function() {
-        $(this).remove();
-    });
-}, 2000);
+    window.setTimeout(function() {
+        $(".flash_message").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 2000);
 
-function konfirmasiAndDelete(url) {
-    let r = confirm('Apakah Anda yakin ingin menghapus anggota ini?');
+    function konfirmasiAndDelete(url) {
+        let r = confirm('Apakah Anda yakin ingin menghapus anggota ini?');
 
-    if (r == true) {
-        let konfirmasiLanjut = confirm('Tindakan ini tidak dapat dibatalkan. Apakah Anda yakin ingin melanjutkan?');
+        if (r == true) {
+            let konfirmasiLanjut = confirm('Tindakan ini tidak dapat dibatalkan. Apakah Anda yakin ingin melanjutkan?');
 
-        if (konfirmasiLanjut) {
-            window.location.href = url;
+            if (konfirmasiLanjut) {
+                window.location.href = url;
+            } else {
+                alert('Hapus anggota dibatalkan.');
+                return false;
+            }
         } else {
             alert('Hapus anggota dibatalkan.');
             return false;
         }
-    } else {
-        alert('Hapus anggota dibatalkan.');
-        return false;
     }
-}
 </script>

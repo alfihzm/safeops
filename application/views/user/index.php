@@ -64,8 +64,7 @@
                             $timeDifference = $currentTime - $dateCreated;
                             $daysDifference = floor($timeDifference / (60 * 60 * 24));
                             ?>
-                            <hr>
-                            <h1 class="style=col-sm-10">Bekerja sejak <?= $daysDifference ?> hari lalu</h1>
+                            <!-- <h1 class="style=col-sm-10">Bekerja sejak <?= $daysDifference ?> hari lalu</h1> -->
                         </div>
                     </div>
                 </div>
