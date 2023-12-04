@@ -25,10 +25,16 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="name" class="col-sm-3 col-form-label">Shift</label>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="shift" name="shift" value="<?= $laporan['shift']; ?>" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="name" class="col-sm-3 col-form-label">Isi Laporan</label>
                     <div class="col-sm-12">
                         <div class="input-group">
-                                <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%;"><?= htmlspecialchars_decode($laporan['deskripsi']); ?></span>
+                            <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%;"><?= htmlspecialchars_decode($laporan['deskripsi']); ?></span>
                         </div>
                     </div>
                 </div>

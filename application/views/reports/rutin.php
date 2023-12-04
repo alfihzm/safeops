@@ -19,12 +19,6 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="judul" class="col-sm-3 col-form-label">Judul</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan Judul Laporan">
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label for="tanggal" class="col-sm-4 col-form-label">Tanggal</label>
                     <div class="col-sm-12">
                         <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal">
@@ -37,6 +31,23 @@
                             <option value="Pagi">Pagi</option>
                             <option value="Malam">Malam</option>
                         </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Kondisi Kelistrikan</label>
+                    <div class="col-sm-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kondisi" id="berfungsi" value="Berfungsi" checked>
+                            <label class="form-check-label" for="berfungsi">Berfungsi</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kondisi" id="sempat_tidak_berfungsi" value="Sempat tidak berfungsi">
+                            <label class="form-check-label" for="sempat_tidak_berfungsi">Sempat tidak berfungsi</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kondisi" id="tidak_berfungsi" value="Tidak berfungsi">
+                            <label class="form-check-label" for="tidak_berfungsi">Tidak berfungsi</label>
+                        </div>
                     </div>
                 </div>
 

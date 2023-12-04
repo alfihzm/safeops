@@ -35,7 +35,7 @@
                     </td>
                 </tr>
                 <tr class="table-info">
-                    <td><a href="" class="btn btn-primary-responsive-width btn-outline-light mb-3" style="background: #2B1C2F;">Laporan Pemeriksaan</a></td>
+                    <td><a href="<?= base_url('reports/rutin') ?>" class="btn btn-primary-responsive-width btn-outline-light mb-3" style="background: #2B1C2F;">Laporan Pemeriksaan</a></td>
                     <td></td>
                     <td>
                         <a href="" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>

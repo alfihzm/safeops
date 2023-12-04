@@ -29,7 +29,7 @@
                             <td style="display: flex; align-items: center; justify-content: center;">
                                 <img src="<?= base_url('assets/img/report/wajib/') . $m['image']; ?>" alt="Gambar" class="img-thumbnail" width="100" height="100">
                             </td>
-                            <td>
+                            <td style="text-align:center; vertical-align: middle;">
                                 <a href="<?= base_url('reports/editwajib?id=' . $m['id']); ?>" class="btn btn-warning"> <i class="fa-solid fa-pencil"></i> </a>
                                 <a href=" <?= base_url('reports/periksawajib?id=' . $m['id']); ?>" class="btn btn-info"> <i class="fa-solid fa-eye"></i> </a>
                             </td>
