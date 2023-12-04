@@ -49,6 +49,15 @@
         tinymce.init({
             selector: '#myTextarea'
         });
+        document.getElementById('toggleKomentar').addEventListener('change', function() {
+        var kolomInput = document.getElementById('kolomInput');
+        kolomInput.classList.toggle('hidden', !this.checked);
+
+        // Bersihkan nilai textarea jika checkbox tidak dicentang
+        if (!this.checked) {
+            document.getElementById('komentar').value = '';
+        }
+    });
     </script>
 </head>
 
