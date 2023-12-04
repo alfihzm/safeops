@@ -2,31 +2,36 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"> <?= $judul; ?></h1>
+
+    <div class="flash_data">
+        <?= $this->session->flashdata('message'); ?>
+    </div>
+
     <div class="row">
         <div class="col">
-            <table class="table table-hover table-striped">
+            <table class="table table-hover table-bordered">
                 <thead>
                     <tr style="background: #2B1C2F; color: #FFF;">
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">Petugas</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Gambar</th>
-                        <th scope="col"></th>
+                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($menu as $m) : ?>
                         <tr>
-                            <th scope="row" style="background: #2B1C2F; color: #FFF;"><?= $i; ?></th>
-                            <td><?= $m['nama']; ?></td>
+                            <th scope="row" style="width: 50px"><?= $i; ?></th>
+                            <td style="width: 290px"><?= $m['nama']; ?></td>
                             <td><?= $m['tanggal']; ?></td>
-                            <td>
+                            <td style="display: flex; align-items: center; justify-content: center;">
                                 <img src="<?= base_url('assets/img/report/wajib/') . $m['image']; ?>" alt="Gambar" class="img-thumbnail" width="100" height="100">
                             </td>
                             <td>
-                                <a href="<?= base_url('reports/editwajib?id=' . $m['id']); ?>" class="btn btn-warning">Edit</a>
-                                <a href="<?= base_url('reports/periksawajib?id=' . $m['id']); ?>" class="btn btn-info">Periksa</a>
+                                <a href="<?= base_url('reports/editwajib?id=' . $m['id']); ?>" class="btn btn-warning"> <i class="fa-solid fa-pencil"></i> </a>
+                                <a href=" <?= base_url('reports/periksawajib?id=' . $m['id']); ?>" class="btn btn-info"> <i class="fa-solid fa-eye"></i> </a>
                             </td>
                         </tr>
                         <?php $i++; ?>
@@ -39,3 +44,11 @@
     <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->
+
+<script type="text/javascript">
+    window.setTimeout(function() {
+        $(".flash_data").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 2000);
+</script>

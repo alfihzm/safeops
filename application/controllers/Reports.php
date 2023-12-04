@@ -128,7 +128,7 @@ class Reports extends CI_Controller
     {
         $data['judul'] = 'Edit Laporan Rutin';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $laporan_id = $this->input->get('id') ?? $this->input->post('id');
+        $laporan_id = $this->input->get('id') ?: $this->input->post('id');
 
         // Pastikan laporan_id memiliki nilai yang valid
         if (!$laporan_id) {
@@ -159,34 +159,45 @@ class Reports extends CI_Controller
             $judul = $this->input->post('judul');
             $tanggal = $this->input->post('tanggal');
             $deskripsi = $this->input->post('deskripsi');
-            $image = $this->input->post('image');
             $komentar = $this->input->post('komentar');
+            $editImage = $_FILES['image']['name'];
 
-            // // Sanitize input
-            // $judul = $this->db->escape($judul);
-            // $tanggal = $this->db->escape($tanggal);
-            // $deskripsi = $this->db->escape($deskripsi);
-            // $image = $this->db->escape($image);
-            // $komentar = $this->db->escape($komentar);
+            if ($editImage) {
+                $config['upload_path'] = './assets/img/report/wajib/';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+                $config['max_size'] = '5024';
+                $config['file_name'] = 'laporanwajib_' . $data['user']['nama'];
+
+                $this->load->library('upload');
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('image')) {
+                    $laporanLama = $data['laporan']['image'];
+                    if ($laporanLama && $laporanLama != $editImage) {
+                        unlink(FCPATH . 'assets/img/report/wajib/' . $laporanLama);
+                    }
+
+                    $laporanBaru = $this->upload->data('file_name');
+                    $update_data['image'] = $laporanBaru;
+                } else {
+                    echo $this->upload->display_errors();
+                    return; // Stop execution if upload fails
+                }
+            }
 
             // Lakukan update data hanya jika ada perubahan
-            $update_data = [
+            $update_data += [
                 'judul' => $judul,
                 'tanggal' => $tanggal,
                 'deskripsi' => $deskripsi,
-                'image' => $image,
                 'komentar' => $komentar,
             ];
             $this->db->set($update_data);
             $this->db->where('id', $laporan_id);
             $this->db->update('laporanwajib');
 
-            // Debugging
-            echo "Judul: $judul, Tanggal: $tanggal, Keterangan: $deskripsi, Gambar: $image, Komentar: $komentar";
-            // Debugging
-            echo $this->db->last_query();
             // Tampilkan pesan sukses
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah tersimpan!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah diubah.</div>');
             redirect('reports/logwajib');
         }
     }
