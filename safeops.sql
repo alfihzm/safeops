@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Des 2023 pada 18.23
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.2.0
+-- Generation Time: Dec 05, 2023 at 04:40 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `announcement`
+-- Table structure for table `announcement`
 --
 
 CREATE TABLE `announcement` (
@@ -36,17 +36,17 @@ CREATE TABLE `announcement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `announcement`
+-- Dumping data for table `announcement`
 --
 
 INSERT INTO `announcement` (`id`, `judul`, `deskripsi`, `tanggal`, `date_created`) VALUES
-(11, 'asasa', 'asasasasa', '0000-00-00', 1701228501),
-(13, 'Kont', 'A', '0000-00-00', 1701342276);
+(13, 'Kont', 'A', '0000-00-00', 1701342276),
+(14, 'asd', 'asd', '0000-00-00', 1701598396);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
@@ -58,7 +58,45 @@ CREATE TABLE `event` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `laporanwajib`
+-- Table structure for table `laporanrutin`
+--
+
+CREATE TABLE `laporanrutin` (
+  `id` int(11) NOT NULL,
+  `nopeg` char(6) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `tanggal` date NOT NULL,
+  `listrik` varchar(64) NOT NULL,
+  `komentar1` varchar(128) NOT NULL,
+  `alarm` varchar(64) NOT NULL,
+  `komentar2` varchar(128) NOT NULL,
+  `cctv` varchar(64) NOT NULL,
+  `komentar3` varchar(128) NOT NULL,
+  `akses1` varchar(64) NOT NULL,
+  `akses2` varchar(64) NOT NULL,
+  `akses3` varchar(64) NOT NULL,
+  `inven1` varchar(64) NOT NULL,
+  `inven2` varchar(64) NOT NULL,
+  `inven3` varchar(64) NOT NULL,
+  `aset1` varchar(64) NOT NULL,
+  `aset2` varchar(64) NOT NULL,
+  `aset3` varchar(64) NOT NULL,
+  `date_created` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `laporanrutin`
+--
+
+INSERT INTO `laporanrutin` (`id`, `nopeg`, `nama`, `tanggal`, `listrik`, `komentar1`, `alarm`, `komentar2`, `cctv`, `komentar3`, `akses1`, `akses2`, `akses3`, `inven1`, `inven2`, `inven3`, `aset1`, `aset2`, `aset3`, `date_created`) VALUES
+(1, '123456', 'PT. Safeops Nusantara', '2023-12-05', 'Berfungsi', '', 'Berfungsi', '', 'Sempat tidak berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701782181'),
+(2, '123456', 'PT. Safeops Nusantara', '2023-12-05', 'Tidak berfungsi', '', 'Berfungsi', '', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701786318'),
+(3, '123456', 'PT. Safeops Nusantara', '2023-12-06', 'Berfungsi', '', 'Berfungsi', '', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701786836');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laporanwajib`
 --
 
 CREATE TABLE `laporanwajib` (
@@ -67,6 +105,7 @@ CREATE TABLE `laporanwajib` (
   `nama` varchar(128) NOT NULL,
   `judul` varchar(128) NOT NULL,
   `tanggal` date NOT NULL,
+  `shift` varchar(64) NOT NULL,
   `deskripsi` text NOT NULL,
   `image` varchar(128) NOT NULL,
   `komentar` varchar(128) NOT NULL,
@@ -74,18 +113,20 @@ CREATE TABLE `laporanwajib` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `laporanwajib`
+-- Dumping data for table `laporanwajib`
 --
 
-INSERT INTO `laporanwajib` (`id`, `nopeg`, `nama`, `judul`, `tanggal`, `deskripsi`, `image`, `komentar`, `date_created`) VALUES
-(18, '123456', 'PT. Safeops Nusantara', 'Patroli Rutin Irwansyah', '2023-12-01', '&lt;p&gt;Tralalala trilililiilililiili&lt;/p&gt;', 'laporanwajib_002_user192000.png', 'Oke', 1701400413),
-(19, '123456', 'PT. Safeops Nusantara', 'Patroli Rutin Rudi', '2023-12-01', '&lt;p&gt;Lancar jaya jos gandossss&lt;/p&gt;', 'laporanwajib_003_default2.jpg', 'Oke', 1701402083),
-(20, '192208', 'Mohammad Alfi Hamzami', 'Laporan Kerusakan Aset Maharaja', '2023-12-02', '&lt;p&gt;Rubik ini telah dirusak oleh seseorang yang tidak bertanggung jawab, saat ini para security sedang mencari pelaku dari perusak rubik ini&lt;/p&gt;', 'laporanwajib_007_rubik-test.jpg', 'Rubik Milik Maharaja', 1701510811);
+INSERT INTO `laporanwajib` (`id`, `nopeg`, `nama`, `judul`, `tanggal`, `shift`, `deskripsi`, `image`, `komentar`, `date_created`) VALUES
+(18, '123456', 'PT. Safeops Nusantara', 'Patroli Rutin Irwansyahputras', '2023-12-03', '', '<p>Tralalalalala Trilillili</p>', '', 'Ya Bagus Begitu Ya', 1701400413),
+(19, '123456', 'PT. Safeops Nusantara', 'Patroli Rutin Rudi', '2023-12-01', '', '&lt;p&gt;Lancar jaya jos gandossss&lt;/p&gt;', 'laporanwajib_003_default2.jpg', 'Oke', 1701402083),
+(20, '192208', 'Mohammad Alfi Hamzami', 'Laporan Kerusakan Aset Maharaja', '2023-12-02', '', '&lt;p&gt;Rubik ini telah dirusak oleh seseorang yang tidak bertanggung jawab, saat ini para security sedang mencari pelaku dari perusak rubik ini&lt;/p&gt;', 'laporanwajib_007_rubik-test.jpg', 'Rubik Milik Maharaja', 1701510811),
+(21, '123456', 'PT. Safeops Nusantara', 'Libur UAS Genapppp', '2023-12-04', '', '&lt;p&gt;Klo gitu wakwakiwaokwaokaw&amp;nbsp;&lt;strong&gt;oakwowaokwa&amp;nbsp;&lt;/strong&gt;ssdas&amp;nbsp;&lt;em&gt;sdsdamakan&lt;/em&gt;&lt;/p&gt;', 'laporanwajib_009_user192020221.png', 'Tidak ada', 1701678490),
+(22, '123456', 'PT. Safeops Nusantara', 'Makan Nasi', '2023-12-04', 'Malam', '&lt;p&gt;Assede&amp;nbsp;&lt;strong&gt;assalamu\'alaikum&lt;/strong&gt; sama lu semua&lt;/p&gt;', 'laporanwajib_010_user19202022.png', 'Tidak ada', 1701682332);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -103,11 +144,11 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `nopeg`, `nama`, `email`, `username`, `password`, `role_id`, `photo_profile`, `no_telp`, `date_created`, `is_active`) VALUES
-(9, '12345678', 'PT. Safeops Nusantara', 'admin@gmail.com', 'admin', '$2y$10$2yQG/dlREUZ21t/eYghiWuHpNXNBRcsfiwT0vRVtajToFh8Zx7fPa', 1, 'user12345678.png', '08123456789', 1697978285, 1),
+(9, '12345678', 'PT. Safeops Nusantara', 'admin@gmail.com', 'admin', '$2y$10$GukxhWTantLZLLCUfT84juYIVbZFDRiZy5pnzz6fHHQwag0vcFlYK', 1, 'user12345678.png', '08123456789', 1697978285, 1),
 (10, '12332132', 'user', 'user@gmail.com', 'user', '$2y$10$DwPLYVvpYmMwLWDR.qkAZ./KK.9jdgiHwSFXyiDHDKO..QZwXOiqS', 2, 'default.jpg', '081234567892', 1697984675, 1),
 (12, '11221122', 'Supriyadi', 'supri@gmail.com', 'supriyan', '$2y$10$2NRonbm0QOQqbQt9xC539.8J3jNMQfbh58S6Mh2q8w9d0F4h2jiVq', 2, 'default2.jpg', '082166617772', 1701181735, 1),
 (17, '19202022', 'Joseph Mansur', 'joseph@gmail.com', 'josephman', '$2y$10$dUO3yfee1W48J8OtyH.H.uS02OCgAkAwxEr1fZKE0bInW.gtZFIoG', 2, 'user192020221.png', '082166678889', 1701226538, 1),
@@ -124,7 +165,7 @@ INSERT INTO `user` (`id`, `nopeg`, `nama`, `email`, `username`, `password`, `rol
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_menu`
+-- Table structure for table `user_access_menu`
 --
 
 CREATE TABLE `user_access_menu` (
@@ -134,7 +175,7 @@ CREATE TABLE `user_access_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `user_access_menu`
+-- Dumping data for table `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
@@ -149,7 +190,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_menu`
+-- Table structure for table `user_menu`
 --
 
 CREATE TABLE `user_menu` (
@@ -158,7 +199,7 @@ CREATE TABLE `user_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `user_menu`
+-- Dumping data for table `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
@@ -169,7 +210,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_role`
+-- Table structure for table `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -178,7 +219,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
@@ -188,7 +229,7 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_sub_menu`
+-- Table structure for table `user_sub_menu`
 --
 
 CREATE TABLE `user_sub_menu` (
@@ -201,16 +242,16 @@ CREATE TABLE `user_sub_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `user_sub_menu`
+-- Dumping data for table `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `judul_menu`, `url`, `icon`, `is_active`) VALUES
 (1, 2, 'Dashboard', 'dashboard', 'fas fa-fw fa-solid fa-gauge', 1),
 (2, 2, 'Profil Saya', 'user', 'fas fa-fw fa-solid fa-user', 1),
+(6, 1, 'Announcement', 'announcement', 'fas fa-fw fa-solid fa-bullhorn', 1),
 (7, 1, 'Event Management', 'event', 'fas fa-fw fa-solid fa-calendar-days', 1),
 (8, 2, 'Keluar', 'auth/logout', 'fas fa-fw fa-solid fa-door-open', 1),
 (9, 1, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 0),
-(10, 1, 'Announcement', 'announcement', 'fas fa-fw fa-solid fa-bullhorn', 1),
 (11, 1, 'Security Management', 'member', 'fas fa-fw fa-solid fa-users', 1),
 (13, 3, 'Laporan Rutin', 'reports', 'fas fa-fw fa-solid fa-file-text ', 1),
 (14, 4, 'Menu Testing', 'reports', 'fas fa-fw fa-solid fa-gear', 0);
@@ -220,101 +261,113 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `judul_menu`, `url`, `icon`, `is_a
 --
 
 --
--- Indeks untuk tabel `announcement`
+-- Indexes for table `announcement`
 --
 ALTER TABLE `announcement`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `event`
+-- Indexes for table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `laporanwajib`
+-- Indexes for table `laporanrutin`
+--
+ALTER TABLE `laporanrutin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `laporanwajib`
 --
 ALTER TABLE `laporanwajib`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_access_menu`
+-- Indexes for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_menu`
+-- Indexes for table `user_menu`
 --
 ALTER TABLE `user_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_role`
+-- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_sub_menu`
+-- Indexes for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `announcement`
+-- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT untuk tabel `event`
+-- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `laporanwajib`
+-- AUTO_INCREMENT for table `laporanrutin`
+--
+ALTER TABLE `laporanrutin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `laporanwajib`
 --
 ALTER TABLE `laporanwajib`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT untuk tabel `user_access_menu`
+-- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `user_menu`
+-- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `user_role`
+-- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `user_sub_menu`
+-- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;

@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col">
             <?= $this->session->flashdata('message') ?>
-            <form action="<?= base_url('reports/wajib') ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?= base_url('reports/rutin') ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group row">
                     <label for="nopeg" class="col-sm-3 col-form-label"><b>Nomor Pegawai</b></label>
                     <div class="col-sm-12">
@@ -48,22 +48,21 @@
                     <label class="col-sm-4 col-form-label">Kondisi Kelistrikan</label>
                     <div class="col-sm-8">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="kondisi" id="berfungsi" value="Berfungsi" checked>
+                            <input class="form-check-input" type="radio" name="listrik" id="berfungsi" value="Berfungsi" checked>
                             <label class="form-check-label" for="berfungsi">Berfungsi</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="kondisi" id="sempat_tidak_berfungsi" value="Sempat tidak berfungsi">
+                            <input class="form-check-input" type="radio" name="listrik" id="sempat_tidak_berfungsi" value="Sempat tidak berfungsi">
                             <label class="form-check-label" for="sempat_tidak_berfungsi">Sempat tidak berfungsi</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="kondisi" id="tidak_berfungsi" value="Tidak berfungsi">
+                            <input class="form-check-input" type="radio" name="listrik" id="tidak_berfungsi" value="Tidak berfungsi">
                             <label class="form-check-label" for="tidak_berfungsi">Tidak berfungsi</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group row" style="margin-right: 20px;">
-                    <label for="deskripsi" class="col-sm-3 col-form-label" style="margin-top: -30px;">Keterangan</label>
-                    <div class="col-sm-9" style="margin-right: 30px; margin-top: -5px;">
+                    <div class="col-sm-9" style="margin-right: 30px; margin-top: -25px;">
                         <div class="form-check">
                             <input type="checkbox" id="toggleKomentar1" class="form-check-input">
                             <label class="form-check-label" for="toggleKomentar1">Tambahkan komentar</label>
@@ -79,22 +78,21 @@
                     <label class="col-sm-4 col-form-label">Kondisi Alarm</label>
                     <div class="col-sm-8">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="kondisi2" id="berfungsi2" value="Berfungsi" checked>
+                            <input class="form-check-input" type="radio" name="alarm" id="berfungsi2" value="Berfungsi" checked>
                             <label class="form-check-label" for="berfungsi2">Berfungsi</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="kondisi2" id="sempat_tidak_berfungsi2" value="Sempat tidak berfungsi">
+                            <input class="form-check-input" type="radio" name="alarm" id="sempat_tidak_berfungsi2" value="Sempat tidak berfungsi">
                             <label class="form-check-label" for="sempat_tidak_berfungsi2">Sempat tidak berfungsi</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="kondisi2" id="tidak_berfungsi2" value="Tidak berfungsi">
+                            <input class="form-check-input" type="radio" name="alarm" id="tidak_berfungsi2" value="Tidak berfungsi">
                             <label class="form-check-label" for="tidak_berfungsi2">Tidak berfungsi</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group row" style="margin-right: 20px;">
-                    <label for="deskripsi" class="col-sm-3 col-form-label" style="margin-top: -30px;">Keterangan</label>
-                    <div class="col-sm-9" style="margin-right: 30px; margin-top: -5px;">
+                    <div class="col-sm-9" style="margin-right: 30px; margin-top: -25px;">
                         <div class="form-check">
                             <input type="checkbox" id="toggleKomentar2" class="form-check-input">
                             <label class="form-check-label" for="toggleKomentar2">Tambahkan komentar</label>
@@ -110,22 +108,21 @@
                     <label class="col-sm-4 col-form-label">Kondisi CCTV</label>
                     <div class="col-sm-8">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="kondisi3" id="berfungsi3" value="Berfungsi" checked>
+                            <input class="form-check-input" type="radio" name="cctv" id="berfungsi3" value="Berfungsi" checked>
                             <label class="form-check-label" for="berfungsi3">Berfungsi</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="kondisi3" id="sempat_tidak_berfungsi3" value="Sempat tidak berfungsi">
+                            <input class="form-check-input" type="radio" name="cctv" id="sempat_tidak_berfungsi3" value="Sempat tidak berfungsi">
                             <label class="form-check-label" for="sempat_tidak_berfungsi3">Sempat tidak berfungsi</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="kondisi3" id="tidak_berfungsi3" value="Tidak berfungsi">
+                            <input class="form-check-input" type="radio" name="cctv" id="tidak_berfungsi3" value="Tidak berfungsi">
                             <label class="form-check-label" for="tidak_berfungsi3">Tidak berfungsi</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group row" style="margin-right: 20px;">
-                    <label for="deskripsi" class="col-sm-3 col-form-label" style="margin-top: -30px;">Keterangan</label>
-                    <div class="col-sm-9" style="margin-right: 30px; margin-top: -5px;">
+                    <div class="col-sm-9" style="margin-right: 30px; margin-top: -25px;">
                         <div class="form-check">
                             <input type="checkbox" id="toggleKomentar3" class="form-check-input">
                             <label class="form-check-label" for="toggleKomentar3">Tambahkan komentar</label>
@@ -143,12 +140,37 @@
                     <div class="col-sm-8">
                         <small>Beri tanda centang pintu yang telah diperiksa</small><br>
                         <div class="form-check form-check-inline">
-                            <input type="checkbox" name="akses1" value="Pintu Utara">Pintu Utara
-                            <input type="checkbox" name="akses2" value="Pintu Utama" style="margin-left: 5px;">Pintu Utama
-                            <input type="checkbox" name="akses3" value="Pintu Darurat" style="margin-left: 5px;">Pintu Darurat
+                            <input type="checkbox" name="akses1" value="Pintu Utara Aman"> Pintu Utara
+                            <input type="checkbox" name="akses2" value="Pintu Utama Aman" style="margin-left: 20px;"> Pintu Utama
+                            <input type="checkbox" name="akses3" value="Pintu Darurat Aman" style="margin-left: 15px;"> Pintu Darurat
                         </div>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <!-- Kondisi CCTV -->
+                    <label class="col-sm-4 col-form-label">Pemeriksaan Inventaris</label>
+                    <div class="col-sm-8">
+                        <small>Beri tanda centang peralatan inventaris yang telah dikembalikan</small><br>
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" name="inven1" value="Rompi telah dikembalikan"> Kevlar
+                            <input type="checkbox" name="inven2" value="Helm telah dikembalikan" style="margin-left:55px;"> Helm
+                            <input type="checkbox" name="inven3" value="Radio telah dikembalikan" style="margin-left: 65px;"> Walkie Talkie
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <!-- Kondisi CCTV -->
+                    <label class="col-sm-4 col-form-label">Pemeriksaan Aset</label>
+                    <div class="col-sm-8">
+                        <small>Beri tanda aset perusahaan yang telah diperiksa</small><br>
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" name="aset1" value="Brankas telah diperiksa"> Brankas Uang
+                            <input type="checkbox" name="aset2" value="Arsip telah diperiksa" style="margin-left: 5px;"> Lemari Arsip
+                            <input type="checkbox" name="aset3" value="Database telah diperiksa" style="margin-left: 10px;"> Lemari Server
+                        </div>
+                    </div>
+                </div>
+                <hr>
                 <div class="form-group row">
                     <div class="col-sm-4">
                         <button type="submit" class="btn btn-primary">Kirim</button>

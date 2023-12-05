@@ -38,7 +38,7 @@
                     <td><a href="<?= base_url('reports/rutin') ?>" class="btn btn-primary-responsive-width btn-outline-light mb-3" style="background: #2B1C2F;">Laporan Pemeriksaan</a></td>
                     <td></td>
                     <td>
-                        <a href="" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>
+                        <a href="<?= base_url('reports/logrutin') ?>" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>
                     </td>
                     <td>
                         <a href="" class="btn btn-success"><i class="fa-solid fa-file-arrow-down fa-lg"></i></a>

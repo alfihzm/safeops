@@ -19,19 +19,19 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="judul" class="col-sm-3 col-form-label">Judul</label>
+                    <label for="judul" class="col-sm-3 col-form-label"><b>Judul</b></label>
                     <div class="col-sm-12">
                         <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan Judul Laporan">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="tanggal" class="col-sm-4 col-form-label">Tanggal</label>
+                    <label for="tanggal" class="col-sm-4 col-form-label"><b>Tanggal</b></label>
                     <div class="col-sm-12">
                         <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="shift" class="col-sm-4 col-form-label">Shift</label>
+                    <label for="shift" class="col-sm-4 col-form-label"><b>Shift</b></label>
                     <div class="col-sm-12">
                         <select class="form-control" id="shift" name="shift">
                             <option value="Pagi">Pagi</option>
@@ -41,25 +41,26 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="myTextarea" class="col-sm-3 col-form-label">Keterangan</label>
+                    <label for="myTextarea" class="col-sm-3 col-form-label"><b>Keterangan</b></label>
                     <div class="col-sm-12">
                         <textarea class="form-control" id="myTextarea" name="deskripsi" placeholder="Ketik keterangan laporan secara lengkap"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="image" class="col-sm-3 col-form-label">Gambar</label>
+                    <label for="image" class="col-sm-3 col-form-label"><b>Gambar</b></label>
                     <div class="col-sm-12">
                         <input type="file" class="form-control" name="image" id="image" accept="image/jpeg, image/png">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="deskripsi" class="col-sm-3 col-form-label">Komentar</label>
-                    <div class="col-sm-12">
+                    <label for="deskripsi" class="col-sm-3 col-form-label"><b>Komentar</b></label>
+                </div>
+                <div class="form-group row" style="margin-top: -30px;">
+                    <div class="col-sm-9">
+                        <small style="color: red;">Jika diperlukan</small>
                         <textarea class="form-control" id="komentar" name="komentar" placeholder="Ketik komentar untuk Staff"></textarea>
-                        <small>Jika diperlukan</small>
                     </div>
                 </div>
-
                 <div class="form-group row">
                     <div class="col-sm-4">
                         <button type="submit" class="btn btn-primary">Kirim</button>
