@@ -106,7 +106,7 @@
         
         /* Footer Styles */
         footer {
-            background: rgba(51, 51, 51, 0.7); /* Adjust the alpha (fourth) value for transparency */
+            background: rgba(51, 51, 51, 0.7); 
             color: #fff;
             text-align: center;
             padding: 21px;
@@ -139,6 +139,12 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh; 
+                margin: 0;
+            }
             header nav {
                 flex-direction: column;
             }
@@ -178,44 +184,64 @@
                 text-align: center;
             }
 
+            .wrapper {
+                flex-grow: 1;
+            }
+
             .main-content {
                 flex-direction: column-reverse;
+            }
+            footer {
+                margin-top: auto;
+            }
+            html, body {
+                overflow-x: hidden;
             }
         }
     </style>
 </head>
 <body>
-    <div id="mobile-navbar">
-        <header>
-            <nav>
-                <a href="#" class="logo"><img src="assets/img/upload/logo.png" alt="Logo"></a>
-                <a href="#" id="toggle-menu">&#9776;</a>
-                <div id="menu-container"></div>
-            </nav>
-        </header>
+    <div clas="wrapper">
+        <div id="mobile-navbar">
+            <header>
+                <nav>
+                    <a href="#" class="logo"><img src="assets/img/upload/logo.png" alt="Logo"></a>
+                    <a href="#" id="toggle-menu">&#9776;</a>
+                    <div id="menu-container"></div>
+                </nav>
+            </header>
+        </div>
+
+        <!-- Desktop Navbar -->
+        <div id="desktop-navbar">
+            <header>
+                <nav>
+                    <a href="#" class="logo"><img src="assets/img/upload/logo.png" alt="Logo"></a>
+                    <a href="#">Home</a>
+                    <a href="#">About Us</a>
+                    <a class="login" href="<?= base_url('auth') ?>">Login</a>
+                </nav>
+            </header>
+        </div>
+
+        <div class="main-content">
+            <div class="text-content">
+                <h1>SAFEOPS</h1>
+                <p>Pelindung Setia di Setiap Sudut, Untuk menjaga Lingkungan dengan Keamanan Utama.</p>
+            </div>
+            <div class="image-content">
+                <img src="assets/img/upload/adryjelek.png" alt="Design Image">
+            </div>
+        </div>
     </div>
 
-    <!-- Desktop Navbar -->
-    <div id="desktop-navbar">
-        <header>
-            <nav>
-                <a href="#" class="logo"><img src="assets/img/upload/logo.png" alt="Logo"></a>
-                <a href="#">Home</a>
-                <a href="#">About Us</a>
-                <a class="login" href="<?= base_url('auth') ?>">Login</a>
-            </nav>
-        </header>
-    </div>
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 SAFEOPS. All rights reserved.</p>
+        </div>
+    </footer>
 
-    <div class="main-content">
-        <div class="text-content">
-            <h1>SAFEOPS</h1>
-            <p>Pelindung Setia di Setiap Sudut, Untuk menjaga Lingkungan dengan Keamanan Utama.</p>
-        </div>
-        <div class="image-content">
-            <img src="assets/img/upload/adryjelek.png" alt="Design Image">
-        </div>
-    </div>
 
     <script>
        document.addEventListener('DOMContentLoaded', function () {
@@ -285,12 +311,5 @@
         window.addEventListener('resize', handleNavbarVisibility);
     });
     </script>
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2023 SAFEOPS. All rights reserved.</p>
-        </div>
-    </footer>
-
 </body>
 </html>
