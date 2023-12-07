@@ -19,8 +19,8 @@
         }
 
         header {
-            background: transparent;
-            padding: 2px;
+            background: rgba(51, 51, 51, 0.7);
+            padding: 5px;
         }
 
         header nav {
@@ -36,7 +36,7 @@
             color: #fff;
             font-weight: bold;
             font-size: 1.1em;
-            padding: 10px;
+            padding: 5px;
         }
 
         header nav a.logo {
@@ -45,7 +45,7 @@
 
         header nav a.logo img {
             display: block;
-            width: 50px; 
+            width: 100px; 
             height: auto;
         }
 
@@ -78,7 +78,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 75vh;
+            height: 67vh;
             position: relative;
         }
 
@@ -104,6 +104,25 @@
             color: #fff; 
         }
         
+        /* Footer Styles */
+        footer {
+            background: rgba(51, 51, 51, 0.7); /* Adjust the alpha (fourth) value for transparency */
+            color: #fff;
+            text-align: center;
+            padding: 21px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+
         /* Hamburger Menu Styles */
         #toggle-menu {
             display: none;
@@ -169,7 +188,7 @@
     <div id="mobile-navbar">
         <header>
             <nav>
-                <a href="#" class="logo"><img src="path/to/your/logo.png" alt="Logo"></a>
+                <a href="#" class="logo"><img src="assets/img/upload/logo.png" alt="Logo"></a>
                 <a href="#" id="toggle-menu">&#9776;</a>
                 <div id="menu-container"></div>
             </nav>
@@ -180,7 +199,7 @@
     <div id="desktop-navbar">
         <header>
             <nav>
-                <a href="#" class="logo"><img src="path/to/your/logo.png" alt="Logo"></a>
+                <a href="#" class="logo"><img src="assets/img/upload/logo.png" alt="Logo"></a>
                 <a href="#">Home</a>
                 <a href="#">About Us</a>
                 <a class="login" href="<?= base_url('auth') ?>">Login</a>
@@ -266,5 +285,12 @@
         window.addEventListener('resize', handleNavbarVisibility);
     });
     </script>
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 SAFEOPS. All rights reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
