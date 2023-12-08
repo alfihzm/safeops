@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 04:40 PM
+-- Generation Time: Dec 08, 2023 at 04:21 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -66,6 +66,7 @@ CREATE TABLE `laporanrutin` (
   `nopeg` char(6) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `tanggal` date NOT NULL,
+  `shift` varchar(64) NOT NULL,
   `listrik` varchar(64) NOT NULL,
   `komentar1` varchar(128) NOT NULL,
   `alarm` varchar(64) NOT NULL,
@@ -88,10 +89,10 @@ CREATE TABLE `laporanrutin` (
 -- Dumping data for table `laporanrutin`
 --
 
-INSERT INTO `laporanrutin` (`id`, `nopeg`, `nama`, `tanggal`, `listrik`, `komentar1`, `alarm`, `komentar2`, `cctv`, `komentar3`, `akses1`, `akses2`, `akses3`, `inven1`, `inven2`, `inven3`, `aset1`, `aset2`, `aset3`, `date_created`) VALUES
-(1, '123456', 'PT. Safeops Nusantara', '2023-12-05', 'Berfungsi', '', 'Berfungsi', '', 'Sempat tidak berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701782181'),
-(2, '123456', 'PT. Safeops Nusantara', '2023-12-05', 'Tidak berfungsi', '', 'Berfungsi', '', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701786318'),
-(3, '123456', 'PT. Safeops Nusantara', '2023-12-06', 'Berfungsi', '', 'Berfungsi', '', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701786836');
+INSERT INTO `laporanrutin` (`id`, `nopeg`, `nama`, `tanggal`, `shift`, `listrik`, `komentar1`, `alarm`, `komentar2`, `cctv`, `komentar3`, `akses1`, `akses2`, `akses3`, `inven1`, `inven2`, `inven3`, `aset1`, `aset2`, `aset3`, `date_created`) VALUES
+(1, '123456', 'PT. Safeops Nusantara', '2023-12-05', '', 'Berfungsi', 'AAAA', 'Berfungsi', '', 'Sempat tidak berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701782181'),
+(2, '123456', 'PT. Safeops Nusantara', '2023-12-05', '', 'Tidak berfungsi', '', 'Berfungsi', '', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701786318'),
+(3, '123456', 'PT. Safeops Nusantara', '2023-12-06', '', 'Berfungsi', '', 'Berfungsi', '', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701786836');
 
 -- --------------------------------------------------------
 
@@ -205,7 +206,8 @@ CREATE TABLE `user_menu` (
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Administrator'),
 (2, 'Kontrol Pengguna'),
-(3, 'Laporan Harian');
+(3, 'Laporan Harian'),
+(4, 'Laporan lain-lain');
 
 -- --------------------------------------------------------
 
@@ -254,7 +256,36 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `judul_menu`, `url`, `icon`, `is_a
 (9, 1, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 0),
 (11, 1, 'Security Management', 'member', 'fas fa-fw fa-solid fa-users', 1),
 (13, 3, 'Laporan Rutin', 'reports', 'fas fa-fw fa-solid fa-file-text ', 1),
-(14, 4, 'Menu Testing', 'reports', 'fas fa-fw fa-solid fa-gear', 0);
+(15, 4, 'Laporan Pengunjung', 'visitor', 'fas fa-fw fa-solid fa-address-book', 1),
+(16, 4, 'Balap Kursi Roda', 'dashboard', 'fas fa-fw fa-solid fa-wheelchair-move', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `visitor`
+--
+
+CREATE TABLE `visitor` (
+  `id` int(11) NOT NULL,
+  `nopeg` char(6) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `tanggal` int(11) NOT NULL,
+  `pengunjung` varchar(128) NOT NULL,
+  `jam_masuk` varchar(11) NOT NULL,
+  `jam_keluar` varchar(11) DEFAULT NULL,
+  `status` varchar(64) NOT NULL,
+  `kategori` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `visitor`
+--
+
+INSERT INTO `visitor` (`id`, `nopeg`, `nama`, `tanggal`, `pengunjung`, `jam_masuk`, `jam_keluar`, `status`, `kategori`) VALUES
+(1, '123456', 'PT. Safeops Nusantara', 20231205, 'Rondi', '10', '0', 'None', 'VVIP'),
+(2, '789123', 'PT. Safeops Nusantara', 20231205, 'Durara', '10:00', '12:11', 'Sudah keluar', 'VVIP'),
+(3, '123456', 'PT. Safeops Nusantara', 2023, 'Yuri', '19:21', '19.33', 'Sudah keluar', 'Tamu'),
+(4, '123456', 'PT. Safeops Nusantara', 2023, 'Yaoami', '20:34', '08:15', 'Sudah keluar', 'TNI/POLRI');
 
 --
 -- Indexes for dumped tables
@@ -315,6 +346,12 @@ ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `visitor`
+--
+ALTER TABLE `visitor`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -358,7 +395,7 @@ ALTER TABLE `user_access_menu`
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -370,7 +407,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `visitor`
+--
+ALTER TABLE `visitor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
