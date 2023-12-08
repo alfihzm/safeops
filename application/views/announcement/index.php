@@ -12,8 +12,7 @@
             <div class="flash_message">
                 <?= $this->session->flashdata('message') ?>
             </div>
-            <a href="" data-toggle="modal" data-target="#newAnnouncementModal" class="btn btn-primary mb-3"> Tambah
-                Pengumuman</a>
+            <a href="" data-toggle="modal" data-target="#newAnnouncementModal" class="btn btn-primary mb-3"> Tambah Announcement</a>
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
@@ -33,7 +32,7 @@
                             <td><?= date('d F Y', $m['date_created']); ?></td>
                             <td><?= $m['deskripsi']; ?></td>
                             <td>
-                                <a href="" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
+                                <a href="<?= base_url('announcement/update/' . $m['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
                                 <a href="<?= base_url('announcement/delete/' . $m['id']); ?>" class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
                             </td>
                         </tr>
@@ -51,7 +50,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title fs-5" id="newAnnouncementModalLabel">Tambah Event</h2>
+                <h4 class="modal-title fs-5" id="newAnnouncementModalLabel">Tambah Announcement</h2>
                     <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
                         &times;
                     </button>

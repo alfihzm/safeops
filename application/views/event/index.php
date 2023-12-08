@@ -33,7 +33,7 @@
                             <td><?= $m['nama_event']; ?></td>
                             <td><?= $m['deskripsi']; ?></td>
                             <td>
-                                <a href="" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
+                                <a href="<?= base_url('event/update/' . $m['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
                                 <a href="<?= base_url('event/delete/' . $m['id']); ?>" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>

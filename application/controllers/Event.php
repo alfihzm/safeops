@@ -42,6 +42,36 @@ class Event extends CI_Controller
         }
     }
 
+    public function update($event_id)
+    {
+        $this->form_validation->set_rules('nama_event', 'Event', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Event', 'required');
+
+        if ($this->form_validation->run() == false) {
+            // Form validation failed, reload the edit view with validation errors
+            $data['judul'] = "Edit Event";
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['event'] = $this->db->get_where('event', ['id' => $event_id])->row_array();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('event/editEvent', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            // Update event data in the database
+            $this->db->where('id', $event_id);
+            $this->db->update('event', [
+                'nama_event' => $this->input->post('nama_event'),
+                'deskripsi' => $this->input->post('deskripsi')
+            ]);
+
+            // Set flash message for success
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Event Telah diperbarui!</div>');
+            redirect('event');
+        }
+    }
+
     public function delete($event_id)
     {
         // Periksa apakah $event_id ada dalam database

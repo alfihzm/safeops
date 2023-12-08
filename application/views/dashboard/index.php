@@ -10,7 +10,7 @@
             Pengumuman Hari Ini
         </div>
         <div class="card-body">
-            <?php if ($menu) : ?>
+            <?php if ($menu2) : ?>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -21,7 +21,7 @@
                         </tr>
                     </thead>
                     <?php $i = 1; ?>
-                    <?php foreach ($menu as $n) : ?>
+                    <?php foreach ($menu2 as $n) : ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $n['judul']; ?></td>
