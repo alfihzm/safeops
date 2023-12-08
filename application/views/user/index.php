@@ -25,7 +25,7 @@
                     </p>
                     <div class="row-md-5" style="display: flex; justify-content: center; align-items: center; background: #FFF; width: 100%; height: 100%;">
                         <a href="<?= base_url('user/edit'); ?>" class="btn btn-success" style="margin-right: 15px;"><i class="fa-solid fa-pencil"></i></a>
-                        <a href="<?= base_url('#'); ?>" class="btn btn-primary"><i class="fa-solid fa-key"></i></a>
+                        <a href="<?= base_url('user/ubahPassword'); ?>" class="btn btn-primary"><i class="fa-solid fa-key"></i></a>
                     </div>
                 </div>
             </div>

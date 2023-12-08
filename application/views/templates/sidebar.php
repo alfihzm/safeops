@@ -4,10 +4,17 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard') ?>">
         <div class="sidebar-brand-icon" style="margin-right: 7px;">
-            <i class="fa-solid fa-building-shield"></i>
+            <?php
+            $logoPath = 'assets/img/upload/WhiteLogo.png';
+            if (file_exists($logoPath)) {
+                echo '<img src="' . base_url($logoPath) . '" alt="Logo" style="max-width: 100%; max-height: 50px;">';
+            } else {
+                echo 'Logo not found';
+            }
+            ?>
         </div>
-        <div class="sidebar-brand-text">SafeOps</div>
     </a>
+
 
 
     <!-- Divider -->

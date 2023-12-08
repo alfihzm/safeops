@@ -205,7 +205,7 @@
         <div id="mobile-navbar">
             <header>
                 <nav>
-                    <a href="#" class="logo"><img src="assets/img/upload/logo.png" alt="Logo"></a>
+                    <a href="#" class="logo"><img src="assets/img/upload/Whitelogo.png" alt="Logo"></a>
                     <a href="#" id="toggle-menu">&#9776;</a>
                     <div id="menu-container"></div>
                 </nav>
@@ -216,7 +216,7 @@
         <div id="desktop-navbar">
             <header>
                 <nav>
-                    <a href="#" class="logo"><img src="assets/img/upload/logo.png" alt="Logo"></a>
+                    <a href="#" class="logo"><img src="assets/img/upload/whitelogo.png" alt="Logo"></a>
                     <a href="#">Home</a>
                     <a href="#">About Us</a>
                     <a class="login" href="<?= base_url('auth') ?>">Login</a>
