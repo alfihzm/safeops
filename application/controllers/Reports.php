@@ -110,6 +110,7 @@ class Reports extends CI_Controller
         // Lakukan query hanya untuk laporan dengan id tertentu atau ambil semua jika id tidak ada
         $data['judul'] = "Daftar Laporan Harian";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->db->get('laporanwajib')->result_array();
 
         if ($laporan_id) {
             $data['laporan'] = $this->db->get_where('laporanwajib', ['id' => $laporan_id])->row_array();
@@ -126,10 +127,9 @@ class Reports extends CI_Controller
 
     public function editwajib()
     {
-        $data['judul'] = 'Edit Laporan Rutin';
+        $data['judul'] = 'Edit Laporan Wajib';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $laporan_id = $this->input->get('id') ?: $this->input->post('id');
-
         // Pastikan laporan_id memiliki nilai yang valid
         if (!$laporan_id) {
             // Tampilkan pesan error atau redirect ke halaman lain jika diperlukan
@@ -203,6 +203,111 @@ class Reports extends CI_Controller
             redirect('reports/logwajib');
         }
     }
+
+    public function unduhwajib()
+    {
+        // Ambil nilai parameter id dari URL
+        // Lakukan query hanya untuk laporan dengan id tertentu atau ambil semua jika id tidak ada
+        $laporan_id = $this->input->get('id') ?: $this->input->post('id');
+
+        if ($laporan_id) {
+            $laporan = $this->db->get_where('laporanwajib', ['id' => $laporan_id])->row_array();
+            $laporan_name = $laporan['nama'];
+            $data['laporan'] = $laporan;
+        } else {
+            $data['laporan'] = $this->db->get('laporanwajib')->result_array();
+            $laporan_name = 'Security';
+        }
+
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->db->get('laporanwajib')->result_array();
+        $data['judul'] = "Laporan Harian" . ($laporan_name ? " $laporan_name" : ''); // Append the name if available
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('reports/unduhwajib', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function editrutin()
+    {
+        $data['judul'] = 'Edit Laporan Rutin';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $laporan_id = $this->input->get('id') ?: $this->input->post('id');
+        // Pastikan laporan_id memiliki nilai yang valid
+        if (!$laporan_id) {
+            // Tampilkan pesan error atau redirect ke halaman lain jika diperlukan
+        }
+
+        // Ambil data laporan sesuai dengan ID
+        $data['laporan'] = $this->db->get_where('laporanrutin', ['id' => $laporan_id])->row_array();
+
+        // Pastikan data laporan ditemukan
+        if (!$data['laporan']) {
+            // Tampilkan pesan error atau redirect ke halaman lain jika diperlukan
+        }
+
+        // Lakukan validasi form
+        $this->form_validation->set_rules('judul', 'Judul', 'required');
+
+        if ($this->form_validation->run() == false) {
+            // Tampilkan view form edit jika validasi gagal
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('reports/editrutin', $data);
+            $this->load->view('templates/footer');
+            // ...
+        } else {
+            $tanggal = $this->input->post('tanggal');
+            $shift = $this->input->post('shift');
+            $listrik = $this->input->post('listrik');
+            $komentar1 = $this->input->post('komentar1');
+            $alarm = $this->input->post('alarm');
+            $komentar2 = $this->input->post('komentar2');
+            $cctv = $this->input->post('cctv');
+            $komentar3 = $this->input->post('komentar3');
+            $akses1 = $this->input->post('akses1');
+            $akses2 = $this->input->post('akses2');
+            $akses3 = $this->input->post('akses3');
+            $inven1 = $this->input->post('inven1');
+            $inven2 = $this->input->post('inven2');
+            $inven3 = $this->input->post('inven3');
+            $aset1 = $this->input->post('aset1');
+            $aset2 = $this->input->post('aset2');
+            $aset3 = $this->input->post('aset3');
+            $deskripsi = $this->input->post('deskripsi');
+            $komentar = $this->input->post('komentar');
+            // Lakukan update data hanya jika ada perubahan
+            $update_data = [];
+            $update_data += [
+                'tanggal' => $tanggal,
+                'shift' => $shift,
+                'listrik' => $listrik,
+                'komentar1' => $komentar1,
+                'alarm' => $alarm,
+                'komentar2' => $komentar2,
+                'cctv' => $cctv,
+                'komentar3' => $komentar3,
+                'akses1' => $akses1,
+                'akses2' => $akses2,
+                'akses3' => $akses3,
+                'inven1' => $inven1,
+                'inven2' => $inven2,
+                'inven3' => $inven3,
+                'aset1' => $aset1,
+                'aset2' => $aset2,
+                'aset3' => $aset3
+            ];
+            $this->db->set($update_data);
+            $this->db->where('id', $laporan_id);
+            $this->db->update('laporanrutin');
+
+            // Tampilkan pesan sukses
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah diubah.</div>');
+            redirect('reports/logwajib');
+        }
+    }
     public function rutin()
     {
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required', [
@@ -270,6 +375,53 @@ class Reports extends CI_Controller
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('reports/logrutin', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function periksarutin()
+    {
+        // Ambil nilai parameter id dari URL
+        $laporan_id = $this->input->get('id');
+        // Lakukan query hanya untuk laporan dengan id tertentu atau ambil semua jika id tidak ada
+        $data['judul'] = "Daftar Laporan Rutin";
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        if ($laporan_id) {
+            $data['laporan'] = $this->db->get_where('laporanrutin', ['id' => $laporan_id])->row_array();
+        } else {
+            $data['laporan'] = $this->db->get('laporanrutin')->result_array();
+        }
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('reports/periksarutin', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function unduhrutin()
+    {
+        // Ambil nilai parameter id dari URL
+        // Lakukan query hanya untuk laporan dengan id tertentu atau ambil semua jika id tidak ada
+        $laporan_id = $this->input->get('id') ?: $this->input->post('id');
+
+        if ($laporan_id) {
+            $laporan = $this->db->get_where('laporanrutin', ['id' => $laporan_id])->row_array();
+            $laporan_name = $laporan['nama'];
+            $data['laporan'] = $laporan;
+        } else {
+            $data['laporan'] = $this->db->get('laporanrutin')->result_array();
+            $laporan_name = 'Security';
+        }
+
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->db->get('laporanrutin')->result_array();
+        $data['judul'] = "Laporan Pemeriksaan Rutin" . ($laporan_name ? " $laporan_name" : ''); // Append the name if available
+        $waktuskrg = time();
+        
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('reports/unduhrutin', $data);
         $this->load->view('templates/footer');
     }
 }

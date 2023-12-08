@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"> <?= $judul; ?></h1>
-
+    <a href="" class="btn btn-success" id="printButton" style="margin-top: -20px;"><i class="fa-solid fa-file-arrow-down fa-lg"></i> Rekap Semua Laporan</a>
     <div class="flash_data">
         <?= $this->session->flashdata('message'); ?>
     </div>
@@ -22,7 +22,7 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($menu as $m) :
-                        $totalCategories = 3; // Assuming three categories: listrik, alarm, cctv
+                        $totalCategories = 3;
                         $berfungsiCount = 0;
                         foreach (['listrik', 'alarm', 'cctv'] as $category) {
                             if ($m[$category] == 'Berfungsi') {
@@ -42,16 +42,15 @@
                                 </div>
                             </td>
                             <td class="vertical-align: middle;" style="text-align:left; vertical-align: middle;">
-                                <!-- Isi box checklist pemeriksaan disini -->
-                                <input type="checkbox" <?= !empty($m['akses1']) ? 'checked' : ''; ?> disabled> <span style="color: #3498db;">Pintu telah diperiksa</span>
+                                <i class="fa-solid fa-circle-check" style="color: #3498db;"></i><?= !empty($m['akses1']) ? '' : ''; ?> <span style="color: #3498db;"> Pintu telah diperiksa</span>
                                 <br>
-                                <input type="checkbox" <?= !empty($m['inven1']) ? 'checked' : ''; ?> disabled> <span style="color: #3498db;">Inventaris dikembalikan</span>
+                                <i class="fa-solid fa-circle-check" style="color: #3498db;"></i><?= !empty($m['inven1']) ? '' : ''; ?> <span style="color: #3498db;"> Peralatan telah dikembalikan</span>
                                 <br>
-                                <input type="checkbox" <?= !empty($m['aset1']) ? 'checked' : ''; ?> disabled> <span style="color: #3498db;">Aset telah diperiksa</span>
+                                <i class="fa-solid fa-circle-check" style="color: #3498db;"></i><?= !empty($m['aset1']) ? '' : ''; ?> <span style="color: #3498db;"> Aset telah diperiksa</span>
                             </td>
                             <td style="text-align:center; vertical-align: middle;">
-                                <a href="<?= base_url('reports/editwajib?id=' . $m['id']); ?>" class="btn btn-warning"> <i class="fa-solid fa-pencil"></i> </a>
-                                <a href=" <?= base_url('reports/periksawajib?id=' . $m['id']); ?>" class="btn btn-info"> <i class="fa-solid fa-eye"></i> </a>
+                                <a href="<?= base_url('reports/editrutin?id=' . $m['id']); ?>" class="btn btn-warning"> <i class="fa-solid fa-pencil"></i> </a>
+                                <a href=" <?= base_url('reports/periksarutin?id=' . $m['id']); ?>" class="btn btn-info"> <i class="fa-solid fa-eye"></i> </a>
                             </td>
                         </tr>
                         <?php $i++; ?>
@@ -96,5 +95,11 @@
             options: donutOptions<?= $m['id']; ?>
         });
     <?php endforeach; ?>
+</script>
+<script>
+    document.getElementById('printButton').addEventListener('click', function() {
+        // Munculkan jendela pencetakan
+        window.print();
+    });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/.js"></script>

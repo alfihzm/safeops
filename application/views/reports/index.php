@@ -18,9 +18,8 @@
             <table class="table table-hover text-light border-secondary" style="border: 2px solid; background: #2B1C2F;">
                 <tr>
                     <th class="col-sm-6">Jenis Laporan</th>
-                    <th class="col-sm-4"></th>
-                    <th scope="col">Lihat</th>
-                    <th scope="col">Unduh</th>
+                    <th class="col-sm"></th>
+                    <th scope="col-sm-4">Lihat</th>
                 </tr>
                 <tr class="table-info">
                     <td>
@@ -30,9 +29,6 @@
                     <td>
                         <a href="<?= base_url('reports/logwajib') ?>" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>
                     </td>
-                    <td>
-                        <a href="" class="btn btn-success"><i class="fa-solid fa-file-arrow-down fa-lg"></i></i></a>
-                    </td>
                 </tr>
                 <tr class="table-info">
                     <td><a href="<?= base_url('reports/rutin') ?>" class="btn btn-primary-responsive-width btn-outline-light mb-3" style="background: #2B1C2F;">Laporan Pemeriksaan</a></td>
@@ -40,13 +36,10 @@
                     <td>
                         <a href="<?= base_url('reports/logrutin') ?>" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>
                     </td>
-                    <td>
-                        <a href="" class="btn btn-success"><i class="fa-solid fa-file-arrow-down fa-lg"></i></a>
-                    </td>
                 </tr>
             </table>
         </div>
     </div>
-
 </div>
+
 <!-- End of Main Content -->

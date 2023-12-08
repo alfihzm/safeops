@@ -1,9 +1,11 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"> <?= $judul; ?></h1>
+    <h1 class="h3 text-gray-800 text-center d-flex align-items-center justify-content-center"> <?= $judul; ?></h1>
+    <h1 class="h3 text-gray-800 container text-center"> <?= date('j F Y', $laporan['date_created']); ?></h1>
+    <p class="text-center justify-content-center">Dicetak pada <?= date('F j, Y, g:i a'); ?></p>
     <div class="container text-center" style="margin-top: -10px;">
-        <a href="<?= base_url('reports/unduhrutin?id=' . $laporan['id']); ?>" class="btn btn-success"><i class="fa-solid fa-file-arrow-down fa-lg"></i> Unduh Laporan Ini</a>
+        <a href="#" id="printButton" class="btn btn-success"><i class="fa-solid fa-file-arrow-down fa-lg"></i> Unduh Laporan Ini</a>
     </div>
     <div class="row">
         <div class="col">
@@ -148,4 +150,32 @@
     </div>
     <!-- /.container-fluid -->
 </div>
+<script>
+    var printButton = document.getElementById('printButton');
+
+    // Function to hide the print button
+    function hidePrintButton() {
+        printButton.style.display = 'none';
+    }
+
+    // Function to show the print button
+    function showPrintButton() {
+        printButton.style.display = 'block';
+    }
+
+    // Event listener for the print button click
+    printButton.addEventListener('click', function() {
+        // Hide the print button before printing
+        hidePrintButton();
+
+        // Munculkan jendela pencetakan
+        window.print();
+    });
+
+    // Event listener for beforeprint event
+    window.addEventListener('beforeprint', hidePrintButton);
+
+    // Event listener for afterprint event
+    window.addEventListener('afterprint', showPrintButton);
+</script>
 <!-- End of Main Content -->

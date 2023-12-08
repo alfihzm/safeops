@@ -2,12 +2,11 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"> <?= $judul; ?></h1>
-
+    <a href="" class="btn btn-success" id="printButton" style="margin-top: -20px;"><i class="fa-solid fa-file-arrow-down fa-lg"></i> Rekap Semua Laporan</a>
     <div class="flash_data">
         <?= $this->session->flashdata('message'); ?>
     </div>
-
-    <div class="row">
+    <div class="row" style="margin-top: 10px;">
         <div class="col">
             <table class="table table-hover table-bordered">
                 <thead>
@@ -51,4 +50,10 @@
             $(this).remove();
         });
     }, 2000);
+</script>
+<script>
+    document.getElementById('printButton').addEventListener('click', function() {
+        // Munculkan jendela pencetakan
+        window.print();
+    });
 </script>
