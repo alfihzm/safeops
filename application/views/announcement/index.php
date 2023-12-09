@@ -12,7 +12,8 @@
             <div class="flash_message">
                 <?= $this->session->flashdata('message') ?>
             </div>
-            <a href="" data-toggle="modal" data-target="#newAnnouncementModal" class="btn btn-primary mb-3"> Tambah Announcement</a>
+            <a href="" data-toggle="modal" data-target="#newAnnouncementModal" class="btn btn-primary mb-3"> Tambah
+                Announcement</a>
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
@@ -78,9 +79,6 @@
         </div>
     </div>
 </div>
-
-<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 
 <script type="text/javascript">
     window.setTimeout(function() {
