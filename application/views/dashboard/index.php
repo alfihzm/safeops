@@ -26,7 +26,7 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $n['judul']; ?></td>
                             <td><?= $n['deskripsi']; ?></td>
-                            <td><?= date('d F Y', $n['date_created']); ?></td>
+                            <td><?= $n['tanggal']; ?></td>
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>
@@ -43,7 +43,7 @@
             Event Hari Ini
         </div>
         <div class="card-body">
-            <?php if ($event_data) : ?>
+            <?php if ($menu) : ?>
                 <table class="table table-hover">
                     <thead>
                         <tr>

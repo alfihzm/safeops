@@ -217,8 +217,6 @@
             <header>
                 <nav>
                     <a href="#" class="logo"><img src="assets/img/upload/whitelogo.png" alt="Logo"></a>
-                    <a href="#">Home</a>
-                    <a href="#">About Us</a>
                     <a class="login" href="<?= base_url('auth') ?>">Login</a>
                 </nav>
             </header>

@@ -29,7 +29,7 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $m['judul']; ?></td>
-                            <td><?= date('d F Y', $m['date_created']); ?></td>
+                            <td><?= $m['tanggal']; ?></td>
                             <td><?= $m['deskripsi']; ?></td>
                             <td>
                                 <a href="<?= base_url('announcement/update/' . $m['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Tanggal</label>
-                        <input type="date" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukan Isi Pengumuman">
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukan Isi Pengumuman">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Deskripsi</label>

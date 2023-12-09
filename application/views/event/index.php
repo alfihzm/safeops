@@ -34,7 +34,7 @@
                             <td><?= $m['deskripsi']; ?></td>
                             <td>
                                 <a href="<?= base_url('event/update/' . $m['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
-                                <a href="<?= base_url('event/delete/' . $m['id']); ?>" class="btn btn-danger">Delete</a>
+                                <a href="<?= base_url('event/delete/' . $m['id']); ?>" class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
                             </td>
                         </tr>
                         <?php $i++; ?>

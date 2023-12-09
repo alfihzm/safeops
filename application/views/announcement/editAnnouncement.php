@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tanggal">Tanggal</label>
-                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= date('Y-m-d', $announcement['date_created']); ?>" placeholder="Masukkan Tanggal">
+                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $announcement['tanggal']; ?>" placeholder="Masukkan Tanggal">
                 </div>
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>

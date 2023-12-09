@@ -26,9 +26,11 @@ class Announcement extends CI_Controller
             $this->load->view('templates/footer', $data);
         } else {
             // Simpan data ke database
+            
             $this->db->insert('announcement', [
                 'judul' => $this->input->post('judul'),
                 'deskripsi' => $this->input->post('deskripsi'),
+                'tanggal' => $this->input->post('tanggal'), 
                 'date_created' => time()
             ]);
 
@@ -36,7 +38,7 @@ class Announcement extends CI_Controller
             $announ_data = [
                 'judul' => $this->input->post('judul'),
                 'deskripsi' => $this->input->post('deskripsi'),
-                'tanggal' => time(),
+                'tanggal' => date('j F Y'),
                 'date_created' => time()
             ];
 

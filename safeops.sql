@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 04:21 AM
+-- Generation Time: Dec 09, 2023 at 04:52 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,8 +40,8 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `judul`, `deskripsi`, `tanggal`, `date_created`) VALUES
-(13, 'Kont', 'A', '0000-00-00', 1701342276),
-(14, 'asd', 'asd', '0000-00-00', 1701598396);
+(25, 'peler kuda', 'pelernya putus', '2023-12-21', 1702136309),
+(28, 'zxczxc', 'zxczxc', '2023-12-28', 1702135696);
 
 -- --------------------------------------------------------
 
@@ -54,6 +54,13 @@ CREATE TABLE `event` (
   `nama_event` varchar(128) NOT NULL,
   `deskripsi` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `nama_event`, `deskripsi`) VALUES
+(17, 'zxcczx', 'zxczxc');
 
 -- --------------------------------------------------------
 
@@ -149,7 +156,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nopeg`, `nama`, `email`, `username`, `password`, `role_id`, `photo_profile`, `no_telp`, `date_created`, `is_active`) VALUES
-(9, '12345678', 'PT. Safeops Nusantara', 'admin@gmail.com', 'admin', '$2y$10$GukxhWTantLZLLCUfT84juYIVbZFDRiZy5pnzz6fHHQwag0vcFlYK', 1, 'user12345678.png', '08123456789', 1697978285, 1),
+(9, '12345678', 'PT. Safeops Yunus', 'admin@gmail.com', 'admin', '$2y$10$GukxhWTantLZLLCUfT84juYIVbZFDRiZy5pnzz6fHHQwag0vcFlYK', 1, 'user12345678.png', '08123456789', 1697978285, 1),
 (10, '12332132', 'user', 'user@gmail.com', 'user', '$2y$10$DwPLYVvpYmMwLWDR.qkAZ./KK.9jdgiHwSFXyiDHDKO..QZwXOiqS', 2, 'default.jpg', '081234567892', 1697984675, 1),
 (12, '11221122', 'Supriyadi', 'supri@gmail.com', 'supriyan', '$2y$10$2NRonbm0QOQqbQt9xC539.8J3jNMQfbh58S6Mh2q8w9d0F4h2jiVq', 2, 'default2.jpg', '082166617772', 1701181735, 1),
 (17, '19202022', 'Joseph Mansur', 'joseph@gmail.com', 'josephman', '$2y$10$dUO3yfee1W48J8OtyH.H.uS02OCgAkAwxEr1fZKE0bInW.gtZFIoG', 2, 'user192020221.png', '082166678889', 1701226538, 1),
@@ -161,7 +168,8 @@ INSERT INTO `user` (`id`, `nopeg`, `nama`, `email`, `username`, `password`, `rol
 (34, '10242382', 'Ibun Saragih', 'ibun@gmail.com', 'ibunsar', '$2y$10$GSQnD9PUaC1uOPBdpSuvUuUg5N6out3dMEouAbQrk0/Zq8.DTCA..', 2, 'default2.jpg', '082174739562', 1701534014, 1),
 (35, '10243834', 'Marsudi Firgantoro', 'marsudi@gmail.com', 'marsudi', '$2y$10$983/mVFxWQ.Oo1gDwlum4uWRMJ.kh7pWOxyZXRs.EROkL/fO0Mh7y', 2, 'default2.jpg', '082174637242', 1701534055, 1),
 (36, '10243438', 'Rahmat Budiman', 'rahmat@gmail.com', 'rahmat', '$2y$10$oAqO7zupN2rttfGIWYDeVeigIXarexN/nNu03zE3augwD8lzceZLq', 2, 'default2.jpg', '082173462847', 1701535572, 1),
-(41, '10248347', 'Galuh Sucahyo', 'galuh@gmail.com', 'galuh', '$2y$10$PG.Fe.r5.QUQOs3kZB7cwO1qh9QHOw3h4Ya0orqvlrdjWRa/tTTWq', 2, 'default2.jpg', '082176382583', 1701537051, 1);
+(41, '10248347', 'Galuh Sucahyo', 'galuh@gmail.com', 'galuh', '$2y$10$PG.Fe.r5.QUQOs3kZB7cwO1qh9QHOw3h4Ya0orqvlrdjWRa/tTTWq', 2, 'default2.jpg', '082176382583', 1701537051, 1),
+(42, '10246666', 'Kambing berdiri', '6666@bsi.ca.id', 'kambing', '$2y$10$1mH3jOZK2/16Ss1eNppjsejPLUSQ72ux8xTf0dLmUqk1.vVn9dTvC', 2, 'default2.jpg', '0866606660', 1702135917, 1);
 
 -- --------------------------------------------------------
 
@@ -359,13 +367,13 @@ ALTER TABLE `visitor`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `laporanrutin`
@@ -383,7 +391,7 @@ ALTER TABLE `laporanwajib`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
