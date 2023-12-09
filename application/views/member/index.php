@@ -32,50 +32,6 @@
         background-color: #fff;
         border: 1px solid #dee2e6;
     }
-
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    .modal-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
-        padding: 20px;
-        text-align: center;
-        border-radius: 8px;
-    }
-
-    button {
-        padding: 10px 20px;
-        margin: 0 10px;
-        cursor: pointer;
-    }
-
-    #confirmButton {
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-    }
-
-    #cancelButton {
-        background-color: #f44336;
-        color: #fff;
-        border: none;
-    }
-
-    #confirmButton:hover,
-    #cancelButton:hover {
-        opacity: 0.8;
-    }
 </style>
 
 <div class="container-fluid" style="height: 95vh;">
@@ -158,17 +114,6 @@
         </div>
     </div>
 </div>
-
-<div class="modal" id="confirmationModal">
-    <div class="modal-content">
-        <p>Apakah Anda yakin ingin menghapus anggota ini?</p>
-        <button id="confirmButton">Ya</button>
-        <button id="cancelButton">Tidak</button>
-    </div>
-</div>
-
-<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 
 <script type="text/javascript">
     window.setTimeout(function() {
