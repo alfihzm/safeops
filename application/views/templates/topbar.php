@@ -13,9 +13,9 @@
             </button>
 
             <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">
-            <span id="liveDateTime" class="nav-link small"></span>
-                <div class="topbar-divider d-none d-sm-block"></div>
+            <ul class="navbar-nav ml-auto" style="margin-top: 15px;">
+                <span id="liveDateTime" class="nav-link small" style="margin-top: 3px;"></span>
+                <div class="topbar-divider d-none d-sm-block" style="margin-top: 0px;"></div>
 
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
@@ -46,13 +46,22 @@
         <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
         <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
         <script>
-        function updateDateTime() {
-            var now = new Date();
-            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
-            var formattedDate = now.toLocaleDateString(undefined, options);
-            document.getElementById('liveDateTime').textContent = formattedDate;
-        }
+            function updateDateTime() {
+                var now = new Date();
+                var options = {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    second: 'numeric',
+                    timeZoneName: 'short'
+                };
+                var formattedDate = now.toLocaleDateString(undefined, options);
+                document.getElementById('liveDateTime').textContent = formattedDate;
+            }
 
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
+            setInterval(updateDateTime, 1000);
+            updateDateTime();
         </script>
