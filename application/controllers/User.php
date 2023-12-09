@@ -100,7 +100,7 @@ class User extends CI_Controller
                     $this->db->update('user');
 
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah!</div>');
-                    redirect('dashboard/index');
+                    redirect('user');
                 }
             }
         }
