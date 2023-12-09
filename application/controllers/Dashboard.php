@@ -11,8 +11,8 @@ class Dashboard extends CI_Controller
     {
         $data['judul'] = "SafeOps";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['menu'] = $this->db->get('event')->result_array();
         $data['menu2'] = $this->db->get('announcement')->result_array();
+        $data['menu'] = $this->db->get('event')->result_array();
 
         // Tambahkan kode ini untuk mengambil data event dari sesi
         $event_data = $this->session->userdata('event_data');

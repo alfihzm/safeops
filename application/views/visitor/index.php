@@ -1,10 +1,11 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $judul; ?></h1>
-    <p style="margin-top: -25px;">Pengumuman akan ditampilkan kepada para petugas.</p>
-
+    <div class="alert alert-secondary" role="alert" style="margin-top: -15px;">
+        Tamu atau pengunjung yang masuk ke dalam lingkungan kantor
+        wajib didaftarkan ke pengunjung aktif.
+    </div>
     <div class="row">
         <div class="col-lg-12">
             <?= form_error('judul', '<div class="alert alert-danger" role="alert">', '</div>'); ?>

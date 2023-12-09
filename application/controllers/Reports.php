@@ -177,7 +177,6 @@ class Reports extends CI_Controller
                     if ($laporanLama && $laporanLama != $editImage) {
                         unlink(FCPATH . 'assets/img/report/wajib/' . $laporanLama);
                     }
-
                     $laporanBaru = $this->upload->data('file_name');
                     $update_data['image'] = $laporanBaru;
                 } else {
@@ -364,6 +363,7 @@ class Reports extends CI_Controller
             redirect('reports');
         }
     }
+
     public function logrutin()
     {
         is_logged_in();

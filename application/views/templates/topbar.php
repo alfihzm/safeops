@@ -14,14 +14,14 @@
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
-
+            <span id="liveDateTime" class="nav-link small"></span>
                 <div class="topbar-divider d-none d-sm-block"></div>
 
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?= $user['nopeg'] ?></span>
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?= $user['nama'] ?></span>
+                        <span class="mr-2 d-none d-lg-inline text-warning small"> <?= $user['nopeg'] ?></span>
+                        <span class="mr-2 d-none d-lg-inline text-warning small"><b><?= $user['nama'] ?></b></span>
                         <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profile/') . $user['photo_profile']; ?>">
                     </a>
                     <!-- Dropdown - User Information -->
@@ -45,3 +45,14 @@
 
         <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
         <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+        <script>
+        function updateDateTime() {
+            var now = new Date();
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+            var formattedDate = now.toLocaleDateString(undefined, options);
+            document.getElementById('liveDateTime').textContent = formattedDate;
+        }
+
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+        </script>

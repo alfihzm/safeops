@@ -9,7 +9,7 @@
             if (file_exists($logoPath)) {
                 echo '<img src="' . base_url($logoPath) . '" alt="Logo" style="max-width: 100%; max-height: 50px;">';
             } else {
-                echo 'Logo not found';
+                echo 'Logo tidak ditemukan';
             }
             ?>
         </div>
@@ -33,6 +33,17 @@
                 ";
     $menu = $this->db->query($queryMenu)->result_array();
     ?>
+
+    <div class="sidebar-heading">
+        Main Page
+    </div>
+    <li class="nav-item">
+        <a class="nav-link" <a href="<?= base_url('dashboard') ?>">
+            <i class="fa-solid fa-table-columns"></i>            
+            <span>Dashboard</span></a>
+    </li>
+    <hr class="sidebar-divider">
+
 
     <!-- LOOPING MENU -->
     <?php foreach ($menu as $m) : ?>

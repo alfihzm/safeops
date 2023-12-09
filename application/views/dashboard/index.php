@@ -60,7 +60,7 @@
                             <td><?= $m['deskripsi']; ?></td>
                         </tr>
                         <?php $i++; ?>
-                    <?php endforeach; ?>
+                    <?php endforeach; ?>.
                 </table>
             <?php else : ?>
                 <p>Tidak ada event hari ini.</p>
