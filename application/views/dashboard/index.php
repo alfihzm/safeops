@@ -2,10 +2,15 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"> <span id="pesanSelamat"></span> <?= $user['nama']; ?></h1>
 
     <!-- Announcements -->
     <div class="card mb-4 border border-dark" style="box-shadow: -5px 5px 5px 0px rgba(143,143,143,0.73);">
+        <img src="<?= base_url('assets/img/background/auth_background2.png'); ?>" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));">
+        <div class="text-overlay">
+            <h1 class="h1 mb-4 text-white" style="text-shadow: 2px 2px #2B1C2F;">
+                <b><span id="pesanSelamat"></span> <?= $user['nama']; ?></b>
+            </h1>
+        </div>
         <div class="card-header" style="background-color: #2B1C2F; color: white;">
             Pengumuman Hari Ini
         </div>
@@ -60,7 +65,7 @@
                             <td><?= $m['deskripsi']; ?></td>
                         </tr>
                         <?php $i++; ?>
-                    <?php endforeach; ?>.
+                        <?php endforeach; ?>.
                 </table>
             <?php else : ?>
                 <p>Tidak ada event hari ini.</p>
@@ -136,8 +141,13 @@
                 </div>
             </div>
         </div>
+        <table class="table table-hover">
+            <thead>
+                <tr id="table-headers"></tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
     </div>
-
 </div>
 <script>
     // Ganti dengan kunci API WeatherAPI Anda
@@ -165,5 +175,62 @@
         .then(response => response.json())
         .then(data => displayWeather(data))
         .catch(error => console.error('Error:', error));
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the current date
+        const currentDate = new Date();
+
+        // Get the number of days in the current month
+        const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
+        // Select the table headers row
+        const tableHeadersRow = document.getElementById("table-headers");
+
+        // Generate table headers with date numbers
+        for (let day = 1; day <= daysInMonth; day++) {
+            const th = document.createElement("th");
+            th.classList.add("text-nowrap");
+            th.textContent = day;
+            tableHeadersRow.appendChild(th);
+        }
+
+        // Simulate attendance data for demonstration purposes
+        const attendanceData = {
+            9: true, // User attended on the 11th
+            // Add more entries as needed
+        };
+        const attendanceData2 = {
+            12: true, // User attended on the 11th
+        };
+        // Add more entries as needed
+
+        // Select the table body
+        const tableBody = document.getElementById("table-body");
+
+        // Generate table rows with attendance styles
+        for (let userId = 1; userId <= 10; userId++) {
+            const tr = document.createElement("tr");
+
+            // Generate cells for each day
+            for (let day = 1; day <= daysInMonth; day++) {
+                const td = document.createElement("td");
+                td.classList.add("text-nowrap");
+
+                // Check if the user attended on this day
+                const isAttended = attendanceData[day] || false;
+
+                // Apply style based on attendance
+                if (isAttended) {
+                    td.style.backgroundColor = "green"; // Turn the row green
+                }
+
+                tr.appendChild(td);
+            }
+
+            // Append the row to the table body
+            tableBody.appendChild(tr);
+        }
+    });
 </script>
 <!-- End of Main Content -->

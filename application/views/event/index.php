@@ -22,6 +22,8 @@
                         <th scope="col">#</th>
                         <th scope="col">Event</th>
                         <th scope="col">Deskripsi</th>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">Jam</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -32,6 +34,8 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $m['nama_event']; ?></td>
                             <td><?= $m['deskripsi']; ?></td>
+                            <td><?= $m['tanggal']; ?></td>
+                            <td><?= $m['jam_mulai']; ?> - <?=$m['jam_selesai']?></td>
                             <td>
                                 <a href="<?= base_url('event/update/' . $m['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
                                 <a href="<?= base_url('event/delete/' . $m['id']); ?>" class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
@@ -66,6 +70,19 @@
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Deskripsi</label>
                         <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukan Deskripsi">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Tanggal Event</label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Jam Mulai Event</label>
+                        <input type="time" class="form-control" id="jam_mulai" name="jam_mulai" min="01:00" max="24:00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Jam Keluar Event</label>
+                        <input type="time" class="form-control" id="jam_selesai" name="jam_selesai" min="01:00" max="24:00" required>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -26,13 +26,19 @@ class Event extends CI_Controller
             // Simpan data ke database
             $this->db->insert('event', [
                 'nama_event' => $this->input->post('nama_event'),
-                'deskripsi' => $this->input->post('deskripsi')
+                'deskripsi' => $this->input->post('deskripsi'),
+                'tanggal' => $this->input->post('tanggal'),
+                'jam_mulai' => $this->input->post('jam_mulai'),
+                'jam_selesai' => $this->input->post('jam_selesai')
             ]);
 
             // Simpan data event dalam sesi
             $event_data = [
                 'nama_event' => $this->input->post('nama_event'),
-                'deskripsi' => $this->input->post('deskripsi')
+                'deskripsi' => $this->input->post('deskripsi'),
+                'tanggal' => $this->input->post('tanggal'),
+                'jam_mulai' => $this->input->post('jam_mulai'),
+                'jam_selesai' => $this->input->post('jam_selesai')
             ];
 
             $this->session->set_userdata('event_data', $event_data);

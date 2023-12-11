@@ -39,6 +39,37 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        .text-warning {
+            position: relative;
+            overflow: hidden;
+        }
+        .text-overlay {
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+        }
+        .text-warning:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, transparent, rgba(250, 255, 255, 0.8), transparent);
+            animation: uhuyy 2.5s infinite linear;
+        }
+
+        @keyframes uhuyy {
+            0% {
+            transform: translateX(100%);
+            }
+            100% {
+            transform: translateX(-150%);
+            }
+        }
     </style>
     <script>
         function togglePassword() {
