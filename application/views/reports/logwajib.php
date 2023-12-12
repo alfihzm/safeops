@@ -8,7 +8,13 @@
     </div>
     <div class="row" style="margin-top: 10px;">
         <div class="col">
-            <table class="table table-hover table-bordered">
+            <label for="searchInput">Cari berdasarkan Petugas:</label>
+            <input type="text" id="searchInput" placeholder="Search by Petugas...">
+
+            <label for="dateInput">Cari berdasarkan Tanggal:</label>
+            <input type="date" id="dateInput">
+
+            <table class="table table-hover table-bordered" id="dataTable">
                 <thead>
                     <tr style="background: #2B1C2F; color: #FFF;">
                         <th scope="col">No</th>
@@ -30,13 +36,12 @@
                             </td>
                             <td style="text-align:center; vertical-align: middle;">
                                 <a href="<?= base_url('reports/editwajib?id=' . $m['id']); ?>" class="btn btn-warning"> <i class="fa-solid fa-pencil"></i> </a>
-                                <a href=" <?= base_url('reports/periksawajib?id=' . $m['id']); ?>" class="btn btn-info"> <i class="fa-solid fa-eye"></i> </a>
+                                <a href="<?= base_url('reports/periksawajib?id=' . $m['id']); ?>" class="btn btn-info"> <i class="fa-solid fa-eye"></i> </a>
                             </td>
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
-
             </table>
         </div>
     </div>
@@ -55,5 +60,24 @@
     document.getElementById('printButton').addEventListener('click', function() {
         // Munculkan jendela pencetakan
         window.print();
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#searchInput").on("keyup", function() {
+            var petugasValue = $(this).val().toLowerCase();
+            var dateValue = $("#dateInput").val();
+
+            $("#dataTable tbody tr").filter(function() {
+                var petugasMatch = $(this).find("td:nth-child(2)").text().toLowerCase().indexOf(petugasValue) > -1;
+                var dateMatch = dateValue === "" || $(this).find("td:nth-child(3)").text() === dateValue;
+
+                $(this).toggle(petugasMatch && dateMatch);
+            });
+        });
+        $("#dateInput").on("change", function() {
+            $("#searchInput").trigger("keyup");
+        });
     });
 </script>
