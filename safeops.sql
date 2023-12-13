@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2023 at 04:52 PM
+-- Generation Time: Dec 12, 2023 at 04:55 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `safeops`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absensi`
+--
+
+CREATE TABLE `absensi` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(64) NOT NULL,
+  `nopeg` varchar(64) NOT NULL,
+  `tanggal` int(11) NOT NULL,
+  `jam_absen` int(11) NOT NULL,
+  `jam_keluar` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -40,8 +55,11 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `judul`, `deskripsi`, `tanggal`, `date_created`) VALUES
-(25, 'peler kuda', 'pelernya putus', '2023-12-21', 1702136309),
-(28, 'zxczxc', 'zxczxc', '2023-12-28', 1702135696);
+(18, 'PPDB 2023 telah dibuka!', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', 1702134971),
+(19, 'Patroli Rutin Irwansyahhh', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', 1702135236),
+(20, 'Patroli Rutin Irwansyahhh', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', 1702135262),
+(21, 'PPDB 2023 telah dibuka!', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2023-12-15', 1702135301),
+(22, 'Libur UAS Genap', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2023-12-11', 1702265363);
 
 -- --------------------------------------------------------
 
@@ -52,15 +70,11 @@ INSERT INTO `announcement` (`id`, `judul`, `deskripsi`, `tanggal`, `date_created
 CREATE TABLE `event` (
   `id` int(11) NOT NULL,
   `nama_event` varchar(128) NOT NULL,
+  `tanggal` int(11) NOT NULL,
+  `jam_mulai` varchar(64) NOT NULL,
+  `jam_selesai` varchar(64) NOT NULL,
   `deskripsi` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `event`
---
-
-INSERT INTO `event` (`id`, `nama_event`, `deskripsi`) VALUES
-(17, 'zxcczx', 'zxczxc');
 
 -- --------------------------------------------------------
 
@@ -156,7 +170,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nopeg`, `nama`, `email`, `username`, `password`, `role_id`, `photo_profile`, `no_telp`, `date_created`, `is_active`) VALUES
-(9, '12345678', 'PT. Safeops Yunus', 'admin@gmail.com', 'admin', '$2y$10$GukxhWTantLZLLCUfT84juYIVbZFDRiZy5pnzz6fHHQwag0vcFlYK', 1, 'user12345678.png', '08123456789', 1697978285, 1),
+(9, '12345678', 'PT. Safeops Nusantara', 'admin@gmail.com', 'admin', '$2y$10$GukxhWTantLZLLCUfT84juYIVbZFDRiZy5pnzz6fHHQwag0vcFlYK', 1, 'user12345678.png', '08123456789', 1697978285, 1),
 (10, '12332132', 'user', 'user@gmail.com', 'user', '$2y$10$DwPLYVvpYmMwLWDR.qkAZ./KK.9jdgiHwSFXyiDHDKO..QZwXOiqS', 2, 'default.jpg', '081234567892', 1697984675, 1),
 (12, '11221122', 'Supriyadi', 'supri@gmail.com', 'supriyan', '$2y$10$2NRonbm0QOQqbQt9xC539.8J3jNMQfbh58S6Mh2q8w9d0F4h2jiVq', 2, 'default2.jpg', '082166617772', 1701181735, 1),
 (17, '19202022', 'Joseph Mansur', 'joseph@gmail.com', 'josephman', '$2y$10$dUO3yfee1W48J8OtyH.H.uS02OCgAkAwxEr1fZKE0bInW.gtZFIoG', 2, 'user192020221.png', '082166678889', 1701226538, 1),
@@ -168,8 +182,7 @@ INSERT INTO `user` (`id`, `nopeg`, `nama`, `email`, `username`, `password`, `rol
 (34, '10242382', 'Ibun Saragih', 'ibun@gmail.com', 'ibunsar', '$2y$10$GSQnD9PUaC1uOPBdpSuvUuUg5N6out3dMEouAbQrk0/Zq8.DTCA..', 2, 'default2.jpg', '082174739562', 1701534014, 1),
 (35, '10243834', 'Marsudi Firgantoro', 'marsudi@gmail.com', 'marsudi', '$2y$10$983/mVFxWQ.Oo1gDwlum4uWRMJ.kh7pWOxyZXRs.EROkL/fO0Mh7y', 2, 'default2.jpg', '082174637242', 1701534055, 1),
 (36, '10243438', 'Rahmat Budiman', 'rahmat@gmail.com', 'rahmat', '$2y$10$oAqO7zupN2rttfGIWYDeVeigIXarexN/nNu03zE3augwD8lzceZLq', 2, 'default2.jpg', '082173462847', 1701535572, 1),
-(41, '10248347', 'Galuh Sucahyo', 'galuh@gmail.com', 'galuh', '$2y$10$PG.Fe.r5.QUQOs3kZB7cwO1qh9QHOw3h4Ya0orqvlrdjWRa/tTTWq', 2, 'default2.jpg', '082176382583', 1701537051, 1),
-(42, '10246666', 'Kambing berdiri', '6666@bsi.ca.id', 'kambing', '$2y$10$1mH3jOZK2/16Ss1eNppjsejPLUSQ72ux8xTf0dLmUqk1.vVn9dTvC', 2, 'default2.jpg', '0866606660', 1702135917, 1);
+(41, '10248347', 'Galuh Sucahyo', 'galuh@gmail.com', 'galuh', '$2y$10$PG.Fe.r5.QUQOs3kZB7cwO1qh9QHOw3h4Ya0orqvlrdjWRa/tTTWq', 2, 'default2.jpg', '082176382583', 1701537051, 1);
 
 -- --------------------------------------------------------
 
@@ -256,7 +269,7 @@ CREATE TABLE `user_sub_menu` (
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `judul_menu`, `url`, `icon`, `is_active`) VALUES
-(1, 2, 'Dashboard', 'dashboard', 'fas fa-fw fa-solid fa-gauge', 1),
+(1, 2, 'Dashboard', 'dashboard', 'fas fa-fw fa-solid fa-gauge', 0),
 (2, 2, 'Profil Saya', 'user', 'fas fa-fw fa-solid fa-user', 1),
 (6, 1, 'Announcement', 'announcement', 'fas fa-fw fa-solid fa-bullhorn', 1),
 (7, 1, 'Event Management', 'event', 'fas fa-fw fa-solid fa-calendar-days', 1),
@@ -293,11 +306,20 @@ INSERT INTO `visitor` (`id`, `nopeg`, `nama`, `tanggal`, `pengunjung`, `jam_masu
 (1, '123456', 'PT. Safeops Nusantara', 20231205, 'Rondi', '10', '0', 'None', 'VVIP'),
 (2, '789123', 'PT. Safeops Nusantara', 20231205, 'Durara', '10:00', '12:11', 'Sudah keluar', 'VVIP'),
 (3, '123456', 'PT. Safeops Nusantara', 2023, 'Yuri', '19:21', '19.33', 'Sudah keluar', 'Tamu'),
-(4, '123456', 'PT. Safeops Nusantara', 2023, 'Yaoami', '20:34', '08:15', 'Sudah keluar', 'TNI/POLRI');
+(4, '123456', 'PT. Safeops Nusantara', 2023, 'Yaoami', '20:34', '08:15', 'Sudah keluar', 'TNI/POLRI'),
+(5, '123456', 'PT. Safeops Nusantara', 2023, 'Dora', '10:46', '12:46', 'Sudah keluar', 'Kontraktor'),
+(6, '123456', 'PT. Safeops Nusantara', 2023, 'Swiper Jan Mencuri', '22:31', '23:31', 'Sudah keluar', 'TNI/POLRI'),
+(7, '192020', 'Joseph Mansur', 2023, 'Kokoa', '11:49', '12:50', 'Sudah keluar', 'Kontraktor');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `absensi`
+--
+ALTER TABLE `absensi`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `announcement`
@@ -364,16 +386,22 @@ ALTER TABLE `visitor`
 --
 
 --
+-- AUTO_INCREMENT for table `absensi`
+--
+ALTER TABLE `absensi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `laporanrutin`
@@ -391,7 +419,7 @@ ALTER TABLE `laporanwajib`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
@@ -421,7 +449,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `visitor`
 --
 ALTER TABLE `visitor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
