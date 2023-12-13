@@ -34,7 +34,7 @@
     }
 </style>
 
-<div class="container-fluid" style="height: 95vh;">
+<div class="container" style="height: 95vh;">
 
     <h1 class="h3 mb-4 text-gray-800"><?= $judul; ?></h1>
     <div class="flash_message">
@@ -49,6 +49,8 @@
 
             <a href=" <?= base_url('member/tambahAnggota'); ?>" class="btn btn-primary mb-3"> Tambah Anggota
             </a>
+
+            <input type="text" id="searchInput" class="form-control mb-3 col-sm-4" placeholder="Cari nama anggota">
 
             <table class="table table-bordered rounded" style="border-radius: 5%;">
                 <thead>
@@ -139,4 +141,27 @@
             return false;
         }
     }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("input", function() {
+            let filter = searchInput.value.toLowerCase();
+
+            let rows = document.querySelectorAll("tbody tr");
+
+            rows.forEach(function(row) {
+                let nameColumn = row.querySelector(
+                    "td:nth-child(2)");
+                let name = nameColumn.textContent.toLowerCase();
+
+                if (name.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+    });
 </script>
