@@ -30,7 +30,7 @@
                                             <p> Username </p>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" style="width: 50px; display: flex; justify-content: center; align-items: center;">
+                                                    <span class="input-group" style="width: 50px; display: flex; justify-content: center; align-items: center; background: #2d3a67; border-radius: 6px 0px 0px 6px">
                                                         <i class="fas fa-solid fa-id-card" style="font-size: 18px;"></i>
                                                     </span>
                                                 </div>
@@ -43,8 +43,8 @@
                                             <p> Password </p>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" style="width: 50px; display: flex; justify-content: center; align-items: center;">
-                                                        <i class="fas fa-solid fa-lock" style="font-size: 18px;"></i>
+                                                    <span class="input-group" style="width: 50px; display: flex; justify-content: center; align-items: center; background: #2d3a67; border-radius: 6px 0px 0px 6px">
+                                                        <i class=" fas fa-solid fa-key" style="font-size: 18px;"></i>
                                                     </span>
                                                 </div>
                                                 <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password">
@@ -58,7 +58,8 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html"> Lupa Password? </a>
+                                        <a style="text-decoration: none;" class="small" href="<?= base_url('welcome'); ?>">
+                                            Kembali </a>
                                     </div>
                                 </div>
                             </div>
