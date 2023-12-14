@@ -56,7 +56,7 @@
             <h3 style="color: #2B1C2F;">Log Barang Hilang</h3>
             <a href="<?= base_url('item/unduhitem'); ?>" class="btn btn-success" style="margin-bottom: 15px;"><i class="fa-solid fa-file-arrow-down fa-lg"></i> Unduh Laporan Ini</a>
             <table class="table table-hover table-striped" style="border: 3px solid #2B1C2F;"><br>
-                <label for="searchInput">Cari berdasarkan Nama Pengunjung: </label>
+                <label for="searchInput">Cari berdasarkan Nama Pemilik: </label>
                 <input type="text" id="searchInput" placeholder="Search by Nama Pengunjung...">
 
                 <label for="dateInput">Cari berdasarkan Tanggal Berkunjung: </label>

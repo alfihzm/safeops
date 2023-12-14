@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2023 at 04:55 AM
+-- Generation Time: Dec 14, 2023 at 01:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -34,6 +34,20 @@ CREATE TABLE `absensi` (
   `tanggal` int(11) NOT NULL,
   `jam_absen` int(11) NOT NULL,
   `jam_keluar` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alert`
+--
+
+CREATE TABLE `alert` (
+  `id` int(11) NOT NULL,
+  `nopeg` char(6) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `date_created` int(11) NOT NULL,
+  `alert` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -75,6 +89,36 @@ CREATE TABLE `event` (
   `jam_selesai` varchar(64) NOT NULL,
   `deskripsi` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `item`
+--
+
+CREATE TABLE `item` (
+  `id` int(11) NOT NULL,
+  `nopeg` char(6) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `tanggal` date NOT NULL,
+  `tanggal2` date DEFAULT NULL,
+  `shift` varchar(64) NOT NULL,
+  `pemilik` varchar(128) NOT NULL,
+  `jenis` varchar(64) NOT NULL,
+  `merk` varchar(64) NOT NULL,
+  `ciri` varchar(256) NOT NULL,
+  `jam_hilang` varchar(11) NOT NULL,
+  `jam_ditemukan` varchar(11) DEFAULT NULL,
+  `status` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`id`, `nopeg`, `nama`, `tanggal`, `tanggal2`, `shift`, `pemilik`, `jenis`, `merk`, `ciri`, `jam_hilang`, `jam_ditemukan`, `status`) VALUES
+(6, '123456', 'PT. Safeops Nusantara', '2023-12-14', NULL, 'Pagi', 'Test 123', 'Elektronik', 'Oppo', 'Handphone hitam, pemilik hitam', '01:57', '01:00', 'Sudah ditemukan'),
+(7, '123456', 'PT. Safeops Nusantara', '2023-12-14', '2023-12-15', 'Malam', 'Test 123', 'Barang pribadi', 'Oppo', 'Pemilik hitam', '02:00', '23:01', 'Sudah ditemukan');
 
 -- --------------------------------------------------------
 
@@ -207,7 +251,9 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (4, 1, 3),
 (5, 2, 3),
 (6, 1, 4),
-(7, 2, 4);
+(7, 2, 4),
+(8, 1, 5),
+(9, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -228,7 +274,8 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Administrator'),
 (2, 'Kontrol Pengguna'),
 (3, 'Laporan Harian'),
-(4, 'Laporan lain-lain');
+(4, 'Laporan lain-lain'),
+(5, 'Fitur keamanan');
 
 -- --------------------------------------------------------
 
@@ -277,8 +324,11 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `judul_menu`, `url`, `icon`, `is_a
 (9, 1, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 0),
 (11, 1, 'Security Management', 'member', 'fas fa-fw fa-solid fa-users', 1),
 (13, 3, 'Laporan Rutin', 'reports', 'fas fa-fw fa-solid fa-file-text ', 1),
+(14, 4, 'Laporan Kehilangan', 'item', 'fas fa-fw fa-solid fa-file-signature', 1),
 (15, 4, 'Laporan Pengunjung', 'visitor', 'fas fa-fw fa-solid fa-address-book', 1),
-(16, 4, 'Balap Kursi Roda', 'dashboard', 'fas fa-fw fa-solid fa-wheelchair-move', 1);
+(16, 4, 'Balap Kursi Roda', 'dashboard', 'fas fa-fw fa-solid fa-wheelchair-move', 1),
+(17, 5, 'Akses CCTV', 'camera', 'fas fa-fw fa-solid fa-file-shield', 1),
+(19, 5, 'Akses Peta', 'maps', 'fas fa-fw fa-solid fa-map-location-dot', 1);
 
 -- --------------------------------------------------------
 
@@ -290,7 +340,7 @@ CREATE TABLE `visitor` (
   `id` int(11) NOT NULL,
   `nopeg` char(6) NOT NULL,
   `nama` varchar(128) NOT NULL,
-  `tanggal` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
   `pengunjung` varchar(128) NOT NULL,
   `jam_masuk` varchar(11) NOT NULL,
   `jam_keluar` varchar(11) DEFAULT NULL,
@@ -303,13 +353,15 @@ CREATE TABLE `visitor` (
 --
 
 INSERT INTO `visitor` (`id`, `nopeg`, `nama`, `tanggal`, `pengunjung`, `jam_masuk`, `jam_keluar`, `status`, `kategori`) VALUES
-(1, '123456', 'PT. Safeops Nusantara', 20231205, 'Rondi', '10', '0', 'None', 'VVIP'),
-(2, '789123', 'PT. Safeops Nusantara', 20231205, 'Durara', '10:00', '12:11', 'Sudah keluar', 'VVIP'),
-(3, '123456', 'PT. Safeops Nusantara', 2023, 'Yuri', '19:21', '19.33', 'Sudah keluar', 'Tamu'),
-(4, '123456', 'PT. Safeops Nusantara', 2023, 'Yaoami', '20:34', '08:15', 'Sudah keluar', 'TNI/POLRI'),
-(5, '123456', 'PT. Safeops Nusantara', 2023, 'Dora', '10:46', '12:46', 'Sudah keluar', 'Kontraktor'),
-(6, '123456', 'PT. Safeops Nusantara', 2023, 'Swiper Jan Mencuri', '22:31', '23:31', 'Sudah keluar', 'TNI/POLRI'),
-(7, '192020', 'Joseph Mansur', 2023, 'Kokoa', '11:49', '12:50', 'Sudah keluar', 'Kontraktor');
+(1, '123456', 'PT. Safeops Nusantara', '2023-12-05', 'Rondi', '10', '0', 'None', 'VVIP'),
+(2, '789123', 'PT. Safeops Nusantara', '2023-12-05', 'Durara', '10:00', '12:11', 'Sudah keluar', 'VVIP'),
+(3, '123456', 'PT. Safeops Nusantara', '0000-00-00', 'Yuri', '19:21', '19.33', 'Sudah keluar', 'Tamu'),
+(4, '123456', 'PT. Safeops Nusantara', '0000-00-00', 'Yaoami', '20:34', '08:15', 'Sudah keluar', 'TNI/POLRI'),
+(5, '123456', 'PT. Safeops Nusantara', '0000-00-00', 'Dora', '10:46', '12:46', 'Sudah keluar', 'Kontraktor'),
+(6, '123456', 'PT. Safeops Nusantara', '0000-00-00', 'Swiper Jan Mencuri', '22:31', '23:31', 'Sudah keluar', 'TNI/POLRI'),
+(7, '192020', 'Joseph Mansur', '0000-00-00', 'Kokoa', '11:49', '12:50', 'Sudah keluar', 'Kontraktor'),
+(8, '123456', 'PT. Safeops Nusantara', '0000-00-00', 'yuki', '11:52', '11:55', 'Sudah keluar', 'Kontraktor'),
+(9, '123456', 'PT. Safeops Nusantara', '2023-12-13', 'Kokoa', '11:55', '11:00', 'Sudah keluar', 'Tamu');
 
 --
 -- Indexes for dumped tables
@@ -322,6 +374,12 @@ ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `alert`
+--
+ALTER TABLE `alert`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `announcement`
 --
 ALTER TABLE `announcement`
@@ -331,6 +389,12 @@ ALTER TABLE `announcement`
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `item`
+--
+ALTER TABLE `item`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -392,6 +456,12 @@ ALTER TABLE `absensi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `alert`
+--
+ALTER TABLE `alert`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
@@ -402,6 +472,12 @@ ALTER TABLE `announcement`
 --
 ALTER TABLE `event`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `item`
+--
+ALTER TABLE `item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `laporanrutin`
@@ -425,13 +501,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -443,13 +519,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `visitor`
 --
 ALTER TABLE `visitor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

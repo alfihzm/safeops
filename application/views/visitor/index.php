@@ -196,14 +196,14 @@
 <script>
     $(document).ready(function() {
         $("#searchInput, #dateInput").on("input change", function() {
-            var namaPemilikValue = $("#searchInput").val().toLowerCase();
-            var tanggalHilangValue = $("#dateInput").val();
+            var namaPengunjungValue = $("#searchInput").val().toLowerCase();
+            var tanggalBerkunjungValue = $("#dateInput").val();
 
             $("table tbody tr").filter(function() {
-                var namaPemilikMatch = $(this).find("td:nth-child(2)").text().toLowerCase().indexOf(namaPengunjungValue) > -1;
-                var tanggalHilangMatch = tanggalHilangValue === "" || $(this).find("td:nth-child(3)").text() === tanggalBerkunjungValue;
+                var namaPengunjungMatch = $(this).find("td:nth-child(2)").text().toLowerCase().indexOf(namaPengunjungValue) > -1;
+                var tanggalBerkunjungMatch = tanggalBerkunjungValue === "" || $(this).find("td:nth-child(3)").text() === tanggalBerkunjungValue;
 
-                $(this).toggle(namaPemilikMatch && tanggalHilangMatch);
+                $(this).toggle(namaPengunjungMatch && tanggalBerkunjungMatch);
             });
         });
     });
