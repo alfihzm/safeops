@@ -55,8 +55,13 @@
                 </tbody>
             </table>
             <h3 style="color: #2B1C2F;">Log Pengunjung</h3>
-            <a href="<?= base_url('reports/unduhwajib'); ?>" class="btn btn-success" style="margin-bottom: 15px;"><i class="fa-solid fa-file-arrow-down fa-lg"></i> Unduh Laporan Ini</a>
-            <table class="table table-hover table-striped" style="border: 3px solid #2B1C2F;">
+            <a href="<?= base_url('visitor/unduhvisitor'); ?>" class="btn btn-success" style="margin-bottom: 15px;"><i class="fa-solid fa-file-arrow-down fa-lg"></i> Unduh Laporan Ini</a>
+            <table class="table table-hover table-striped" style="border: 3px solid #2B1C2F;"><br>
+                <label for="searchInput">Cari berdasarkan Nama Pengunjung: </label>
+                <input type="text" id="searchInput" placeholder="Search by Nama Pengunjung...">
+
+                <label for="dateInput">Cari berdasarkan Tanggal Berkunjung: </label>
+                <input type="date" id="dateInput">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -73,7 +78,7 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td style="width: 16.666%;"><?= $k['pengunjung']; ?></td>
-                            <td style="width: 16.666%;"><?= date('d-m-Y', strtotime($k['tanggal'])); ?></td>
+                            <td style="width: 16.666%;"><?= $k['tanggal']; ?></td>
                             <td style="width: 16.666%;"><?= $k['jam_masuk']; ?></td>
                             <td style="width: 16.666%;"> <?= $k['jam_keluar'] ?></td>
                             <td style="width: 16.666%;"><?= $k['kategori']; ?></td>
@@ -187,20 +192,19 @@
         });
     }, 2000);
 </script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Handle the modal open event
-        $('.open-modal').click(function() {
-            var visitor_id = $(this).data('visitor-id');
-            $('#visitor_id').val(visitor_id);
-        });
+        $("#searchInput, #dateInput").on("input change", function() {
+            var namaPemilikValue = $("#searchInput").val().toLowerCase();
+            var tanggalHilangValue = $("#dateInput").val();
 
-        // Handle the form submission
-        $('#updateStatusForm').submit(function(e) {
-            e.preventDefault();
+            $("table tbody tr").filter(function() {
+                var namaPemilikMatch = $(this).find("td:nth-child(2)").text().toLowerCase().indexOf(namaPengunjungValue) > -1;
+                var tanggalHilangMatch = tanggalHilangValue === "" || $(this).find("td:nth-child(3)").text() === tanggalBerkunjungValue;
 
-            // Submit the form
-            $(this).unbind('submit').submit();
+                $(this).toggle(namaPemilikMatch && tanggalHilangMatch);
+            });
         });
     });
 </script>

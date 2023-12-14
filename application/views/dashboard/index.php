@@ -2,7 +2,22 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-
+    <div>
+        <?php
+        // Check if there is an alert with id "1" in the database
+        // $query = $this->db->get_where('alert', ['id' => 1]);
+        $query = $this->db->get_where('alert');
+        if ($query->num_rows() > 0) {
+            $alert_data = $query->row_array();
+            echo '<div class="mb-4"><div class="alert alert-danger">';
+            echo '<div class="text-center center-justify-content"><b>Peringatan!!!</b></div>';
+            echo '<div class="alert alert-danger">';
+            echo '<ul><li>Petugas ' . $alert_data['nama'] . ' dengan nomor pegawai ' . $alert_data['nopeg'] . ' mendapati aktivitas mencurigakan di ' . $alert_data['alert'] . '.</li><li>Segera lakukan normalisasi atau pengecekan!</ul>';
+            echo '<br><a href="' . base_url('camera/delete_alert/' . $alert_data['id']) . '" class="btn btn-success d-flex justify-content-center">Lakukan normalisasi</a>';
+            echo '</div></div></div>';
+        }
+        ?>
+    </div>
     <!-- Announcements -->
     <div class="card mb-4 border border-dark" style="box-shadow: -5px 5px 5px 0px rgba(143,143,143,0.73);">
         <img src="<?= base_url('assets/img/background/auth_background2.png'); ?>" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));">
