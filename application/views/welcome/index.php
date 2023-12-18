@@ -106,33 +106,31 @@
                 </div>
             </div>
 
-            <div class="animate">
-                <div class="container" style="height: 100%; padding: 50px; display: flex; justify-content: center; align-items: center;">
-                    <div class="card border border-dark col-lg-4" style="box-shadow: 10px 10px 5px 0px rgba(168,168,168,0.75); display: flex; flex-direction: column; margin: 20px;">
-                        <div class="card-header col-lg-12" style="background-color: #312F44; color: white; text-align: center; width: 100%;">
-                            Jumlah Security
-                        </div>
-                        <div class="box" style="display: flex; justify-content: space-around; align-items: center; padding: 20px; background: linear-gradient(124deg, #67aecb 0%, #7854b0 100%);">
-                            <img style="border-radius: 5px; max-height: 150px; max-width: 150px; width: 100%; border: 1px solid #7854b0;" src="<?= base_url('assets/img/welcome/profile2.png'); ?>" alt="profile1">
-                            <div style="display: flex; align-items: center; justify-content: center; margin: 20px;">
-                                <h4 style="color: #FFF; font-size: 1.1rem; margin-left: 15px;">12 Anggota</h4>
-                            </div>
+            <div class="container" style="height: 100%; padding: 50px; display: flex; justify-content: center; align-items: center;">
+                <div class="card border border-dark col-lg-4" style="box-shadow: 10px 10px 5px 0px rgba(168,168,168,0.75); display: flex; flex-direction: column; margin: 20px;">
+                    <div class="card-header col-lg-12" style="background-color: #312F44; color: white; text-align: center; width: 100%;">
+                        Jumlah Security
+                    </div>
+                    <div class="box" style="display: flex; justify-content: space-around; align-items: center; padding: 20px; background: linear-gradient(124deg, #67aecb 0%, #7854b0 100%);">
+                        <img style="border-radius: 5px; max-height: 150px; max-width: 150px; width: 100%; border: 1px solid #7854b0;" src="<?= base_url('assets/img/welcome/profile2.png'); ?>" alt="profile1">
+                        <div style="display: flex; align-items: center; justify-content: center; margin: 20px;">
+                            <h4 style="color: #FFF; font-size: 1.1rem; margin-left: 15px;"><?= $jumlahAnggota ?>
+                                Anggota
+                            </h4>
                         </div>
                     </div>
+                </div>
 
-                    <div class="card border border-dark col-lg-4" style="box-shadow: 10px 10px 5px 0px rgba(168,168,168,0.75); display: flex; flex-direction: column; margin: 20px;">
-                        <div class="card-header col-lg-12" style="background-color: #312F44; color: white; text-align: center; width: 100%;">
-                            Jumlah Barang Hilang
-                        </div>
-                        <div class="box" style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; padding: 20px; background: linear-gradient(124deg, #a6214b 0%, #7f011a 100%); height: 190px;">
-                            <label style="color: #FFF; margin: 10px;" for="cars">Pilih Kategori</label>
-                            <select id="cars" style="padding: 8px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); outline: none;" onfocus="this.style.borderColor='#ccc'" onblur="this.style.borderColor='#ccc'">
-                                <option value="volvo"> Elektronik </option>
-                                <option value="saab"> Furniture </option>
-                            </select>
-                            <div style="display: flex; align-items: center; justify-content: center; margin: 20px;">
-                                <h4 style="color: #FFF; font-size: 1.1rem;">12 Anggota</h4>
-                            </div>
+                <div class="card border border-dark col-lg-4" style="box-shadow: 10px 10px 5px 0px rgba(168,168,168,0.75); display: flex; flex-direction: column; margin: 20px;">
+                    <div class="card-header col-lg-12" style="background-color: #312F44; color: white; text-align: center; width: 100%;">
+                        Jumlah Laporan Barang Hilang
+                    </div>
+                    <div class="box" style="display: flex; justify-content: space-around; align-items: center; padding: 20px; background: linear-gradient(124deg, #a6214b 0%, #7f011a 100%);">
+                        <img style="border-radius: 5px; max-height: 150px; max-width: 150px; width: 100%; border: 1px solid #7f011a;" src="<?= base_url('assets/img/welcome/lost-item.jpg'); ?>" alt="lost-item">
+                        <div style="display: flex; align-items: center; justify-content: center; margin: 20px;">
+                            <h4 style="color: #FFF; font-size: 1.1rem; margin-left: 15px;"> <?= $jumlahBarang; ?>
+                                Barang
+                            </h4>
                         </div>
                     </div>
                 </div>
@@ -160,14 +158,12 @@
                 mobileNavbar.classList.toggle('menu-opened');
 
                 if (mobileNavbar.classList.contains('menu-opened')) {
-                    // Create "X" icon when the menu is opened
                     toggleMenu.innerHTML = '&#10005';
 
-                    // Remove menu text when the menu is opened
                     const menuItems = [{
                             text: 'Home',
                             href: '#'
-                        }, // Update with your actual links
+                        },
                         {
                             text: 'About Us',
                             href: '#'
@@ -175,10 +171,10 @@
                         {
                             text: 'Login',
                             href: '<?= base_url('auth') ?>'
-                        } // Update with the login link
+                        }
                     ];
 
-                    menuContainer.innerHTML = ''; // Clear the menu container
+                    menuContainer.innerHTML = '';
 
                     menuItems.forEach(item => {
                         const menuItem = document.createElement('a');
@@ -187,26 +183,22 @@
                         menuContainer.appendChild(menuItem);
                     });
                 } else {
-                    // Create hamburger icon when the menu is closed
                     toggleMenu.innerHTML = '&#9776;';
-                    menuContainer.innerHTML = ''; // Clear the menu container when the menu is closed
+                    menuContainer.innerHTML = '';
                 }
             });
 
-            // Close the menu when clicking outside the menu container
             document.addEventListener('click', function() {
                 const mobileNavbar = document.querySelector('#mobile-navbar nav');
                 mobileNavbar.classList.remove('menu-opened');
-                toggleMenu.innerHTML = '&#9776;'; // Reset the icon to hamburger
-                menuContainer.innerHTML = ''; // Clear the menu container
+                toggleMenu.innerHTML = '&#9776;';
+                menuContainer.innerHTML = '';
             });
 
-            // Prevent closing the menu when clicking inside the menu container
             menuContainer.addEventListener('click', function(event) {
                 event.stopPropagation();
             });
 
-            // Show/hide desktop/mobile navbar based on screen width
             function handleNavbarVisibility() {
                 const mobileNavbar = document.getElementById('mobile-navbar');
                 const desktopNavbar = document.getElementById('desktop-navbar');
@@ -220,7 +212,6 @@
                 }
             }
 
-            // Initial check and event listener for window resize
             handleNavbarVisibility();
             window.addEventListener('resize', handleNavbarVisibility);
         });

@@ -74,7 +74,7 @@ header nav a.logo img {
 	padding: 10px 10px;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	height: 86vh;
 	position: relative;
 }
@@ -93,16 +93,15 @@ header nav a.logo img {
 .main-content h1 {
 	font-size: 3em;
 	margin: 0;
-	font-family: 'Inter', sans-serif;
 	font-weight: 500;
 	color: #fff;
+	font-family: 'CircularStd', sans-serif;
 }
 
 .main-content p {
-	font-family: 'Inter', sans-serif;
-	font-weight: 300;
 	font-size: 1.2em;
 	color: #fff;
+	font-family: 'CircularStd', sans-serif;
 }
 
 /* Footer Styles */
@@ -145,7 +144,6 @@ footer {
 	justify-content: center;
 	position: relative;
 	top: 20px;
-	font-family: 'Montserrat';
 }
 
 .header h4 {
@@ -154,7 +152,6 @@ footer {
 	justify-content: center;
 	position: relative;
 	top: 20px;
-	font-family: 'Montserrat';
 	margin-bottom: 40px;
 }
 
@@ -164,7 +161,7 @@ footer {
 	justify-content: center;
 	position: relative;
 	top: 20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'CircularStd', sans-serif;
 	margin-bottom: 40px;
 }
 
@@ -183,7 +180,7 @@ footer {
 }
 
 .box p {
-	font-family: montserrat;
+	font-family: Arial;
 }
 
 /* Animasi */
