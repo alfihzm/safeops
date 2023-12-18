@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller
         $this->load->model('AnggotaModel');
         $this->load->model('ReportModel');
         $this->load->model('VisitorModel');
+        $this->load->model('ItemModel');
     }
 
     public function index()
@@ -19,6 +20,7 @@ class Dashboard extends CI_Controller
         $data['jumlahAnggota'] = $this->AnggotaModel->getJumlahAnggota(['role_id' => 2])->num_rows();
         $data['jumlahLaporan'] = $this->ReportModel->getJumlahLaporan()->num_rows();
         $data['jumlahVisitor'] = $this->VisitorModel->getJumlahVisitor()->num_rows();
+        $data['jumlahBarang']  = $this->ItemModel->getJumlahBarangHilang()->num_rows();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
