@@ -4,13 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="<?php echo base_url('favicon.ico'); ?>" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title> SafeOps </title>
     <link rel="icon" href="<?php echo base_url('favicon.ico'); ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url('assets/css/welcome/welcome.css'); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+<style>
+@font-face {
+	font-family: 'CircularStd';
+	src: url('assets/font/circular-std.ttf') format('truetype');
+}
 
+body {
+	font-family: 'CircularStd', 'Helvetica', sans-serif;
+
+}
+</style>
 </head>
 
 <body>
@@ -105,7 +116,6 @@
                     <p style="margin-top: 10px"><b> LORENZA A. </b></p>
                 </div>
             </div>
-
             <div class="container" style="height: 100%; padding: 50px; display: flex; justify-content: center; align-items: center;">
                 <div class="card border border-dark col-lg-4" style="box-shadow: 10px 10px 5px 0px rgba(168,168,168,0.75); display: flex; flex-direction: column; margin: 20px;">
                     <div class="card-header col-lg-12" style="background-color: #312F44; color: white; text-align: center; width: 100%;">

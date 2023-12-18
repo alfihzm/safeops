@@ -21,7 +21,9 @@ class Dashboard extends CI_Controller
         $data['jumlahLaporan'] = $this->ReportModel->getJumlahLaporan()->num_rows();
         $data['jumlahVisitor'] = $this->VisitorModel->getJumlahVisitor()->num_rows();
         $data['jumlahBarang']  = $this->ItemModel->getJumlahBarangHilang()->num_rows();
-
+        $lastAddedUserQuery = $this->db->query("SELECT * FROM user ORDER BY id DESC LIMIT 1");
+        $lastAddedUser = $lastAddedUserQuery->row_array();
+        $data['lastAddedUser'] = $lastAddedUser;
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);

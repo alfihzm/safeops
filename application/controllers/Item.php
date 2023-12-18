@@ -38,7 +38,7 @@ class Item extends CI_Controller
                 'jam_ditemukan' => $this->input->post('jam_ditemukan'),
                 'status' => $this->input->post('status')
             ]);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengunjung Telah ditambahkan!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Hilang Telah ditambahkan!</div>');
             redirect('item');
         }
     }
@@ -60,7 +60,7 @@ class Item extends CI_Controller
     {
         $data['judul'] = "Laporan Barang Hilang";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['keluar'] = $this->db->get_where('item', ['status' => 'Sudah ditemukan'])->result_array();
+        $data['sudah'] = $this->db->get_where('item', ['status' => 'Sudah ditemukan'])->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('item/unduhitem', $data);
         $this->load->view('templates/footer', $data);

@@ -58,14 +58,14 @@
             <a href="<?= base_url('visitor/unduhvisitor'); ?>" class="btn btn-success" style="margin-bottom: 15px;"><i class="fa-solid fa-file-arrow-down fa-lg"></i> Unduh Laporan Ini</a>
             <table class="table table-hover table-striped" style="border: 3px solid #2B1C2F;"><br>
                 <label for="searchInput">Cari berdasarkan Nama Pengunjung: </label>
-                <input type="text" id="searchInput" placeholder="Search by Nama Pengunjung...">
+                <input type="text" id="searchInput" placeholder="Cari Nama Pengunjung...">
 
                 <label for="dateInput">Cari berdasarkan Tanggal Berkunjung: </label>
                 <input type="date" id="dateInput">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col" style="width: 16.666%;">Nama Pengunjung</th>
+                        <th scope="col" style="width: 30.666%;">Nama Pengunjung</th>
                         <th scope="col" style="width: 16.666%;">Tanggal Berkunjung</th>
                         <th scope="col" style="width: 16.666%;">Jam Kunjungan</th>
                         <th scope="col" style="width: 16.666%;">Jam Keluar</th>
@@ -77,7 +77,7 @@
                     <?php foreach ($keluar as $k) : ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
-                            <td style="width: 16.666%;"><?= $k['pengunjung']; ?></td>
+                            <td style="width: 30.666%;"><?= $k['pengunjung']; ?></td>
                             <td style="width: 16.666%;"><?= $k['tanggal']; ?></td>
                             <td style="width: 16.666%;"><?= $k['jam_masuk']; ?></td>
                             <td style="width: 16.666%;"> <?= $k['jam_keluar'] ?></td>

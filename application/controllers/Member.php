@@ -13,7 +13,6 @@ class Member extends CI_Controller
         $data['judul'] = 'Security Officer List';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        // Konfigurasi Pagination
         $config['base_url'] = base_url() . 'member/index';
         $config['total_rows'] = $this->AnggotaModel->getAnggota(); // Jumlah Data Pada Tabel
         $config['per_page'] = 5;

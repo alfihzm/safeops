@@ -19,7 +19,6 @@ class Welcome extends CI_Controller
 
         $this->load->view('welcome/index', $data);
     }
-
     public function getJumlahBarangHilangByKategori($kategori)
     {
         $jumlahBarang = $this->ItemModel->getJumlahBarangHilangByKategori($kategori);

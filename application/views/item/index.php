@@ -12,7 +12,7 @@
             <div class="flash_message">
                 <?= $this->session->flashdata('message') ?>
             </div>
-            <a href="" data-toggle="modal" data-target="#newItemModal" class="btn btn-primary mb-3"> Tambah Pengunjung</a>
+            <a href="" data-toggle="modal" data-target="#newItemModal" class="btn btn-primary mb-3"> Tambah Item Hilang</a>
             <h3 style="color: #2B1C2F">Item Hilang</h3>
             <table class="table table-hover table-striped" style="border: 3px solid #2B1C2F;">
                 <thead>
@@ -57,9 +57,9 @@
             <a href="<?= base_url('item/unduhitem'); ?>" class="btn btn-success" style="margin-bottom: 15px;"><i class="fa-solid fa-file-arrow-down fa-lg"></i> Unduh Laporan Ini</a>
             <table class="table table-hover table-striped" style="border: 3px solid #2B1C2F;"><br>
                 <label for="searchInput">Cari berdasarkan Nama Pemilik: </label>
-                <input type="text" id="searchInput" placeholder="Search by Nama Pengunjung...">
+                <input type="text" id="searchInput" placeholder="Cari Nama Pemilik...">
 
-                <label for="dateInput">Cari berdasarkan Tanggal Berkunjung: </label>
+                <label for="dateInput">Cari berdasarkan Tanggal Ditemukan: </label>
                 <input type="date" id="dateInput">
                 <thead>
                     <tr>
@@ -83,7 +83,8 @@
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
                                 <td style="width: 16.666%;"><?= $k['pemilik']; ?></td>
-                                <td style="width: 16.666%;"><?= date('d-m-Y', strtotime($k['tanggal2'])); ?></td>
+                                <td style="width: 16.666%;"><?= $k['tanggal2']; ?></td>
+
                                 <td style="width: 16.666%;"><?= $k['merk']; ?></td>
                                 <td style="width: 16.666%;"><?= $k['ciri']; ?></td>
                                 <td style="width: 16.666%;"> <?= $k['jam_ditemukan'] ?></td>

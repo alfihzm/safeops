@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" href="<?= base_url('assets/css/auth/login.css') ?>">
+    <link rel="icon" href="<?php echo base_url('favicon.ico'); ?>" type="image/x-icon">
 </head>
 
 <style>

@@ -14,7 +14,6 @@
                 <?= $this->session->flashdata('message') ?>
             </div>
 
-            <!-- Form for editing announcement -->
             <form action="<?= base_url('announcement/update/' . $announcement['id']); ?>" method="POST">
                 <div class="form-group">
                     <label for="judul">Judul</label>

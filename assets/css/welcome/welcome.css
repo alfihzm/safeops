@@ -9,7 +9,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	font-family: 'CircularStd', sans-serif;
+	font-family: 'CircularStd', 'Helvetica', sans-serif;
 	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../img/background/auth_background.png') no-repeat center center fixed;
 	background-size: cover;
 	scroll-behavior: smooth;
@@ -156,8 +156,8 @@ footer {
 }
 
 .header h2 {
-    font-size: 2.5rem;
-    display: flex;
+	font-size: 2.5rem;
+	display: flex;
 	justify-content: center;
 	position: relative;
 	top: 20px;
