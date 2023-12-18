@@ -122,12 +122,12 @@
 
                     <div class="card border border-dark col-lg-4" style="box-shadow: 10px 10px 5px 0px rgba(168,168,168,0.75); display: flex; flex-direction: column; margin: 20px;">
                         <div class="card-header col-lg-12" style="background-color: #312F44; color: white; text-align: center; width: 100%;">
-                            Jumlah Orang Hilang
+                            Jumlah Barang Hilang
                         </div>
                         <div class="box" style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; padding: 20px; background: linear-gradient(124deg, #a6214b 0%, #7f011a 100%); height: 190px;">
                             <label style="color: #FFF; margin: 10px;" for="cars">Pilih Kategori</label>
                             <select id="cars" style="padding: 8px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); outline: none;" onfocus="this.style.borderColor='#ccc'" onblur="this.style.borderColor='#ccc'">
-                                <option value="volvo"> Orang Hitam </option>
+                                <option value="volvo"> Elektronik </option>
                                 <option value="saab"> Furniture </option>
                             </select>
                             <div style="display: flex; align-items: center; justify-content: center; margin: 20px;">
