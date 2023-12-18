@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2023 at 01:31 PM
+-- Generation Time: Dec 18, 2023 at 06:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -20,21 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `safeops`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `absensi`
---
-
-CREATE TABLE `absensi` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(64) NOT NULL,
-  `nopeg` varchar(64) NOT NULL,
-  `tanggal` int(11) NOT NULL,
-  `jam_absen` int(11) NOT NULL,
-  `jam_keluar` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -69,9 +54,6 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `judul`, `deskripsi`, `tanggal`, `date_created`) VALUES
-(18, 'PPDB 2023 telah dibuka!', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', 1702134971),
-(19, 'Patroli Rutin Irwansyahhh', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', 1702135236),
-(20, 'Patroli Rutin Irwansyahhh', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', 1702135262),
 (21, 'PPDB 2023 telah dibuka!', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2023-12-15', 1702135301),
 (22, 'Libur UAS Genap', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2023-12-11', 1702265363);
 
@@ -118,7 +100,9 @@ CREATE TABLE `item` (
 
 INSERT INTO `item` (`id`, `nopeg`, `nama`, `tanggal`, `tanggal2`, `shift`, `pemilik`, `jenis`, `merk`, `ciri`, `jam_hilang`, `jam_ditemukan`, `status`) VALUES
 (6, '123456', 'PT. Safeops Nusantara', '2023-12-14', NULL, 'Pagi', 'Test 123', 'Elektronik', 'Oppo', 'Handphone hitam, pemilik hitam', '01:57', '01:00', 'Sudah ditemukan'),
-(7, '123456', 'PT. Safeops Nusantara', '2023-12-14', '2023-12-15', 'Malam', 'Test 123', 'Barang pribadi', 'Oppo', 'Pemilik hitam', '02:00', '23:01', 'Sudah ditemukan');
+(7, '123456', 'PT. Safeops Nusantara', '2023-12-14', '2023-12-15', 'Malam', 'Test 123', 'Barang pribadi', 'Oppo', 'Pemilik hitam', '02:00', '23:01', 'Sudah ditemukan'),
+(8, '123456', 'PT. Safeops Nusantara', '2023-12-14', '2023-12-15', 'Pagi', 'Pamilik', 'Perhiasan', 'Kalung', 'Pemilik hitam', '19:33', '20:33', 'Sudah ditemukan'),
+(9, '123321', 'user', '2023-12-18', '2023-12-19', 'Pagi', 'Yudas', 'Elektronik', 'Canon EOS 100D ', 'Warna emas', '21:20', '21:28', 'Sudah ditemukan');
 
 -- --------------------------------------------------------
 
@@ -235,7 +219,6 @@ INSERT INTO `user` (`id`, `nopeg`, `nama`, `email`, `username`, `password`, `rol
 --
 
 CREATE TABLE `user_access_menu` (
-  `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -244,16 +227,16 @@ CREATE TABLE `user_access_menu` (
 -- Dumping data for table `user_access_menu`
 --
 
-INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 2, 2),
-(4, 1, 3),
-(5, 2, 3),
-(6, 1, 4),
-(7, 2, 4),
-(8, 1, 5),
-(9, 2, 5);
+INSERT INTO `user_access_menu` (`role_id`, `menu_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 2),
+(1, 3),
+(2, 3),
+(1, 4),
+(2, 4),
+(1, 5),
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -326,9 +309,9 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `judul_menu`, `url`, `icon`, `is_a
 (13, 3, 'Laporan Rutin', 'reports', 'fas fa-fw fa-solid fa-file-text ', 1),
 (14, 4, 'Laporan Kehilangan', 'item', 'fas fa-fw fa-solid fa-file-signature', 1),
 (15, 4, 'Laporan Pengunjung', 'visitor', 'fas fa-fw fa-solid fa-address-book', 1),
-(16, 4, 'Balap Kursi Roda', 'dashboard', 'fas fa-fw fa-solid fa-wheelchair-move', 1),
 (17, 5, 'Akses CCTV', 'camera', 'fas fa-fw fa-solid fa-file-shield', 1),
-(19, 5, 'Akses Peta', 'maps', 'fas fa-fw fa-solid fa-map-location-dot', 1);
+(19, 5, 'Akses Peta', 'maps', 'fas fa-fw fa-solid fa-map-location-dot', 1),
+(20, 5, 'Balap Kursi Roda', 'dashboard', 'fas fa-fw fa-solid fa-wheelchair-move', 1);
 
 -- --------------------------------------------------------
 
@@ -366,12 +349,6 @@ INSERT INTO `visitor` (`id`, `nopeg`, `nama`, `tanggal`, `pengunjung`, `jam_masu
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `absensi`
---
-ALTER TABLE `absensi`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `alert`
@@ -416,12 +393,6 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_access_menu`
---
-ALTER TABLE `user_access_menu`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `user_menu`
 --
 ALTER TABLE `user_menu`
@@ -450,34 +421,28 @@ ALTER TABLE `visitor`
 --
 
 --
--- AUTO_INCREMENT for table `absensi`
---
-ALTER TABLE `absensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `alert`
 --
 ALTER TABLE `alert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `laporanrutin`
@@ -498,12 +463,6 @@ ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `user_access_menu`
---
-ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
@@ -519,7 +478,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `visitor`
