@@ -6,7 +6,7 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-        <span id="liveDateTime" class="nav-link small" style="margin-top: 3px;"></span>
+            <span id="liveDateTime" class="nav-link small" style="margin-top: 3px;"></span>
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                 <i class="fa fa-bars"></i>
@@ -20,7 +20,7 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-warning small"> <span class="uhuyy"><?= $user['nopeg'] ?></span></span></span>
-                        <span class="mr-2 d-none d-lg-inline text-warning small">  <b><span class="uhuyy"><?= $user['nama'] ?></span></b></b></span>
+                        <span class="mr-2 d-none d-lg-inline text-warning small"> <b><span class="uhuyy"><?= $user['nama'] ?></span></b></b></span>
                         <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profile/') . $user['photo_profile']; ?>">
                     </a>
                     <!-- Dropdown - User Information -->
