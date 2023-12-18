@@ -46,6 +46,11 @@ class AnggotaModel extends CI_Model
         }
     }
 
+    public function getJumlahAnggota($user = null)
+    {
+        return $this->db->get_where('user', $user);
+    }
+
     public function hapusAnggota($id)
     {
     }

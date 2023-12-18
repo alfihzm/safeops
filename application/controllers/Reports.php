@@ -418,7 +418,7 @@ class Reports extends CI_Controller
         $data['menu'] = $this->db->get('laporanrutin')->result_array();
         $data['judul'] = "Laporan Pemeriksaan Rutin" . ($laporan_name ? " $laporan_name" : ''); // Append the name if available
         $waktuskrg = time();
-        
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('reports/unduhrutin', $data);
