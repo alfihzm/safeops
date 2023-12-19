@@ -23,7 +23,6 @@ class Event extends CI_Controller
             $this->load->view('event/index', $data);
             $this->load->view('templates/footer', $data);
         } else {
-            // Simpan data ke database
             $this->db->insert('event', [
                 'nama_event' => $this->input->post('nama_event'),
                 'deskripsi' => $this->input->post('deskripsi'),
@@ -78,7 +77,6 @@ class Event extends CI_Controller
     public function delete($event_id)
     {
         $event = $this->db->get_where('event', ['id' => $event_id])->row_array();
-
         if ($event) {
             $this->db->delete('event', ['id' => $event_id]);
 

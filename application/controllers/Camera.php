@@ -31,7 +31,6 @@ class Camera extends CI_Controller
     }
     public function delete_alert($alert_id)
     {
-
         if (!$this->session->userdata('email')) {
             redirect('auth'); // Redirect to the login page or handle unauthorized access
         }

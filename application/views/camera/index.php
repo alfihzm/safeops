@@ -53,17 +53,14 @@
                 <div>
                     <div>
                         <b>Kamera Outdoor Utara</b><br>
-                        <!-- Isi tampilan live view dari url YouTube disini -->
                         <iframe id="youtubeFrame" width="100%" height="400" src="https://www.youtube.com/embed/GEPJYPznC_Q?autoplay=1&controls=0&showinfo=0&mute=1" frameborder="3" allowfullscreen></iframe>
                     </div>
                     <div>
                         <b>Kamera Outdoor Serambi Masjid</b><br>
-                        <!-- Isi tampilan live view dari url YouTube disini -->
                         <iframe id="youtubeFrame" width="100%" height="400" src="https://www.youtube.com/embed/dkK5hxD7bzQ?autoplay=1&controls=0&showinfo=0&mute=1" frameborder="3" allowfullscreen></iframe>
                     </div>
                     <div>
                         <b>Kamera Outdoor Sentral</b><br>
-                        <!-- Isi tampilan live view dari url YouTube disini -->
                         <iframe id="youtubeFrame" width="100%" height="400" src="https://www.youtube.com/embed/6dp-bvQ7RWo?autoplay=1&controls=0&showinfo=0&mute=1" frameborder="3" allowfullscreen></iframe>
                     </div>
                 </div>

@@ -67,6 +67,7 @@ class Announcement extends CI_Controller
         } else {
             $data = [
                 'judul' => $this->input->post('judul'),
+                'tanggal' => $this->input->post('tanggal'),
                 'deskripsi' => $this->input->post('deskripsi'),
                 'date_created' => time()
             ];
@@ -75,7 +76,6 @@ class Announcement extends CI_Controller
             $this->db->update('announcement', $data);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman Telah diperbarui!</div>');
-
             redirect('announcement');
         }
     }
@@ -91,7 +91,6 @@ class Announcement extends CI_Controller
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Event tidak ditemukan!</div>');
         }
-
         redirect('announcement');
     }
 }

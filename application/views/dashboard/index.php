@@ -55,7 +55,7 @@
         </div>
     </div>
 
-    <!-- Event Hari Ini -->
+    <!-- Event -->
     <div class="card mb-4 border border-dark" style="box-shadow: -5px 5px 5px 0px rgba(143,143,143,0.73);">
         <div class="card-header" style="background-color: #2B1C2F; color: white;">
             Event Hari Ini
@@ -90,7 +90,7 @@
         </div>
     </div>
 
- <!-- Quick Links -->
+ <!-- Infobox -->
     <div class="row">
         <div class="col-lg-3">
             <div class=" card border border-dark"
@@ -172,7 +172,7 @@
                                 <li>Pengguna baru ditambahkan</li>
                             </td>
                             <td> : </td>
-                            <td> <?php echo $lastAddedUser['nama']; ?></td>
+                            <td><b> <?php echo $lastAddedUser['nama']; ?></b></td>
                         </tr>
                         <tr>
                             <td>

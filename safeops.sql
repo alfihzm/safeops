@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2023 at 06:39 PM
+-- Generation Time: Dec 19, 2023 at 02:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -54,8 +54,8 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `judul`, `deskripsi`, `tanggal`, `date_created`) VALUES
-(21, 'PPDB 2023 telah dibuka!', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2023-12-15', 1702135301),
-(22, 'Libur UAS Genap', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2023-12-11', 1702265363);
+(24, 'Kenaikan gaji', 'Honor petugas dengan 2 tahun bekerja naik 0.1%', '2023-12-17', 1702942102),
+(25, 'Jam shift malam', 'Shift malam dimulai pukul 18.00 PM', '2023-12-18', 1702942164);
 
 -- --------------------------------------------------------
 
@@ -71,6 +71,13 @@ CREATE TABLE `event` (
   `jam_selesai` varchar(64) NOT NULL,
   `deskripsi` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `nama_event`, `tanggal`, `jam_mulai`, `jam_selesai`, `deskripsi`) VALUES
+(16, 'Hari Kopi Sedunia', 2023, '06:31', '23:31', 'Disediakan berbagai kopi di ruang pantry');
 
 -- --------------------------------------------------------
 
@@ -99,10 +106,8 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`id`, `nopeg`, `nama`, `tanggal`, `tanggal2`, `shift`, `pemilik`, `jenis`, `merk`, `ciri`, `jam_hilang`, `jam_ditemukan`, `status`) VALUES
-(6, '123456', 'PT. Safeops Nusantara', '2023-12-14', NULL, 'Pagi', 'Test 123', 'Elektronik', 'Oppo', 'Handphone hitam, pemilik hitam', '01:57', '01:00', 'Sudah ditemukan'),
-(7, '123456', 'PT. Safeops Nusantara', '2023-12-14', '2023-12-15', 'Malam', 'Test 123', 'Barang pribadi', 'Oppo', 'Pemilik hitam', '02:00', '23:01', 'Sudah ditemukan'),
-(8, '123456', 'PT. Safeops Nusantara', '2023-12-14', '2023-12-15', 'Pagi', 'Pamilik', 'Perhiasan', 'Kalung', 'Pemilik hitam', '19:33', '20:33', 'Sudah ditemukan'),
-(9, '123321', 'user', '2023-12-18', '2023-12-19', 'Pagi', 'Yudas', 'Elektronik', 'Canon EOS 100D ', 'Warna emas', '21:20', '21:28', 'Sudah ditemukan');
+(10, '123456', 'PT. Safeops Nusantara', '2023-12-16', NULL, 'Pagi', 'Yudas Iskandar', 'Dokumen', 'Buku Diary', 'Berwarna hitam', '12:00', NULL, 'Belum ditemukan'),
+(11, '123321', 'user', '2023-12-19', '2023-12-20', 'Malam', 'Gibrail Subiwangi', 'Perhiasan', 'Cincin Emas Rollin', 'Memiliki asam sulfat', '07:45', '11:48', 'Sudah ditemukan');
 
 -- --------------------------------------------------------
 
@@ -117,11 +122,11 @@ CREATE TABLE `laporanrutin` (
   `tanggal` date NOT NULL,
   `shift` varchar(64) NOT NULL,
   `listrik` varchar(64) NOT NULL,
-  `komentar1` varchar(128) NOT NULL,
+  `komentar1` varchar(128) DEFAULT NULL,
   `alarm` varchar(64) NOT NULL,
-  `komentar2` varchar(128) NOT NULL,
+  `komentar2` varchar(128) DEFAULT NULL,
   `cctv` varchar(64) NOT NULL,
-  `komentar3` varchar(128) NOT NULL,
+  `komentar3` varchar(128) DEFAULT NULL,
   `akses1` varchar(64) NOT NULL,
   `akses2` varchar(64) NOT NULL,
   `akses3` varchar(64) NOT NULL,
@@ -139,9 +144,10 @@ CREATE TABLE `laporanrutin` (
 --
 
 INSERT INTO `laporanrutin` (`id`, `nopeg`, `nama`, `tanggal`, `shift`, `listrik`, `komentar1`, `alarm`, `komentar2`, `cctv`, `komentar3`, `akses1`, `akses2`, `akses3`, `inven1`, `inven2`, `inven3`, `aset1`, `aset2`, `aset3`, `date_created`) VALUES
-(1, '123456', 'PT. Safeops Nusantara', '2023-12-05', '', 'Berfungsi', 'AAAA', 'Berfungsi', '', 'Sempat tidak berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701782181'),
-(2, '123456', 'PT. Safeops Nusantara', '2023-12-05', '', 'Tidak berfungsi', '', 'Berfungsi', '', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701786318'),
-(3, '123456', 'PT. Safeops Nusantara', '2023-12-06', '', 'Berfungsi', '', 'Berfungsi', '', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701786836');
+(1, '192864', 'Sandy Andriawan	', '2023-12-05', 'Pagi', 'Tidak berfungsi', '', 'Berfungsi', '', 'Sempat tidak berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701782181'),
+(2, '192020', 'Joseph Mansur', '2023-12-05', 'Malam', 'Tidak berfungsi', '', 'Berfungsi', '', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701786318'),
+(3, '123456', 'PT. Safeops Nusantara', '2023-12-06', 'Pagi', 'Berfungsi', '', 'Berfungsi', '', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1701786836'),
+(4, '123456', 'PT. Safeops Nusantara', '2023-12-20', 'Pagi', 'Berfungsi', '', 'Tidak berfungsi', 'Suara alarm tidak terdengar.', 'Berfungsi', '', 'Pintu Utara Aman', 'Pintu Utama Aman', 'Pintu Darurat Aman', 'Rompi telah dikembalikan', 'Helm telah dikembalikan', 'Radio telah dikembalikan', 'Brankas telah diperiksa', 'Arsip telah diperiksa', 'Database telah diperiksa', '1702946306');
 
 -- --------------------------------------------------------
 
@@ -167,11 +173,7 @@ CREATE TABLE `laporanwajib` (
 --
 
 INSERT INTO `laporanwajib` (`id`, `nopeg`, `nama`, `judul`, `tanggal`, `shift`, `deskripsi`, `image`, `komentar`, `date_created`) VALUES
-(18, '123456', 'PT. Safeops Nusantara', 'Patroli Rutin Irwansyahputras', '2023-12-03', '', '<p>Tralalalalala Trilillili</p>', '', 'Ya Bagus Begitu Ya', 1701400413),
-(19, '123456', 'PT. Safeops Nusantara', 'Patroli Rutin Rudi', '2023-12-01', '', '&lt;p&gt;Lancar jaya jos gandossss&lt;/p&gt;', 'laporanwajib_003_default2.jpg', 'Oke', 1701402083),
-(20, '192208', 'Mohammad Alfi Hamzami', 'Laporan Kerusakan Aset Maharaja', '2023-12-02', '', '&lt;p&gt;Rubik ini telah dirusak oleh seseorang yang tidak bertanggung jawab, saat ini para security sedang mencari pelaku dari perusak rubik ini&lt;/p&gt;', 'laporanwajib_007_rubik-test.jpg', 'Rubik Milik Maharaja', 1701510811),
-(21, '123456', 'PT. Safeops Nusantara', 'Libur UAS Genapppp', '2023-12-04', '', '&lt;p&gt;Klo gitu wakwakiwaokwaokaw&amp;nbsp;&lt;strong&gt;oakwowaokwa&amp;nbsp;&lt;/strong&gt;ssdas&amp;nbsp;&lt;em&gt;sdsdamakan&lt;/em&gt;&lt;/p&gt;', 'laporanwajib_009_user192020221.png', 'Tidak ada', 1701678490),
-(22, '123456', 'PT. Safeops Nusantara', 'Makan Nasi', '2023-12-04', 'Malam', '&lt;p&gt;Assede&amp;nbsp;&lt;strong&gt;assalamu\'alaikum&lt;/strong&gt; sama lu semua&lt;/p&gt;', 'laporanwajib_010_user19202022.png', 'Tidak ada', 1701682332);
+(20, '192208', 'Mohammad Alfi Hamzami', 'Laporan Kerusakan Aset Maharaja', '2023-12-02', '', '<p>Saat&nbsp;<strong>patroli</strong> di lobby, rubik ini ditemukan telah dirusak oleh seseorang yang tidak bertanggung jawab, saat ini para security sedang mencari pelaku dari perusak rubik ini.</p>', 'laporanwajib_007_rubik-test.jpg', 'Rubik Milik Maharaja', 1701510811);
 
 -- --------------------------------------------------------
 
@@ -199,7 +201,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `nopeg`, `nama`, `email`, `username`, `password`, `role_id`, `photo_profile`, `no_telp`, `date_created`, `is_active`) VALUES
 (9, '12345678', 'PT. Safeops Nusantara', 'admin@gmail.com', 'admin', '$2y$10$GukxhWTantLZLLCUfT84juYIVbZFDRiZy5pnzz6fHHQwag0vcFlYK', 1, 'user12345678.png', '08123456789', 1697978285, 1),
-(10, '12332132', 'user', 'user@gmail.com', 'user', '$2y$10$DwPLYVvpYmMwLWDR.qkAZ./KK.9jdgiHwSFXyiDHDKO..QZwXOiqS', 2, 'default.jpg', '081234567892', 1697984675, 1),
+(10, '12332132', 'user', 'user@gmail.com', 'user', '$2y$10$DwPLYVvpYmMwLWDR.qkAZ./KK.9jdgiHwSFXyiDHDKO..QZwXOiqS', 2, 'user12332132.png', '081234567892', 1697984675, 1),
 (12, '11221122', 'Supriyadi', 'supri@gmail.com', 'supriyan', '$2y$10$2NRonbm0QOQqbQt9xC539.8J3jNMQfbh58S6Mh2q8w9d0F4h2jiVq', 2, 'default2.jpg', '082166617772', 1701181735, 1),
 (17, '19202022', 'Joseph Mansur', 'joseph@gmail.com', 'josephman', '$2y$10$dUO3yfee1W48J8OtyH.H.uS02OCgAkAwxEr1fZKE0bInW.gtZFIoG', 2, 'user192020221.png', '082166678889', 1701226538, 1),
 (18, '19220821', 'Mohammad Alfi Hamzami', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$a0lEBG.b54EZ5XJNcAkeWOHWXBYTgvp77PApMxTH8X3PKoE.k7KiW', 1, 'user19220821.png', '082161872392', 1701226660, 1),
@@ -336,15 +338,14 @@ CREATE TABLE `visitor` (
 --
 
 INSERT INTO `visitor` (`id`, `nopeg`, `nama`, `tanggal`, `pengunjung`, `jam_masuk`, `jam_keluar`, `status`, `kategori`) VALUES
-(1, '123456', 'PT. Safeops Nusantara', '2023-12-05', 'Rondi', '10', '0', 'None', 'VVIP'),
-(2, '789123', 'PT. Safeops Nusantara', '2023-12-05', 'Durara', '10:00', '12:11', 'Sudah keluar', 'VVIP'),
-(3, '123456', 'PT. Safeops Nusantara', '0000-00-00', 'Yuri', '19:21', '19.33', 'Sudah keluar', 'Tamu'),
-(4, '123456', 'PT. Safeops Nusantara', '0000-00-00', 'Yaoami', '20:34', '08:15', 'Sudah keluar', 'TNI/POLRI'),
-(5, '123456', 'PT. Safeops Nusantara', '0000-00-00', 'Dora', '10:46', '12:46', 'Sudah keluar', 'Kontraktor'),
-(6, '123456', 'PT. Safeops Nusantara', '0000-00-00', 'Swiper Jan Mencuri', '22:31', '23:31', 'Sudah keluar', 'TNI/POLRI'),
-(7, '192020', 'Joseph Mansur', '0000-00-00', 'Kokoa', '11:49', '12:50', 'Sudah keluar', 'Kontraktor'),
-(8, '123456', 'PT. Safeops Nusantara', '0000-00-00', 'yuki', '11:52', '11:55', 'Sudah keluar', 'Kontraktor'),
-(9, '123456', 'PT. Safeops Nusantara', '2023-12-13', 'Kokoa', '11:55', '11:00', 'Sudah keluar', 'Tamu');
+(1, '123456', 'PT. Safeops Nusantara', '2023-12-05', 'Rendi Abdul', '10:00', '10:30', 'Sudah keluar', 'VVIP'),
+(2, '789123', 'PT. Safeops Nusantara', '2023-12-06', 'David Makaliwe', '10:00', '12:11', 'Sudah keluar', 'VVIP'),
+(3, '123456', 'PT. Safeops Nusantara', '2023-12-10', 'Yuri Gagarin', '19:21', '19.33', 'Sudah keluar', 'Tamu'),
+(4, '123456', 'PT. Safeops Nusantara', '2023-12-11', 'Bripda. Taulany', '20:34', '08:15', 'Sudah keluar', 'TNI/POLRI'),
+(5, '123456', 'PT. Safeops Nusantara', '2023-12-11', 'Aceng Priok', '10:46', '12:46', 'Sudah keluar', 'Kontraktor'),
+(6, '123456', 'PT. Safeops Nusantara', '2023-12-11', 'Broto Grogol', '22:31', '23:31', 'Sudah keluar', 'Kontraktor'),
+(7, '192020', 'Joseph Mansur', '2023-12-11', 'Koala Kumal', '11:49', '12:50', 'Sudah keluar', 'VVIP'),
+(8, '123456', 'PT. Safeops Nusantara', '2023-12-12', 'Yuki Gasai', '11:52', '11:55', 'Sudah keluar', 'Kontraktor');
 
 --
 -- Indexes for dumped tables
@@ -424,31 +425,31 @@ ALTER TABLE `visitor`
 -- AUTO_INCREMENT for table `alert`
 --
 ALTER TABLE `alert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `laporanrutin`
 --
 ALTER TABLE `laporanrutin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `laporanwajib`
@@ -484,7 +485,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `visitor`
 --
 ALTER TABLE `visitor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
