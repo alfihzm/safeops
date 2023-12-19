@@ -59,7 +59,7 @@
                     <div>
                         <b>Kamera Outdoor Serambi Masjid</b><br>
                         <!-- Isi tampilan live view dari url YouTube disini -->
-                        <iframe id="youtubeFrame" width="100%" height="400" src="https://www.youtube.com/embed/2V7Bkrm4xJ0?autoplay=1&controls=0&showinfo=0&mute=1" frameborder="3" allowfullscreen></iframe>
+                        <iframe id="youtubeFrame" width="100%" height="400" src="https://www.youtube.com/embed/dkK5hxD7bzQ?autoplay=1&controls=0&showinfo=0&mute=1" frameborder="3" allowfullscreen></iframe>
                     </div>
                     <div>
                         <b>Kamera Outdoor Sentral</b><br>

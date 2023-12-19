@@ -6,6 +6,7 @@ class Reports extends CI_Controller
     {
         parent::__construct();
     }
+
     public function index()
     {
         $data['judul'] = "Laporan Harian";
@@ -130,17 +131,14 @@ class Reports extends CI_Controller
         $data['judul'] = 'Edit Laporan Wajib';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $laporan_id = $this->input->get('id') ?: $this->input->post('id');
-        // Pastikan laporan_id memiliki nilai yang valid
         if (!$laporan_id) {
-            // Tampilkan pesan error atau redirect ke halaman lain jika diperlukan
+            redirect('reports/logwajib');
         }
 
-        // Ambil data laporan sesuai dengan ID
         $data['laporan'] = $this->db->get_where('laporanwajib', ['id' => $laporan_id])->row_array();
 
-        // Pastikan data laporan ditemukan
         if (!$data['laporan']) {
-            // Tampilkan pesan error atau redirect ke halaman lain jika diperlukan
+            redirect('reports/logwajib');
         }
 
         // Lakukan validasi form
@@ -185,7 +183,7 @@ class Reports extends CI_Controller
                 }
             }
 
-            // Lakukan update data hanya jika ada perubahan
+            $update_data = [];
             $update_data += [
                 'judul' => $judul,
                 'tanggal' => $tanggal,
@@ -193,6 +191,7 @@ class Reports extends CI_Controller
                 'komentar' => $komentar,
                 'shift' => $shift
             ];
+
             $this->db->set($update_data);
             $this->db->where('id', $laporan_id);
             $this->db->update('laporanwajib');
@@ -223,7 +222,6 @@ class Reports extends CI_Controller
         $data['judul'] = "Laporan Harian" . ($laporan_name ? " $laporan_name" : ''); // Append the name if available
 
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/topbar', $data);
         $this->load->view('reports/unduhwajib', $data);
         $this->load->view('templates/footer');
     }
@@ -233,22 +231,18 @@ class Reports extends CI_Controller
         $data['judul'] = 'Edit Laporan Rutin';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $laporan_id = $this->input->get('id') ?: $this->input->post('id');
-        // Pastikan laporan_id memiliki nilai yang valid
         if (!$laporan_id) {
-            // Tampilkan pesan error atau redirect ke halaman lain jika diperlukan
+            redirect('reports/logrutin');
         }
 
-        // Ambil data laporan sesuai dengan ID
         $data['laporan'] = $this->db->get_where('laporanrutin', ['id' => $laporan_id])->row_array();
 
-        // Pastikan data laporan ditemukan
         if (!$data['laporan']) {
-            // Tampilkan pesan error atau redirect ke halaman lain jika diperlukan
+            redirect('reports/logrutin');
         }
 
         // Lakukan validasi form
-        $this->form_validation->set_rules('judul', 'Judul', 'required');
-
+        $this->form_validation->set_rules('shift', 'shift', 'required');
         if ($this->form_validation->run() == false) {
             // Tampilkan view form edit jika validasi gagal
             $this->load->view('templates/header', $data);
@@ -301,10 +295,8 @@ class Reports extends CI_Controller
             $this->db->set($update_data);
             $this->db->where('id', $laporan_id);
             $this->db->update('laporanrutin');
-
-            // Tampilkan pesan sukses
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah diubah.</div>');
-            redirect('reports/logwajib');
+            redirect('reports/logrutin');
         }
     }
     public function rutin()
@@ -324,6 +316,15 @@ class Reports extends CI_Controller
         $this->form_validation->set_rules('cctv', 'CCTV', 'required', [
             'required' => 'Pilih salah satu kondisi CCTV!'
         ]);
+        $this->form_validation->set_rules('akses1', 'akses1', 'required');
+        $this->form_validation->set_rules('akses2', 'akses2', 'required');
+        $this->form_validation->set_rules('akses3', 'akses3', 'required');
+        $this->form_validation->set_rules('inven1', 'inven1', 'required');
+        $this->form_validation->set_rules('inven2', 'inven2', 'required');
+        $this->form_validation->set_rules('inven3', 'inven3', 'required');
+        $this->form_validation->set_rules('aset2', 'aset1', 'required');
+        $this->form_validation->set_rules('aset2', 'aset2', 'required');
+        $this->form_validation->set_rules('aset3', 'aset3', 'required');
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Formulir Pemeriksaan Rutin';
@@ -343,6 +344,7 @@ class Reports extends CI_Controller
                 'nama' => $this->input->post('nama'),
                 'tanggal' => $this->input->post('tanggal'),
                 'listrik' => $this->input->post('listrik'),
+                'shift' => $this->input->post('shift'),
                 'komentar1' => htmlspecialchars($this->input->post('komentar1')),
                 'alarm' => $this->input->post('alarm'),
                 'komentar2' => $this->input->post('komentar2'),
@@ -420,8 +422,6 @@ class Reports extends CI_Controller
         $waktuskrg = time();
 
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/topbar', $data);
         $this->load->view('reports/unduhrutin', $data);
-        $this->load->view('templates/footer');
     }
 }
