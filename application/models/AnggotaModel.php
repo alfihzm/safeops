@@ -4,7 +4,6 @@ class AnggotaModel extends CI_Model
     public function getAnggota()
     {
         $query = $this->db->get('user');
-
         return $query->num_rows();
     }
 
@@ -21,12 +20,16 @@ class AnggotaModel extends CI_Model
         if ($this->db->insert('user', $data)) {
             return true;
         } else {
-            // Check for database errors
             $error = $this->db->error();
-            echo 'Database Error (' . $error['code'] . '): ' . $error['message'];
+            if ($error['code'] == 1062) {
+                echo 'Error: No. Pegawai sudah ada dalam database';
+            } else {
+                echo 'Database Error (' . $error['code'] . '): ' . $error['message'];
+            }
             return false;
         }
     }
+
 
     public function getAnggotaById($id)
     {

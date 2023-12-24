@@ -134,6 +134,7 @@
                     </div>
                 </div>
                 <hr>
+                Petugas WAJIB memeriksa seluruh aset dan memberi centang setelah terperiksa aman.
                 <div class="form-group row">
                     <!-- Kondisi CCTV -->
                     <label class="col-sm-4 col-form-label">Pemeriksaan Akses</label>

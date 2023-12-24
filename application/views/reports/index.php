@@ -19,23 +19,38 @@
                 <tr>
                     <th class="col-sm-6">Jenis Laporan</th>
                     <th class="col-sm"></th>
-                    <th scope="col-sm-4">Lihat</th>
+                    <?php if ($user['role_id'] == 1) : ?>
+                        <th scope="col-sm-4">Lihat</th>
+                    <?php else : ?>
+                        <th></th>
+                    <?php endif; ?>
                 </tr>
                 <tr class="table-info">
                     <td>
                         <a href="<?= base_url('reports/wajib') ?>" class="btn btn-primary-responsive-width btn-outline-light mb-3" style="background: #2B1C2F;">Laporan Wajib</a>
                     </td>
                     <td></td>
-                    <td>
-                        <a href="<?= base_url('reports/logwajib') ?>" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>
-                    </td>
+                    <?php if ($user['role_id'] == 1) : ?>
+                        <td>
+                            <a href="<?= base_url('reports/logwajib') ?>" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>
+                        </td>
+                    <?php else : ?>
+                        <td>
+                        </td>
+                    <?php endif; ?>
                 </tr>
                 <tr class="table-info">
                     <td><a href="<?= base_url('reports/rutin') ?>" class="btn btn-primary-responsive-width btn-outline-light mb-3" style="background: #2B1C2F;">Laporan Pemeriksaan</a></td>
                     <td></td>
-                    <td>
-                        <a href="<?= base_url('reports/logrutin') ?>" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>
-                    </td>
+                    <?php if ($user['role_id'] == 1) : ?>
+
+                        <td>
+                            <a href="<?= base_url('reports/logrutin') ?>" class="btn btn-warning"><i class="fa-solid fa-eye fa-l"></i></i></a>
+                        </td>
+                    <?php else : ?>
+                        <td>
+                        </td>
+                    <?php endif; ?>
                 </tr>
             </table>
         </div>

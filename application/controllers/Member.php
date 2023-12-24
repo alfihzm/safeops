@@ -40,7 +40,8 @@ class Member extends CI_Controller
     {
         $this->form_validation->set_rules('nopeg', 'Nopeg', 'required|trim|max_length[4]', [
             'required' => 'Masukkan No. Pegawai dengan Benar!',
-            'max_length' => 'Maksimal 4 Karakter Tambahan'
+            'max_length' => 'Maksimal 4 Karakter Tambahan',
+            'is_unique' => 'No. Pegawai sudah ada dalam database'
         ]);
         $this->form_validation->set_rules('nama', 'Nama', 'required', [
             'required' => 'Masukkan Nama dengan Benar!'

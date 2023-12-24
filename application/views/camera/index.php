@@ -53,7 +53,7 @@
                 <div>
                     <div>
                         <b>Kamera Outdoor Utara</b><br>
-                        <iframe id="youtubeFrame" width="100%" height="400" src="https://www.youtube.com/embed/GEPJYPznC_Q?autoplay=1&controls=0&showinfo=0&mute=1" frameborder="3" allowfullscreen></iframe>
+                        <iframe id="youtubeFrame" width="100%" height="400" src="https://www.youtube.com/embed/Lfl2Nj_QRXU?autoplay=1&controls=0&showinfo=0&mute=1" frameborder="3" allowfullscreen></iframe>
                     </div>
                     <div>
                         <b>Kamera Outdoor Serambi Masjid</b><br>

@@ -243,6 +243,15 @@ class Reports extends CI_Controller
 
         // Lakukan validasi form
         $this->form_validation->set_rules('shift', 'shift', 'required');
+        $this->form_validation->set_rules('akses1', 'akses1', 'required');
+        $this->form_validation->set_rules('akses2', 'akses2', 'required');
+        $this->form_validation->set_rules('akses3', 'akses3', 'required');
+        $this->form_validation->set_rules('inven1', 'inven1', 'required');
+        $this->form_validation->set_rules('inven2', 'inven2', 'required');
+        $this->form_validation->set_rules('inven3', 'inven3', 'required');
+        $this->form_validation->set_rules('aset2', 'aset1', 'required');
+        $this->form_validation->set_rules('aset2', 'aset2', 'required');
+        $this->form_validation->set_rules('aset3', 'aset3', 'required');
         if ($this->form_validation->run() == false) {
             // Tampilkan view form edit jika validasi gagal
             $this->load->view('templates/header', $data);
